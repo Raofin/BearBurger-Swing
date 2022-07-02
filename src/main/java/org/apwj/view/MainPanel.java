@@ -2,7 +2,7 @@
  * Created by JFormDesigner on Fri Jul 01 03:01:20 BDT 2022
  */
 
-package org.apwj.ui;
+package org.apwj.view;
 
 import javax.swing.*;
 import java.awt.*;

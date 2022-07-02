@@ -1,0 +1,96 @@
+JFDML JFormDesigner: "7.0.5.4.420" Java: "11.0.14.1" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+			"$horizontalGroup": "par l {seq t {par l {seq l {space :p:68:p, comp label2:::p::p}, seq l {space :p:92:p, comp label3:::p::p}, seq l {space :::p, par l {comp button1:::p:249:p, comp button2:::p:249:p, comp button3:::p:249:p, comp button4:::p:249:p, comp button5:::p:249:p}}}, space :::p, comp panel1:::::x, space :::p}}"
+			"$verticalGroup": "par l {seq t {space ::136:x, comp button1:::p:52:p, space :6:6:p, comp button2:::p:52:p, space :6:6:p, comp button3:::p:52:p, space :6:6:p, comp button4:::p:52:p, space :6:6:p, comp button5:::p:52:p, space :p:50:p, comp label2:::p::p, space :6:6:p, comp label3:::p::p, space :p:35:p}, seq l {space :::p, comp panel1:::::x, space :::p}}"
+		} ) {
+			name: "panel"
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+				"$horizontalGroup": "par l {seq l {space :::p, comp label1::::746:x, space :::p}, seq t {space ::65:x, par l {comp scrollPane1:::p:155:p, comp label4:::p::p}, space :p:62:p, par l {comp label5:::p::p, comp scrollPane2:::p:378:p}, space :p:98:p}, seq {space :p:158:p, comp button8:::p:171:p, space :p:57:p, comp button7:::p:171:p, space ::201:x}}"
+				"$verticalGroup": "par l {seq l {space :p:28:p, comp label1:::p::p, space ::22:x, par b {comp label5::b:p::p, comp label4::b:p::p}, space :::p, par l:::p {comp scrollPane1::::293:x, comp scrollPane2::::293:x}, space ::47:x, par b {comp button8::b:p:42:p, comp button7::b:p:42:p}, space :p:35:p}}"
+			} ) {
+				name: "panel1"
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label1"
+					"text": "Browse Foods"
+					"font": new java.awt.Font( "Segoe UI", 1, 45 )
+					"horizontalAlignment": 0
+				} )
+				add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+					name: "scrollPane1"
+					add( new FormComponent( "javax.swing.JList" ) {
+						name: "list1"
+					} )
+				} )
+				add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+					name: "scrollPane2"
+					add( new FormComponent( "javax.swing.JList" ) {
+						name: "list2"
+					} )
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label4"
+					"text": "Catagories"
+					"font": &Font0 new java.awt.Font( "Segoe UI Semibold", 1, 21 )
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label5"
+					"text": "Foods"
+					"font": #Font0
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "button7"
+					"text": "Add to Cart"
+					"font": &Font1 new java.awt.Font( "Segoe UI", 1, 20 )
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "button8"
+					"text": "View Details"
+					"font": #Font1
+				} )
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "button1"
+				"text": "Browse Foods"
+				"font": &Font2 new java.awt.Font( "Segoe UI", 1, 22 )
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "button2"
+				"text": "Search"
+				"font": #Font2
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "button3"
+				"text": "Food Cart"
+				"font": #Font2
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "button4"
+				"text": "User Profile"
+				"font": #Font2
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "button5"
+				"text": "Project Details"
+				"font": #Font2
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label2"
+				"text": "Username"
+				"font": new java.awt.Font( "Segoe UI Semibold", 1, 27 )
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label3"
+				"text": "Logout"
+				"font": new java.awt.Font( "Segoe UI Semibold", 0, 20 )
+				"foreground": new java.awt.Color( 255, 51, 51, 255 )
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 0 )
+			"size": new java.awt.Dimension( 1025, 575 )
+		} )
+	}
+}

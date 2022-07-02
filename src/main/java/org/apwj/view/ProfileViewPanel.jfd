@@ -1,0 +1,104 @@
+JFDML JFormDesigner: "7.0.5.4.420" Java: "11.0.14.1" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+			"$horizontalGroup": "par l {seq {par l {seq {space :::p, comp label5:::::x}, seq {par l {seq l {space :p:82:p, par l {seq l {comp label2:::p::p, space :18:18:p, comp label13:::p::p}, seq l {comp label4:::p::p, space :73:73:p, comp label14:::p::p}, seq l {comp label3:::p::p, space :24:24:p, comp label15:::p::p}, seq l {comp label6:::p::p, space :62:62:p, comp label16:::p::p}, seq l {comp label7:::p::p, space :50:50:p, comp label9:::p::p}, seq l {comp label8:::p::p, space :59:59:p, comp label10:::p::p}, seq l {comp label11:::p::p, space :62:62:p, comp label12:::p::p}}}, seq l {space :p:286:p, comp button7:::p:171:p}}, space :0:295:x}}, space :::p}}"
+			"$verticalGroup": "par l {seq l {space :p:28:p, comp label5:::p::p, space ::43:x, par l {comp label2:::p::p, comp label13:::p::p}, space :7:7:p, par l {comp label4:::p::p, comp label14:::p::p}, space :7:7:p, par l {comp label3:::p::p, comp label15:::p::p}, space :7:7:p, par l {comp label6:::p::p, comp label16:::p::p}, space :6:6:p, par l {comp label7:::p::p, comp label9:::p::p}, space :6:6:p, par l {comp label8:::p::p, comp label10:::p::p}, space :6:6:p, par l {comp label11:::p::p, comp label12:::p::p}, space :p:40:p, comp button7:::p:42:p, space :p:58:p}}"
+		} ) {
+			name: "panel1"
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label5"
+				"text": "View Details"
+				"font": new java.awt.Font( "Segoe UI", 1, 45 )
+				"horizontalAlignment": 0
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "button7"
+				"text": "Modify"
+				"font": new java.awt.Font( "Segoe UI", 1, 20 )
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label2"
+				"text": "Username"
+				"font": &Font0 new java.awt.Font( "Segoe UI Semibold", 0, 26 )
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label13"
+				"text": "User Name"
+				"font": #Font0
+				"foreground": &Color0 new java.awt.Color( 255, 255, 255, 255 )
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label4"
+				"text": "Email"
+				"font": #Font0
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label14"
+				"text": "user@email.com"
+				"font": #Font0
+				"foreground": #Color0
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label3"
+				"text": "Password"
+				"font": #Font0
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label15"
+				"text": "Password"
+				"font": #Font0
+				"foreground": #Color0
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label6"
+				"text": "Phone"
+				"font": #Font0
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label16"
+				"text": "0123456789"
+				"font": #Font0
+				"foreground": #Color0
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label7"
+				"text": "Gender"
+				"font": #Font0
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label9"
+				"text": "Male"
+				"font": #Font0
+				"foreground": #Color0
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label8"
+				"text": "Joined"
+				"font": #Font0
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label10"
+				"text": "July 2, 2022"
+				"font": #Font0
+				"foreground": #Color0
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label11"
+				"text": "Spend"
+				"font": #Font0
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label12"
+				"text": "$680"
+				"font": #Font0
+				"foreground": #Color0
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 0 )
+			"size": new java.awt.Dimension( 758, 563 )
+		} )
+	}
+}

@@ -1,7 +1,7 @@
 package org.apwj;
 
 import com.formdev.flatlaf.intellijthemes.*;
-import org.apwj.ui.MainPanel;
+import org.apwj.view.MainPanel;
 
 import javax.swing.*;
 

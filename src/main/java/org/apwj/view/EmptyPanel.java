@@ -2,7 +2,7 @@
  * Created by JFormDesigner on Sat Jul 02 12:10:47 BDT 2022
  */
 
-package org.apwj.ui;
+package org.apwj.view;
 
 import javax.swing.*;
 import javax.swing.GroupLayout;
