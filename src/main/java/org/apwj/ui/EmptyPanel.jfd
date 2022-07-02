@@ -4,17 +4,13 @@ new FormModel {
 	contentType: "form/swing"
 	root: new FormRoot {
 		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-			"$horizontalGroup": "par l {seq l {space :p:160:p, comp button1:::p::p, space ::187:x}}"
-			"$verticalGroup": "par l {seq l {space :p:130:p, comp button1:::p::p, space ::147:x}}"
+			"$horizontalGroup": "par l {space :0:1025:x}"
+			"$verticalGroup": "par l {space :0:575:x}"
 		} ) {
-			name: "this"
-			add( new FormComponent( "javax.swing.JButton" ) {
-				name: "button1"
-				"text": "text"
-			} )
+			name: "panelEmpty"
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 0, 0 )
-			"size": new java.awt.Dimension( 400, 300 )
+			"size": new java.awt.Dimension( 1025, 575 )
 		} )
 	}
 }

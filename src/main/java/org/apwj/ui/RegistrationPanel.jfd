@@ -1,0 +1,96 @@
+JFDML JFormDesigner: "7.0.5.4.420" Java: "11.0.14.1" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+			"$horizontalGroup": "par l {seq {space ::489:x, par l {seq t {comp label1:::p::p, space :p:146:p}, seq t {par l {seq l {space :2:2:p, par l {comp label2::l:p::p, comp label4::l:p::p, comp label3:::p::p}, space :p:73:p, par l {comp textField2:::p:243:p, comp textField1:::p:243:p, comp passwordField1:::p:244:p}}, comp registerButton:::::x}, space :140:140:p}, seq t {comp label5:::p::p, space :6:6:p, comp loginLabel:::p::p, space :p:231:p}, seq l {par l {seq {comp label7:::p::p, space :p:83:p}, comp label6::t:p::p}, par l {seq {space :p:18:p, comp radioButton1:::p::p, space s:::p, comp radioButton2:::p::p, space s:::p, comp radioButton3:::p::p}, seq l {space u:::p, comp passwordField2:::p:244:p}}, space :::p}}}}"
+			"$verticalGroup": "par l {seq l {space :p:89:p, comp label1:::p::p, space :p:21:p, par b {comp label2::b:p::p, comp textField1::b:p:37:p}, space :p:6:p, par b {comp label4::b:p::p, comp textField2::b:p:37:p}, space :::p, par b {comp passwordField1::b:p:40:p, comp label3::b:p::p}, space :::p, par b {comp passwordField2::b:p:37:p, comp label6::b:p::p}, space :::p, par b {comp label7::b:p::p, comp radioButton1::b:p::p, comp radioButton2::b:p::p, comp radioButton3::b:p::p}, space :p:34:p, comp registerButton:::p:40:p, space :::p, par l {comp label5:::p::p, comp loginLabel:::p::p}, space ::102:x}}"
+		} ) {
+			name: "panel"
+			auxiliary() {
+				"JavaCodeGenerator.variableModifiers": 1
+			}
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label1"
+				"text": "Create an Account"
+				"font": new java.awt.Font( "Segoe UI", 1, 45 )
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label2"
+				"text": "Username"
+				"font": &Font0 new java.awt.Font( "Segoe UI Semibold", 0, 17 )
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "textField1"
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label3"
+				"text": "Password"
+				"font": &Font1 new java.awt.Font( "Segoe UI Semibold", 0, 17 )
+			} )
+			add( new FormComponent( "javax.swing.JPasswordField" ) {
+				name: "passwordField1"
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "registerButton"
+				"text": "Register"
+				"font": new java.awt.Font( "Segoe UI Semibold", 0, 17 )
+				"cursor": &Cursor0 new java.awt.Cursor( 12 )
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label5"
+				"text": "Already have an account?"
+				"font": &Font2 new java.awt.Font( "Segoe UI Semibold", 0, 15 )
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "loginLabel"
+				"text": "Login"
+				"font": #Font2
+				"foreground": new java.awt.Color( 56, 117, 237, 255 )
+				"cursor": #Cursor0
+				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "registerMouseClicked", true ) )
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label4"
+				"text": "Email"
+				"font": #Font0
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label6"
+				"text": "Confirm Password"
+				"font": #Font1
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label7"
+				"text": "Gender"
+				"font": #Font1
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "textField2"
+			} )
+			add( new FormComponent( "javax.swing.JPasswordField" ) {
+				name: "passwordField2"
+			} )
+			add( new FormComponent( "javax.swing.JRadioButton" ) {
+				name: "radioButton1"
+				"text": "Male"
+				"font": &Font3 new java.awt.Font( "Segoe UI", 0, 16 )
+			} )
+			add( new FormComponent( "javax.swing.JRadioButton" ) {
+				name: "radioButton2"
+				"text": "Female"
+				"font": #Font3
+			} )
+			add( new FormComponent( "javax.swing.JRadioButton" ) {
+				name: "radioButton3"
+				"text": "Other"
+				"font": #Font3
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 0 )
+			"size": new java.awt.Dimension( 1025, 575 )
+		} )
+	}
+}
+

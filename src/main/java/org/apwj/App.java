@@ -1,20 +1,22 @@
 package org.apwj;
 
 import com.formdev.flatlaf.intellijthemes.*;
-import org.apwj.ui.MainForm;
+import org.apwj.ui.MainPanel;
 
 import javax.swing.*;
 
 public class App 
 {
-    public static void main( String[] args )
-    {
-        FlatOneDarkIJTheme.setup(); // set theme
+    public static JFrame mainFrame = new JFrame(String.valueOf(FlatOneDarkIJTheme.setup()));
 
-        JFrame frame = new JFrame("BearBurger");
-        frame.setContentPane(new MainForm());
-        frame.pack();
-        frame.setVisible(true);
+    public static void main(String[] args )
+    {
+        mainFrame.setTitle("BearBurger");
+        MainPanel mainPanel = new MainPanel();
+        mainFrame.setContentPane(mainPanel.panel);
+        mainFrame.pack();
+        mainFrame.setLocationRelativeTo(null);
+        mainFrame.setVisible(true);
 
     }
 }
