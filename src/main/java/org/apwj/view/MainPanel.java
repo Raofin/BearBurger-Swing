@@ -4,6 +4,8 @@
 
 package org.apwj.view;
 
+import org.apwj.view.admin.AdminPanel;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -19,6 +21,8 @@ public class MainPanel {
     private void getStarted(ActionEvent e) {
         LoginPanel loginPanel = new LoginPanel();
         mainFrame.setContentPane(loginPanel.panel);
+//        AdminPanel adminPanel = new AdminPanel();
+//        mainFrame.setContentPane(adminPanel.panel);
         mainFrame.pack();
         mainFrame.setVisible(true);
     }
