@@ -20,13 +20,14 @@ new FormModel {
 			add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
 				name: "scrollPane1"
 				add( new FormComponent( "javax.swing.JList" ) {
-					name: "list1"
+					name: "categoryList"
 				} )
 			} )
 			add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
 				name: "scrollPane2"
 				add( new FormComponent( "javax.swing.JList" ) {
-					name: "list2"
+					name: "foodTitleList"
+					addEvent( new FormEvent( "javax.swing.event.ListSelectionListener", "valueChanged", "foodTitleListValueChanged", true ) )
 				} )
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
@@ -48,6 +49,7 @@ new FormModel {
 				name: "foodDetailsButton"
 				"text": "View Details"
 				"font": #Font1
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "foodDetails", true ) )
 				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "foodDetails", true ) )
 			} )
 		}, new FormLayoutConstraints( null ) {

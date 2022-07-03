@@ -1,6 +1,7 @@
 package org.apwj;
 
 import com.formdev.flatlaf.intellijthemes.*;
+
 import org.apwj.view.MainPanel;
 
 import javax.swing.*;
@@ -19,6 +20,7 @@ public class App
         mainFrame.pack();
         mainFrame.setLocationRelativeTo(null);
         mainFrame.setVisible(true);
+        mainFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
     }
 }

@@ -4,10 +4,18 @@
 
 package org.apwj.view;
 
+import org.apwj.dao.foodDAO;
+import org.apwj.domain.Food;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
 import java.awt.*;
 import java.awt.event.*;
+import java.util.List;
 import javax.swing.*;
 import javax.swing.GroupLayout;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
 import static org.apwj.view.FoodDetails.foodDetailsFrame;
 
@@ -15,28 +23,76 @@ import static org.apwj.view.FoodDetails.foodDetailsFrame;
  * @author unknown
  */
 public class BrowseFoodsPanel extends JPanel {
+    String selectedCategory=null;
+    String selectedTitle=null;
     public BrowseFoodsPanel() {
         initComponents();
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("application-context.xml");
+        foodDAO foodDao = applicationContext.getBean("foodDao", foodDAO.class);
+        List<String> categories = foodDao.getAllCategory();
+        DefaultListModel<String> categoryListModel = new DefaultListModel<>();
+        for(String category:categories){
+            categoryListModel.addElement(category);
+        }
+        categoryList.setModel(categoryListModel);
+
+
+            categoryList.addListSelectionListener(new ListSelectionListener() {
+                @Override
+                public void valueChanged(ListSelectionEvent e) {
+                    selectedCategory = categoryList.getSelectedValue().toString();
+                    List<String> titles = foodDao.getTitlesByCategory(selectedCategory);
+                    DefaultListModel<String> titlesModel = new DefaultListModel<>();
+                    for(String title:titles){
+                        titlesModel.addElement(title);
+                    }
+                    foodTitleList.setModel(titlesModel);
+                }
+            });
+
+            foodTitleList.addListSelectionListener(new ListSelectionListener() {
+                @Override
+                public void valueChanged(ListSelectionEvent e) {
+                    selectedTitle = foodTitleList.getSelectedValue().toString();
+                }
+            });
+
+
+
+
+
+
+
+
     }
 
     private void foodDetails(ActionEvent e) {
+        if( selectedTitle != null && selectedCategory != null ){
         foodDetailsFrame.setTitle("BearBurger");
         foodDetailsFrame.setResizable(false);
-        FoodDetails foodDetails = new FoodDetails();
+        FoodDetails foodDetails = new FoodDetails(selectedCategory,selectedTitle);
         foodDetailsFrame.setContentPane(foodDetails.panel);
         foodDetailsFrame.pack();
         foodDetailsFrame.setLocationRelativeTo(null);
         foodDetailsFrame.setVisible(true);
+
+        }
     }
+
+    private void foodTitleListValueChanged(ListSelectionEvent e) {
+        // TODO add your code here
+    }
+
+
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
         panel = new JPanel();
         label1 = new JLabel();
         scrollPane1 = new JScrollPane();
-        list1 = new JList();
+        categoryList = new JList();
         scrollPane2 = new JScrollPane();
-        list2 = new JList();
+        foodTitleList = new JList();
         label4 = new JLabel();
         label5 = new JLabel();
         addToCartButton = new JButton();
@@ -52,12 +108,15 @@ public class BrowseFoodsPanel extends JPanel {
 
             //======== scrollPane1 ========
             {
-                scrollPane1.setViewportView(list1);
+                scrollPane1.setViewportView(categoryList);
             }
 
             //======== scrollPane2 ========
             {
-                scrollPane2.setViewportView(list2);
+
+                //---- foodTitleList ----
+                foodTitleList.addListSelectionListener(e -> foodTitleListValueChanged(e));
+                scrollPane2.setViewportView(foodTitleList);
             }
 
             //---- label4 ----
@@ -75,7 +134,10 @@ public class BrowseFoodsPanel extends JPanel {
             //---- foodDetailsButton ----
             foodDetailsButton.setText("View Details");
             foodDetailsButton.setFont(new Font("Segoe UI", Font.BOLD, 20));
-            foodDetailsButton.addActionListener(e -> foodDetails(e));
+            foodDetailsButton.addActionListener(e -> {
+			foodDetails(e);
+			foodDetails(e);
+		});
 
             GroupLayout panelLayout = new GroupLayout(panel);
             panel.setLayout(panelLayout);
@@ -129,9 +191,9 @@ public class BrowseFoodsPanel extends JPanel {
     public JPanel panel;
     private JLabel label1;
     private JScrollPane scrollPane1;
-    private JList list1;
+    private JList categoryList;
     private JScrollPane scrollPane2;
-    private JList list2;
+    private JList foodTitleList;
     private JLabel label4;
     private JLabel label5;
     private JButton addToCartButton;
