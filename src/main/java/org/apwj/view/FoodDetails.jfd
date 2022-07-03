@@ -4,15 +4,15 @@ new FormModel {
 	contentType: "form/swing"
 	root: new FormRoot {
 		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-			"$horizontalGroup": "par l {comp label1::t::470:x, seq {space :p:57:p, comp scrollPane1:::p:356:p, space ::57:x}, seq t {space ::152:x, comp closeButton:::p:171:p, space :p:147:p}}"
-			"$verticalGroup": "par l {seq l {space :p:21:p, comp label1:::p::p, space s:::p, comp scrollPane1:::p:147:p, space :p:51:p, comp closeButton:::p:46:p, space ::51:x}}"
+			"$horizontalGroup": "par l {seq t {comp foodTitle::::352:x, space :::p, comp categoryLabel:::p::p, space s:::p, comp priceLabel:::p::p, space :p:20:p}, seq {space :p:57:p, comp scrollPane1:::p:356:p, space ::57:x}, seq t {space ::152:x, comp closeButton:::p:171:p, space :p:147:p}}"
+			"$verticalGroup": "par l {seq l {space :0:0:p, par b {comp foodTitle::b:p::p, comp categoryLabel::b:p::p, comp priceLabel::b:p::p}, space s:::p, comp scrollPane1:::p:147:p, space :p:51:p, comp closeButton:::p:46:p, space ::72:x}}"
 		} ) {
 			name: "panel"
 			auxiliary() {
 				"JavaCodeGenerator.variableModifiers": 1
 			}
 			add( new FormComponent( "javax.swing.JLabel" ) {
-				name: "label1"
+				name: "foodTitle"
 				"text": "Food Name"
 				"font": new java.awt.Font( "Segoe UI", 1, 45 )
 				"horizontalAlignment": 0
@@ -20,7 +20,7 @@ new FormModel {
 			add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
 				name: "scrollPane1"
 				add( new FormComponent( "javax.swing.JTextPane" ) {
-					name: "textPane1"
+					name: "foodDetails"
 					"text": "Prepared with beef patty, cheese, burger sauce, pickles & onion"
 					"font": new java.awt.Font( "Segoe UI", 0, 20 )
 					"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
@@ -32,6 +32,14 @@ new FormModel {
 				"text": "Close"
 				"font": new java.awt.Font( "Segoe UI", 1, 20 )
 				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "close", true ) )
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "categoryLabel"
+				"text": "Category"
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "priceLabel"
+				"text": "Price"
 			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 0, 0 )

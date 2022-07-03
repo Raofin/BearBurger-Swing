@@ -11,4 +11,7 @@
     <bean id="userDao" class="org.apwj.dao.userDAO">
         <constructor-arg ref="dataSource"/>
     </bean>
+    <bean id="foodDao" class="org.apwj.dao.foodDAO">
+        <constructor-arg ref = "dataSource"/>
+    </bean>
 </beans>
