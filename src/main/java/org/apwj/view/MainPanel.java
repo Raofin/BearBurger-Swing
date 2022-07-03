@@ -39,13 +39,10 @@ public class MainPanel {
             buttonGetStarted.setBorderPainted(false);
             buttonGetStarted.setBackground(new Color(102, 153, 255));
             buttonGetStarted.setForeground(Color.white);
-            buttonGetStarted.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    getStarted(e);
-                    getStarted(e);
-                }
-            });
+            buttonGetStarted.addActionListener(e -> {
+			getStarted(e);
+			getStarted(e);
+		});
 
             //---- label2 ----
             label2.setIcon(new ImageIcon("src\\main\\java\\org\\apwj\\view\\resources\\logo-1.png"));

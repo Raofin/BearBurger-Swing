@@ -5,8 +5,11 @@
 package org.apwj.view;
 
 import java.awt.*;
+import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.GroupLayout;
+
+import static org.apwj.view.FoodDetails.foodDetailsFrame;
 
 /**
  * @author unknown
@@ -14,6 +17,16 @@ import javax.swing.GroupLayout;
 public class BrowseFoodsPanel extends JPanel {
     public BrowseFoodsPanel() {
         initComponents();
+    }
+
+    private void foodDetails(ActionEvent e) {
+        foodDetailsFrame.setTitle("BearBurger");
+        foodDetailsFrame.setResizable(false);
+        FoodDetails foodDetails = new FoodDetails();
+        foodDetailsFrame.setContentPane(foodDetails.panel);
+        foodDetailsFrame.pack();
+        foodDetailsFrame.setLocationRelativeTo(null);
+        foodDetailsFrame.setVisible(true);
     }
 
     private void initComponents() {
@@ -26,8 +39,8 @@ public class BrowseFoodsPanel extends JPanel {
         list2 = new JList();
         label4 = new JLabel();
         label5 = new JLabel();
-        button7 = new JButton();
-        button8 = new JButton();
+        addToCartButton = new JButton();
+        foodDetailsButton = new JButton();
 
         //======== panel ========
         {
@@ -55,13 +68,14 @@ public class BrowseFoodsPanel extends JPanel {
             label5.setText("Foods");
             label5.setFont(new Font("Segoe UI Semibold", Font.BOLD, 21));
 
-            //---- button7 ----
-            button7.setText("Add to Cart");
-            button7.setFont(new Font("Segoe UI", Font.BOLD, 20));
+            //---- addToCartButton ----
+            addToCartButton.setText("Add to Cart");
+            addToCartButton.setFont(new Font("Segoe UI", Font.BOLD, 20));
 
-            //---- button8 ----
-            button8.setText("View Details");
-            button8.setFont(new Font("Segoe UI", Font.BOLD, 20));
+            //---- foodDetailsButton ----
+            foodDetailsButton.setText("View Details");
+            foodDetailsButton.setFont(new Font("Segoe UI", Font.BOLD, 20));
+            foodDetailsButton.addActionListener(e -> foodDetails(e));
 
             GroupLayout panelLayout = new GroupLayout(panel);
             panel.setLayout(panelLayout);
@@ -83,9 +97,9 @@ public class BrowseFoodsPanel extends JPanel {
                         .addGap(98, 98, 98))
                     .addGroup(panelLayout.createSequentialGroup()
                         .addGap(158, 158, 158)
-                        .addComponent(button8, GroupLayout.PREFERRED_SIZE, 171, GroupLayout.PREFERRED_SIZE)
+                        .addComponent(foodDetailsButton, GroupLayout.PREFERRED_SIZE, 171, GroupLayout.PREFERRED_SIZE)
                         .addGap(57, 57, 57)
-                        .addComponent(button7, GroupLayout.PREFERRED_SIZE, 171, GroupLayout.PREFERRED_SIZE)
+                        .addComponent(addToCartButton, GroupLayout.PREFERRED_SIZE, 171, GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(201, Short.MAX_VALUE))
             );
             panelLayout.setVerticalGroup(
@@ -103,8 +117,8 @@ public class BrowseFoodsPanel extends JPanel {
                             .addComponent(scrollPane2, GroupLayout.DEFAULT_SIZE, 293, Short.MAX_VALUE))
                         .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
                         .addGroup(panelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                            .addComponent(button8, GroupLayout.PREFERRED_SIZE, 42, GroupLayout.PREFERRED_SIZE)
-                            .addComponent(button7, GroupLayout.PREFERRED_SIZE, 42, GroupLayout.PREFERRED_SIZE))
+                            .addComponent(foodDetailsButton, GroupLayout.PREFERRED_SIZE, 42, GroupLayout.PREFERRED_SIZE)
+                            .addComponent(addToCartButton, GroupLayout.PREFERRED_SIZE, 42, GroupLayout.PREFERRED_SIZE))
                         .addGap(35, 35, 35))
             );
         }
@@ -120,7 +134,7 @@ public class BrowseFoodsPanel extends JPanel {
     private JList list2;
     private JLabel label4;
     private JLabel label5;
-    private JButton button7;
-    private JButton button8;
+    private JButton addToCartButton;
+    private JButton foodDetailsButton;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 }

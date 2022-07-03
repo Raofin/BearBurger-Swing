@@ -5,8 +5,11 @@
 package org.apwj.view;
 
 import java.awt.*;
+import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.GroupLayout;
+
+import static org.apwj.view.FoodDetails.foodDetailsFrame;
 
 /**
  * @author unknown
@@ -16,6 +19,16 @@ public class SearchPanel extends JPanel {
         initComponents();
     }
 
+    private void foodDetails(ActionEvent e) {
+        foodDetailsFrame.setTitle("BearBurger");
+        foodDetailsFrame.setResizable(false);
+        FoodDetails foodDetails = new FoodDetails();
+        foodDetailsFrame.setContentPane(foodDetails.panel);
+        foodDetailsFrame.pack();
+        foodDetailsFrame.setLocationRelativeTo(null);
+        foodDetailsFrame.setVisible(true);
+    }
+
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
         panel = new JPanel();
@@ -23,8 +36,8 @@ public class SearchPanel extends JPanel {
         scrollPane2 = new JScrollPane();
         list2 = new JList();
         label5 = new JLabel();
-        button7 = new JButton();
-        button8 = new JButton();
+        addToCartButton = new JButton();
+        foodDetailsButton = new JButton();
         textField1 = new JTextField();
         button9 = new JButton();
 
@@ -45,13 +58,14 @@ public class SearchPanel extends JPanel {
             label5.setText("Search Results");
             label5.setFont(new Font("Segoe UI Semibold", Font.BOLD, 21));
 
-            //---- button7 ----
-            button7.setText("Add to Cart");
-            button7.setFont(new Font("Segoe UI", Font.BOLD, 20));
+            //---- addToCartButton ----
+            addToCartButton.setText("Add to Cart");
+            addToCartButton.setFont(new Font("Segoe UI", Font.BOLD, 20));
 
-            //---- button8 ----
-            button8.setText("View Details");
-            button8.setFont(new Font("Segoe UI", Font.BOLD, 20));
+            //---- foodDetailsButton ----
+            foodDetailsButton.setText("View Details");
+            foodDetailsButton.setFont(new Font("Segoe UI", Font.BOLD, 20));
+            foodDetailsButton.addActionListener(e -> foodDetails(e));
 
             //---- button9 ----
             button9.setText("Search");
@@ -70,9 +84,9 @@ public class SearchPanel extends JPanel {
                                 .addGroup(panelLayout.createParallelGroup()
                                     .addGroup(panelLayout.createSequentialGroup()
                                         .addGap(158, 158, 158)
-                                        .addComponent(button8, GroupLayout.PREFERRED_SIZE, 171, GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(foodDetailsButton, GroupLayout.PREFERRED_SIZE, 171, GroupLayout.PREFERRED_SIZE)
                                         .addGap(57, 57, 57)
-                                        .addComponent(button7, GroupLayout.PREFERRED_SIZE, 171, GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(addToCartButton, GroupLayout.PREFERRED_SIZE, 171, GroupLayout.PREFERRED_SIZE))
                                     .addGroup(panelLayout.createSequentialGroup()
                                         .addGap(54, 54, 54)
                                         .addGroup(panelLayout.createParallelGroup()
@@ -101,8 +115,8 @@ public class SearchPanel extends JPanel {
                         .addComponent(scrollPane2, GroupLayout.PREFERRED_SIZE, 233, GroupLayout.PREFERRED_SIZE)
                         .addGap(38, 38, 38)
                         .addGroup(panelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                            .addComponent(button8, GroupLayout.PREFERRED_SIZE, 42, GroupLayout.PREFERRED_SIZE)
-                            .addComponent(button7, GroupLayout.PREFERRED_SIZE, 42, GroupLayout.PREFERRED_SIZE))
+                            .addComponent(foodDetailsButton, GroupLayout.PREFERRED_SIZE, 42, GroupLayout.PREFERRED_SIZE)
+                            .addComponent(addToCartButton, GroupLayout.PREFERRED_SIZE, 42, GroupLayout.PREFERRED_SIZE))
                         .addGap(35, 35, 35))
             );
         }
@@ -115,8 +129,8 @@ public class SearchPanel extends JPanel {
     private JScrollPane scrollPane2;
     private JList list2;
     private JLabel label5;
-    private JButton button7;
-    private JButton button8;
+    private JButton addToCartButton;
+    private JButton foodDetailsButton;
     private JTextField textField1;
     private JButton button9;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
