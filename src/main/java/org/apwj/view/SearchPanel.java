@@ -18,7 +18,7 @@ public class SearchPanel extends JPanel {
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
-        panel1 = new JPanel();
+        panel = new JPanel();
         label1 = new JLabel();
         scrollPane2 = new JScrollPane();
         list2 = new JList();
@@ -28,7 +28,7 @@ public class SearchPanel extends JPanel {
         textField1 = new JTextField();
         button9 = new JButton();
 
-        //======== panel1 ========
+        //======== panel ========
         {
 
             //---- label1 ----
@@ -57,28 +57,28 @@ public class SearchPanel extends JPanel {
             button9.setText("Search");
             button9.setFont(new Font("Segoe UI", Font.BOLD, 20));
 
-            GroupLayout panel1Layout = new GroupLayout(panel1);
-            panel1.setLayout(panel1Layout);
-            panel1Layout.setHorizontalGroup(
-                panel1Layout.createParallelGroup()
-                    .addGroup(panel1Layout.createSequentialGroup()
-                        .addGroup(panel1Layout.createParallelGroup()
-                            .addGroup(panel1Layout.createSequentialGroup()
+            GroupLayout panelLayout = new GroupLayout(panel);
+            panel.setLayout(panelLayout);
+            panelLayout.setHorizontalGroup(
+                panelLayout.createParallelGroup()
+                    .addGroup(panelLayout.createSequentialGroup()
+                        .addGroup(panelLayout.createParallelGroup()
+                            .addGroup(panelLayout.createSequentialGroup()
                                 .addContainerGap()
                                 .addComponent(label1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(panel1Layout.createSequentialGroup()
-                                .addGroup(panel1Layout.createParallelGroup()
-                                    .addGroup(panel1Layout.createSequentialGroup()
+                            .addGroup(panelLayout.createSequentialGroup()
+                                .addGroup(panelLayout.createParallelGroup()
+                                    .addGroup(panelLayout.createSequentialGroup()
                                         .addGap(158, 158, 158)
                                         .addComponent(button8, GroupLayout.PREFERRED_SIZE, 171, GroupLayout.PREFERRED_SIZE)
                                         .addGap(57, 57, 57)
                                         .addComponent(button7, GroupLayout.PREFERRED_SIZE, 171, GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(panel1Layout.createSequentialGroup()
+                                    .addGroup(panelLayout.createSequentialGroup()
                                         .addGap(54, 54, 54)
-                                        .addGroup(panel1Layout.createParallelGroup()
+                                        .addGroup(panelLayout.createParallelGroup()
                                             .addComponent(scrollPane2, GroupLayout.PREFERRED_SIZE, 636, GroupLayout.PREFERRED_SIZE)
                                             .addComponent(label5)
-                                            .addGroup(panel1Layout.createSequentialGroup()
+                                            .addGroup(panelLayout.createSequentialGroup()
                                                 .addGap(88, 88, 88)
                                                 .addComponent(textField1, GroupLayout.PREFERRED_SIZE, 309, GroupLayout.PREFERRED_SIZE)
                                                 .addGap(26, 26, 26)
@@ -86,13 +86,13 @@ public class SearchPanel extends JPanel {
                                 .addGap(0, 62, Short.MAX_VALUE)))
                         .addContainerGap())
             );
-            panel1Layout.setVerticalGroup(
-                panel1Layout.createParallelGroup()
-                    .addGroup(panel1Layout.createSequentialGroup()
+            panelLayout.setVerticalGroup(
+                panelLayout.createParallelGroup()
+                    .addGroup(panelLayout.createSequentialGroup()
                         .addGap(28, 28, 28)
                         .addComponent(label1)
                         .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
-                        .addGroup(panel1Layout.createParallelGroup()
+                        .addGroup(panelLayout.createParallelGroup()
                             .addComponent(textField1, GroupLayout.PREFERRED_SIZE, 41, GroupLayout.PREFERRED_SIZE)
                             .addComponent(button9, GroupLayout.PREFERRED_SIZE, 41, GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
@@ -100,7 +100,7 @@ public class SearchPanel extends JPanel {
                         .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(scrollPane2, GroupLayout.PREFERRED_SIZE, 233, GroupLayout.PREFERRED_SIZE)
                         .addGap(38, 38, 38)
-                        .addGroup(panel1Layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                        .addGroup(panelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                             .addComponent(button8, GroupLayout.PREFERRED_SIZE, 42, GroupLayout.PREFERRED_SIZE)
                             .addComponent(button7, GroupLayout.PREFERRED_SIZE, 42, GroupLayout.PREFERRED_SIZE))
                         .addGap(35, 35, 35))
@@ -110,7 +110,7 @@ public class SearchPanel extends JPanel {
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
-    private JPanel panel1;
+    public JPanel panel;
     private JLabel label1;
     private JScrollPane scrollPane2;
     private JList list2;

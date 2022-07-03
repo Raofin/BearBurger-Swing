@@ -24,7 +24,7 @@ new FormModel {
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "label2"
-				"icon": new com.jformdesigner.model.SwingIcon( 1, "src\\main\\java\\org\\apwj\\resources\\logo-1.png" )
+				"icon": new com.jformdesigner.model.SwingIcon( 1, "src\\main\\java\\org\\apwj\\view\\resources\\logo-1.png" )
 				"horizontalAlignment": 0
 			} )
 		}, new FormLayoutConstraints( null ) {

@@ -7,7 +7,10 @@ new FormModel {
 			"$horizontalGroup": "par l {seq {par l {seq l {space :::p, comp label1:::::x}, seq {par l {seq {space :p:158:p, comp button8:::p:171:p, space :p:57:p, comp button7:::p:171:p}, seq l {space :p:54:p, par l {comp scrollPane2:::p:636:p, comp label5::l:p::p, seq l {space :p:88:p, comp textField1:::p:309:p, space :p:26:p, comp button9:::p:156:p}}}}, space :0:62:x}}, space :::p}}"
 			"$verticalGroup": "par l {seq l {space :p:28:p, comp label1:::p::p, space ::32:x, par l {comp textField1::l:p:41:p, comp button9::l:p:41:p}, space s:::p, comp label5:::p::p, space :::p, comp scrollPane2:::p:233:p, space :p:38:p, par b {comp button8::b:p:42:p, comp button7::b:p:42:p}, space :p:35:p}}"
 		} ) {
-			name: "panel1"
+			name: "panel"
+			auxiliary() {
+				"JavaCodeGenerator.variableModifiers": 1
+			}
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "label1"
 				"text": "Search Foods"

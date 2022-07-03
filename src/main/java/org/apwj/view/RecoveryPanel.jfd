@@ -4,10 +4,13 @@ new FormModel {
 	contentType: "form/swing"
 	root: new FormRoot {
 		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-			"$horizontalGroup": "par l {seq {par l {seq l {space :p:83:p, par l {comp label2::l:p::p, par t:l::p {comp textField1::l:p:332:p, seq l {par t {seq {par l {comp label4::l:p::p, comp label3::l:p::p}, space u:::p, par l {comp label5:::p::p, comp label6:::p::p}}, comp loginButton2:::p:149:p}, space :::x, comp loginButton:::p:149:p}}}}, seq l {space :p:71:p, comp label1:::p::p}}, space ::73:x}}"
-			"$verticalGroup": "par l {seq l {space :p:46:p, comp label1:::p::p, space :p:36:p, comp label2:::p::p, space :::p, comp textField1:::p:44:p, space :p:30:p, par l {seq l {comp label3:::p::p, space :::p, comp label4:::p::p}, seq l {comp label5:::p::p, space :6:6:p, comp label6:::p::p}}, space :p:44:p, par b {comp loginButton2::b:p:40:p, comp loginButton::b:p:40:p}, space ::55:x}}"
+			"$horizontalGroup": "par l {seq {par l {seq l {space :p:83:p, par l {comp label2::l:p::p, par t:l::p {comp textField1::l:p:332:p, seq l {par t {seq {par l {comp label4::l:p::p, comp label3::l:p::p}, space u:::p, par l {comp label5:::p::p, comp label6:::p::p}}, comp closeButton:::p:149:p}, space :::x, comp loginButton:::p:149:p}}}}, seq l {space :p:71:p, comp label1:::p::p}}, space ::73:x}}"
+			"$verticalGroup": "par l {seq l {space :p:46:p, comp label1:::p::p, space :p:36:p, comp label2:::p::p, space :::p, comp textField1:::p:44:p, space :p:30:p, par l {seq l {comp label3:::p::p, space :::p, comp label4:::p::p}, seq l {comp label5:::p::p, space :6:6:p, comp label6:::p::p}}, space :p:44:p, par b {comp closeButton::b:p:40:p, comp loginButton::b:p:40:p}, space ::55:x}}"
 		} ) {
 			name: "panel"
+			auxiliary() {
+				"JavaCodeGenerator.variableModifiers": 1
+			}
 			add( new FormComponent( "javax.swing.JButton" ) {
 				name: "loginButton"
 				"text": "Recover"
@@ -50,10 +53,11 @@ new FormModel {
 				"foreground": new java.awt.Color( 0, 153, 51, 255 )
 			} )
 			add( new FormComponent( "javax.swing.JButton" ) {
-				name: "loginButton2"
+				name: "closeButton"
 				"text": "Close"
 				"font": #Font0
 				"cursor": #Cursor0
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "close", true ) )
 			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 0, 0 )

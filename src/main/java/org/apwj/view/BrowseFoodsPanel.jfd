@@ -1,0 +1,57 @@
+JFDML JFormDesigner: "7.0.5.4.420" Java: "11.0.14.1" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+			"$horizontalGroup": "par l {seq l {space :::p, comp label1::::746:x, space :::p}, seq t {space ::65:x, par l {comp scrollPane1:::p:155:p, comp label4:::p::p}, space :p:62:p, par l {comp label5:::p::p, comp scrollPane2:::p:378:p}, space :p:98:p}, seq {space :p:158:p, comp button8:::p:171:p, space :p:57:p, comp button7:::p:171:p, space ::201:x}}"
+			"$verticalGroup": "par l {seq l {space :p:28:p, comp label1:::p::p, space ::22:x, par b {comp label5::b:p::p, comp label4::b:p::p}, space :::p, par l:::p {comp scrollPane1::::293:x, comp scrollPane2::::293:x}, space ::47:x, par b {comp button8::b:p:42:p, comp button7::b:p:42:p}, space :p:35:p}}"
+		} ) {
+			name: "panel"
+			auxiliary() {
+				"JavaCodeGenerator.variableModifiers": 1
+			}
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label1"
+				"text": "Browse Foods"
+				"font": new java.awt.Font( "Segoe UI", 1, 45 )
+				"horizontalAlignment": 0
+			} )
+			add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+				name: "scrollPane1"
+				add( new FormComponent( "javax.swing.JList" ) {
+					name: "list1"
+				} )
+			} )
+			add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+				name: "scrollPane2"
+				add( new FormComponent( "javax.swing.JList" ) {
+					name: "list2"
+				} )
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label4"
+				"text": "Catagories"
+				"font": &Font0 new java.awt.Font( "Segoe UI Semibold", 1, 21 )
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label5"
+				"text": "Foods"
+				"font": #Font0
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "button7"
+				"text": "Add to Cart"
+				"font": &Font1 new java.awt.Font( "Segoe UI", 1, 20 )
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "button8"
+				"text": "View Details"
+				"font": #Font1
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 0 )
+			"size": new java.awt.Dimension( 758, 563 )
+		} )
+	}
+}

@@ -5,8 +5,11 @@
 package org.apwj.view;
 
 import java.awt.*;
+import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.GroupLayout;
+
+import static org.apwj.view.LoginPanel.recoveryFrame;
 
 /**
  * @author unknown
@@ -14,6 +17,10 @@ import javax.swing.GroupLayout;
 public class RecoveryPanel extends JPanel {
     public RecoveryPanel() {
         initComponents();
+    }
+
+    private void close(ActionEvent e) {
+        recoveryFrame.dispatchEvent(new WindowEvent(recoveryFrame, WindowEvent.WINDOW_CLOSING));
     }
 
     private void initComponents() {
@@ -27,7 +34,7 @@ public class RecoveryPanel extends JPanel {
         label4 = new JLabel();
         label5 = new JLabel();
         label6 = new JLabel();
-        loginButton2 = new JButton();
+        closeButton = new JButton();
 
         //======== panel ========
         {
@@ -63,10 +70,16 @@ public class RecoveryPanel extends JPanel {
             label6.setFont(new Font("Segoe UI Semibold", Font.BOLD, 22));
             label6.setForeground(new Color(0, 153, 51));
 
-            //---- loginButton2 ----
-            loginButton2.setText("Close");
-            loginButton2.setFont(new Font("Segoe UI Semibold", Font.PLAIN, 17));
-            loginButton2.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+            //---- closeButton ----
+            closeButton.setText("Close");
+            closeButton.setFont(new Font("Segoe UI Semibold", Font.PLAIN, 17));
+            closeButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+            closeButton.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    close(e);
+                }
+            });
 
             GroupLayout panelLayout = new GroupLayout(panel);
             panel.setLayout(panelLayout);
@@ -90,7 +103,7 @@ public class RecoveryPanel extends JPanel {
                                                     .addGroup(panelLayout.createParallelGroup()
                                                         .addComponent(label5)
                                                         .addComponent(label6)))
-                                                .addComponent(loginButton2, GroupLayout.PREFERRED_SIZE, 149, GroupLayout.PREFERRED_SIZE))
+                                                .addComponent(closeButton, GroupLayout.PREFERRED_SIZE, 149, GroupLayout.PREFERRED_SIZE))
                                             .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                             .addComponent(loginButton, GroupLayout.PREFERRED_SIZE, 149, GroupLayout.PREFERRED_SIZE)))))
                             .addGroup(panelLayout.createSequentialGroup()
@@ -119,7 +132,7 @@ public class RecoveryPanel extends JPanel {
                                 .addComponent(label6)))
                         .addGap(44, 44, 44)
                         .addGroup(panelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                            .addComponent(loginButton2, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
+                            .addComponent(closeButton, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
                             .addComponent(loginButton, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE))
                         .addContainerGap(55, Short.MAX_VALUE))
             );
@@ -128,7 +141,7 @@ public class RecoveryPanel extends JPanel {
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
-    private JPanel panel;
+    public JPanel panel;
     private JButton loginButton;
     private JTextField textField1;
     private JLabel label2;
@@ -137,6 +150,6 @@ public class RecoveryPanel extends JPanel {
     private JLabel label4;
     private JLabel label5;
     private JLabel label6;
-    private JButton loginButton2;
+    private JButton closeButton;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 }

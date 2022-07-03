@@ -5,8 +5,11 @@
 package org.apwj.view;
 
 import java.awt.*;
+import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.GroupLayout;
+
+import static org.apwj.view.HomePanel.subHomePanel;
 
 /**
  * @author unknown
@@ -16,11 +19,19 @@ public class ProfileViewPanel extends JPanel {
         initComponents();
     }
 
+    private void modify(ActionEvent e) {
+        ProfileModifyPanel profileModifyPanel = new ProfileModifyPanel();
+        subHomePanel.setLayout(new java.awt.BorderLayout());
+        subHomePanel.removeAll();
+        subHomePanel.add(profileModifyPanel.panel);
+        subHomePanel.validate();
+    }
+
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
-        panel1 = new JPanel();
+        panel = new JPanel();
         label5 = new JLabel();
-        button7 = new JButton();
+        modifyButton = new JButton();
         label2 = new JLabel();
         label13 = new JLabel();
         label4 = new JLabel();
@@ -36,7 +47,7 @@ public class ProfileViewPanel extends JPanel {
         label11 = new JLabel();
         label12 = new JLabel();
 
-        //======== panel1 ========
+        //======== panel ========
         {
 
             //---- label5 ----
@@ -44,9 +55,15 @@ public class ProfileViewPanel extends JPanel {
             label5.setFont(new Font("Segoe UI", Font.BOLD, 45));
             label5.setHorizontalAlignment(SwingConstants.CENTER);
 
-            //---- button7 ----
-            button7.setText("Modify");
-            button7.setFont(new Font("Segoe UI", Font.BOLD, 20));
+            //---- modifyButton ----
+            modifyButton.setText("Modify");
+            modifyButton.setFont(new Font("Segoe UI", Font.BOLD, 20));
+            modifyButton.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    modify(e);
+                }
+            });
 
             //---- label2 ----
             label2.setText("Username");
@@ -111,89 +128,89 @@ public class ProfileViewPanel extends JPanel {
             label12.setFont(new Font("Segoe UI Semibold", Font.PLAIN, 26));
             label12.setForeground(Color.white);
 
-            GroupLayout panel1Layout = new GroupLayout(panel1);
-            panel1.setLayout(panel1Layout);
-            panel1Layout.setHorizontalGroup(
-                panel1Layout.createParallelGroup()
-                    .addGroup(panel1Layout.createSequentialGroup()
-                        .addGroup(panel1Layout.createParallelGroup()
-                            .addGroup(panel1Layout.createSequentialGroup()
+            GroupLayout panelLayout = new GroupLayout(panel);
+            panel.setLayout(panelLayout);
+            panelLayout.setHorizontalGroup(
+                panelLayout.createParallelGroup()
+                    .addGroup(panelLayout.createSequentialGroup()
+                        .addGroup(panelLayout.createParallelGroup()
+                            .addGroup(panelLayout.createSequentialGroup()
                                 .addContainerGap()
                                 .addComponent(label5, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(panel1Layout.createSequentialGroup()
-                                .addGroup(panel1Layout.createParallelGroup()
-                                    .addGroup(panel1Layout.createSequentialGroup()
+                            .addGroup(panelLayout.createSequentialGroup()
+                                .addGroup(panelLayout.createParallelGroup()
+                                    .addGroup(panelLayout.createSequentialGroup()
                                         .addGap(82, 82, 82)
-                                        .addGroup(panel1Layout.createParallelGroup()
-                                            .addGroup(panel1Layout.createSequentialGroup()
+                                        .addGroup(panelLayout.createParallelGroup()
+                                            .addGroup(panelLayout.createSequentialGroup()
                                                 .addComponent(label2)
                                                 .addGap(18, 18, 18)
                                                 .addComponent(label13))
-                                            .addGroup(panel1Layout.createSequentialGroup()
+                                            .addGroup(panelLayout.createSequentialGroup()
                                                 .addComponent(label4)
                                                 .addGap(73, 73, 73)
                                                 .addComponent(label14))
-                                            .addGroup(panel1Layout.createSequentialGroup()
+                                            .addGroup(panelLayout.createSequentialGroup()
                                                 .addComponent(label3)
                                                 .addGap(24, 24, 24)
                                                 .addComponent(label15))
-                                            .addGroup(panel1Layout.createSequentialGroup()
+                                            .addGroup(panelLayout.createSequentialGroup()
                                                 .addComponent(label6)
                                                 .addGap(62, 62, 62)
                                                 .addComponent(label16))
-                                            .addGroup(panel1Layout.createSequentialGroup()
+                                            .addGroup(panelLayout.createSequentialGroup()
                                                 .addComponent(label7)
                                                 .addGap(50, 50, 50)
                                                 .addComponent(label9))
-                                            .addGroup(panel1Layout.createSequentialGroup()
+                                            .addGroup(panelLayout.createSequentialGroup()
                                                 .addComponent(label8)
                                                 .addGap(59, 59, 59)
                                                 .addComponent(label10))
-                                            .addGroup(panel1Layout.createSequentialGroup()
+                                            .addGroup(panelLayout.createSequentialGroup()
                                                 .addComponent(label11)
                                                 .addGap(62, 62, 62)
                                                 .addComponent(label12))))
-                                    .addGroup(panel1Layout.createSequentialGroup()
+                                    .addGroup(panelLayout.createSequentialGroup()
                                         .addGap(286, 286, 286)
-                                        .addComponent(button7, GroupLayout.PREFERRED_SIZE, 171, GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(modifyButton, GroupLayout.PREFERRED_SIZE, 171, GroupLayout.PREFERRED_SIZE)))
                                 .addGap(0, 295, Short.MAX_VALUE)))
                         .addContainerGap())
             );
-            panel1Layout.setVerticalGroup(
-                panel1Layout.createParallelGroup()
-                    .addGroup(panel1Layout.createSequentialGroup()
+            panelLayout.setVerticalGroup(
+                panelLayout.createParallelGroup()
+                    .addGroup(panelLayout.createSequentialGroup()
                         .addGap(28, 28, 28)
                         .addComponent(label5)
                         .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
-                        .addGroup(panel1Layout.createParallelGroup()
+                        .addGroup(panelLayout.createParallelGroup()
                             .addComponent(label2)
                             .addComponent(label13))
                         .addGap(7, 7, 7)
-                        .addGroup(panel1Layout.createParallelGroup()
+                        .addGroup(panelLayout.createParallelGroup()
                             .addComponent(label4)
                             .addComponent(label14))
                         .addGap(7, 7, 7)
-                        .addGroup(panel1Layout.createParallelGroup()
+                        .addGroup(panelLayout.createParallelGroup()
                             .addComponent(label3)
                             .addComponent(label15))
                         .addGap(7, 7, 7)
-                        .addGroup(panel1Layout.createParallelGroup()
+                        .addGroup(panelLayout.createParallelGroup()
                             .addComponent(label6)
                             .addComponent(label16))
                         .addGap(6, 6, 6)
-                        .addGroup(panel1Layout.createParallelGroup()
+                        .addGroup(panelLayout.createParallelGroup()
                             .addComponent(label7)
                             .addComponent(label9))
                         .addGap(6, 6, 6)
-                        .addGroup(panel1Layout.createParallelGroup()
+                        .addGroup(panelLayout.createParallelGroup()
                             .addComponent(label8)
                             .addComponent(label10))
                         .addGap(6, 6, 6)
-                        .addGroup(panel1Layout.createParallelGroup()
+                        .addGroup(panelLayout.createParallelGroup()
                             .addComponent(label11)
                             .addComponent(label12))
                         .addGap(40, 40, 40)
-                        .addComponent(button7, GroupLayout.PREFERRED_SIZE, 42, GroupLayout.PREFERRED_SIZE)
+                        .addComponent(modifyButton, GroupLayout.PREFERRED_SIZE, 42, GroupLayout.PREFERRED_SIZE)
                         .addGap(58, 58, 58))
             );
         }
@@ -201,9 +218,9 @@ public class ProfileViewPanel extends JPanel {
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
-    private JPanel panel1;
+    public JPanel panel;
     private JLabel label5;
-    private JButton button7;
+    private JButton modifyButton;
     private JLabel label2;
     private JLabel label13;
     private JLabel label4;

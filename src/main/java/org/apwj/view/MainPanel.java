@@ -48,7 +48,7 @@ public class MainPanel {
             });
 
             //---- label2 ----
-            label2.setIcon(new ImageIcon("src\\main\\java\\org\\apwj\\resources\\logo-1.png"));
+            label2.setIcon(new ImageIcon("src\\main\\java\\org\\apwj\\view\\resources\\logo-1.png"));
             label2.setHorizontalAlignment(SwingConstants.CENTER);
 
             GroupLayout panelLayout = new GroupLayout(panel);
