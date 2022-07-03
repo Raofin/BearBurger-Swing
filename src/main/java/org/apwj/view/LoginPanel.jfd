@@ -4,8 +4,8 @@ new FormModel {
 	contentType: "form/swing"
 	root: new FormRoot {
 		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-			"$horizontalGroup": "par l {seq t {space :p:97:p, comp label4:::p::p, space ::477:x, par l {seq t {par t {par l:t {seq t {comp label3:::p::p, space :p:206:p}, comp loginButton::l:p:302:p}, par l:t {comp textField1:::p:301:p, comp label2:::p::p}, seq t {comp forgotPassword:::p::p, space :p:142:p}, seq t {comp label1:::p::p, space :p:47:p}, comp passwordField1::t:p:302:p}, space :p:132:p}, seq t {comp label5:::p::p, space :::p, comp register:::p::p, space :p:176:p}}}}"
-			"$verticalGroup": "par l {seq {space :p:93:p, comp label1:::p::p, space :p:35:p, comp label2:::p::p, space :p:3:p, comp textField1:::p:37:p, space :::p, comp label3:::p::p, space :p:1:p, comp passwordField1:::p:39:p, space :::x, comp forgotPassword:::p::p, space :p:44:p, comp loginButton:::p:40:p, space :p:7:p, par b {comp register::b:p::p, comp label5::b:p::p}, space :p:154:p}, seq l {space :p:46:p, comp label4:::p::p, space :::x}}"
+			"$horizontalGroup": "par l {seq t {space :p:97:p, comp label4:::p::p, space ::477:x, par l {seq t {par t {par l:t {seq t {comp label3:::p::p, space :p:206:p}, comp loginButton::l:p:302:p}, par l:t {comp usernameTF:::p:301:p, comp label2:::p::p}, seq t {comp forgotPassword:::p::p, space :p:142:p}, seq t {comp label1:::p::p, space :p:47:p}, comp passwordTF::t:p:302:p}, space :p:132:p}, seq t {comp label5:::p::p, space :::p, comp register:::p::p, space :p:176:p}}}}"
+			"$verticalGroup": "par l {seq {space :p:93:p, comp label1:::p::p, space :p:35:p, comp label2:::p::p, space :p:3:p, comp usernameTF:::p:37:p, space :::p, comp label3:::p::p, space :p:1:p, comp passwordTF:::p:39:p, space :::x, comp forgotPassword:::p::p, space :p:44:p, comp loginButton:::p:40:p, space :p:7:p, par b {comp register::b:p::p, comp label5::b:p::p}, space :p:154:p}, seq l {space :p:46:p, comp label4:::p::p, space :::x}}"
 		} ) {
 			name: "panel"
 			"maximumSize": new java.awt.Dimension( 1025, 575 )
@@ -15,7 +15,7 @@ new FormModel {
 				"JavaCodeGenerator.variableModifiers": 1
 			}
 			add( new FormComponent( "javax.swing.JTextField" ) {
-				name: "textField1"
+				name: "usernameTF"
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "label1"
@@ -61,7 +61,7 @@ new FormModel {
 				"font": #Font0
 			} )
 			add( new FormComponent( "javax.swing.JPasswordField" ) {
-				name: "passwordField1"
+				name: "passwordTF"
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "label4"

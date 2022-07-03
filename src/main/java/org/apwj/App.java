@@ -14,6 +14,7 @@ public class App
         mainFrame.setTitle("BearBurger");
         mainFrame.setResizable(false);
         MainPanel mainPanel = new MainPanel();
+        mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         mainFrame.setContentPane(mainPanel.panel);
         mainFrame.pack();
         mainFrame.setLocationRelativeTo(null);
