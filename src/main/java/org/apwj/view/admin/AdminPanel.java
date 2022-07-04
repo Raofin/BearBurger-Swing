@@ -5,12 +5,16 @@
 package org.apwj.view.admin;
 
 import javax.swing.border.*;
+
+import org.apwj.view.LoginPanel;
 import org.apwj.view.ProjectDetails;
 
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.GroupLayout;
+
+import static org.apwj.App.mainFrame;
 
 /**
  * @author unknown
@@ -76,6 +80,13 @@ public class AdminPanel extends JPanel {
         subAdminPanel.validate();
     }
 
+    private void logoutLabelMouseClicked(MouseEvent e) {
+        mainFrame.setContentPane(new LoginPanel().panel);
+        mainFrame.pack();
+        mainFrame.setLocationRelativeTo(null);
+        mainFrame.setVisible(true);
+    }
+
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
         panel = new JPanel();
@@ -112,8 +123,7 @@ public class AdminPanel extends JPanel {
             //---- manageUsersButton ----
             manageUsersButton.setText("Manage Users");
             manageUsersButton.setFont(new Font("Segoe UI", Font.BOLD, 22));
-            manageUsersButton.setBorder(new LineBorder(new Color(54, 55, 57)));
-            manageUsersButton.setBackground(new Color(54, 55, 57));
+            manageUsersButton.setBorder(new LineBorder(new Color(33, 37, 43)));
             manageUsersButton.addActionListener(e -> {
 			browse(e);
 			manageUsers(e);
@@ -122,8 +132,7 @@ public class AdminPanel extends JPanel {
             //---- addUserButton ----
             addUserButton.setText("Add Users");
             addUserButton.setFont(new Font("Segoe UI", Font.BOLD, 22));
-            addUserButton.setBorder(new LineBorder(new Color(54, 55, 57)));
-            addUserButton.setBackground(new Color(54, 55, 57));
+            addUserButton.setBorder(new LineBorder(new Color(33, 37, 43)));
             addUserButton.addActionListener(e -> {
 			search(e);
 			addUser(e);
@@ -132,8 +141,7 @@ public class AdminPanel extends JPanel {
             //---- addFoodsButton ----
             addFoodsButton.setText("Add Foods");
             addFoodsButton.setFont(new Font("Segoe UI", Font.BOLD, 22));
-            addFoodsButton.setBorder(new LineBorder(new Color(54, 55, 57)));
-            addFoodsButton.setBackground(new Color(54, 55, 57));
+            addFoodsButton.setBorder(new LineBorder(new Color(33, 37, 43)));
             addFoodsButton.addActionListener(e -> {
 			foodCart(e);
 			addFoods(e);
@@ -142,8 +150,7 @@ public class AdminPanel extends JPanel {
             //---- purchaseLogButton ----
             purchaseLogButton.setText("Purchase Log");
             purchaseLogButton.setFont(new Font("Segoe UI", Font.BOLD, 22));
-            purchaseLogButton.setBorder(new LineBorder(new Color(54, 55, 57)));
-            purchaseLogButton.setBackground(new Color(54, 55, 57));
+            purchaseLogButton.setBorder(new LineBorder(new Color(33, 37, 43)));
             purchaseLogButton.addActionListener(e -> {
 			userProfile(e);
 			purchaseLog(e);
@@ -152,8 +159,7 @@ public class AdminPanel extends JPanel {
             //---- projectDetailsButton ----
             projectDetailsButton.setText("Project Details");
             projectDetailsButton.setFont(new Font("Segoe UI", Font.BOLD, 22));
-            projectDetailsButton.setBorder(new LineBorder(new Color(54, 55, 57)));
-            projectDetailsButton.setBackground(new Color(54, 55, 57));
+            projectDetailsButton.setBorder(new LineBorder(new Color(33, 37, 43)));
             projectDetailsButton.addActionListener(e -> projectDetails(e));
 
             //---- label2 ----
@@ -165,6 +171,13 @@ public class AdminPanel extends JPanel {
             logoutLabel.setText("Logout");
             logoutLabel.setFont(new Font("Segoe UI Semibold", Font.PLAIN, 20));
             logoutLabel.setForeground(new Color(255, 51, 51));
+            logoutLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+            logoutLabel.addMouseListener(new MouseAdapter() {
+                @Override
+                public void mouseClicked(MouseEvent e) {
+                    logoutLabelMouseClicked(e);
+                }
+            });
 
             //---- label1 ----
             label1.setIcon(new ImageIcon("src/main/java/org/apwj/view/resources/logo-3.png"));
@@ -177,19 +190,20 @@ public class AdminPanel extends JPanel {
                     .addGroup(GroupLayout.Alignment.TRAILING, panelLayout.createSequentialGroup()
                         .addGroup(panelLayout.createParallelGroup()
                             .addGroup(panelLayout.createSequentialGroup()
-                                .addGap(92, 92, 92)
-                                .addComponent(logoutLabel))
-                            .addGroup(panelLayout.createSequentialGroup()
-                                .addGap(36, 36, 36)
-                                .addComponent(label2, GroupLayout.PREFERRED_SIZE, 177, GroupLayout.PREFERRED_SIZE))
-                            .addGroup(panelLayout.createSequentialGroup()
                                 .addGap(25, 25, 25)
                                 .addComponent(label1, GroupLayout.PREFERRED_SIZE, 215, GroupLayout.PREFERRED_SIZE))
                             .addComponent(manageUsersButton, GroupLayout.PREFERRED_SIZE, 249, GroupLayout.PREFERRED_SIZE)
                             .addComponent(addUserButton, GroupLayout.PREFERRED_SIZE, 249, GroupLayout.PREFERRED_SIZE)
                             .addComponent(addFoodsButton, GroupLayout.PREFERRED_SIZE, 249, GroupLayout.PREFERRED_SIZE)
                             .addComponent(purchaseLogButton, GroupLayout.PREFERRED_SIZE, 249, GroupLayout.PREFERRED_SIZE)
-                            .addComponent(projectDetailsButton, GroupLayout.PREFERRED_SIZE, 249, GroupLayout.PREFERRED_SIZE))
+                            .addComponent(projectDetailsButton, GroupLayout.PREFERRED_SIZE, 249, GroupLayout.PREFERRED_SIZE)
+                            .addGroup(panelLayout.createSequentialGroup()
+                                .addGap(36, 36, 36)
+                                .addGroup(panelLayout.createParallelGroup()
+                                    .addGroup(panelLayout.createSequentialGroup()
+                                        .addGap(56, 56, 56)
+                                        .addComponent(logoutLabel))
+                                    .addComponent(label2, GroupLayout.PREFERRED_SIZE, 177, GroupLayout.PREFERRED_SIZE))))
                         .addGap(28, 28, 28)
                         .addComponent(subAdminPanel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addContainerGap())
@@ -209,11 +223,11 @@ public class AdminPanel extends JPanel {
                         .addComponent(purchaseLogButton, GroupLayout.PREFERRED_SIZE, 52, GroupLayout.PREFERRED_SIZE)
                         .addGap(6, 6, 6)
                         .addComponent(projectDetailsButton, GroupLayout.PREFERRED_SIZE, 52, GroupLayout.PREFERRED_SIZE)
-                        .addGap(50, 50, 50)
+                        .addGap(39, 39, 39)
                         .addComponent(label2)
                         .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(logoutLabel)
-                        .addGap(35, 35, 35))
+                        .addGap(46, 46, 46))
                     .addGroup(panelLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(subAdminPanel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
