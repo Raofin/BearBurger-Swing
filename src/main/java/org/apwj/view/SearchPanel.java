@@ -63,6 +63,7 @@ public class SearchPanel extends JPanel {
     
     private void searchFoodTFKeyReleased(KeyEvent e) {
         System.out.println("Key released");
+        foods.removeAll(foods);
         for (Food food : foods) {
             if(food.getTitle().contains(searchFoodTF.getText())){
 
