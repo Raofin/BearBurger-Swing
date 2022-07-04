@@ -7,7 +7,6 @@ package org.apwj.view;
 import com.formdev.flatlaf.intellijthemes.FlatOneDarkIJTheme;
 import org.apwj.dao.userDAO;
 import org.apwj.domain.User;
-import org.apwj.view.admin.AdminPanel;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -17,12 +16,17 @@ import javax.swing.*;
 import javax.swing.GroupLayout;
 
 import static org.apwj.App.mainFrame;
-import static org.apwj.view.DialogueBox.dialogueBox;
 import static org.apwj.view.HomePanel.subHomePanel;
 
 public class LoginPanel extends JPanel {
     public LoginPanel() {
         initComponents();
+        seePasswordCheckbox.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                passwordTF.setEchoChar(seePasswordCheckbox.isSelected() ? '\u0000' : (Character) UIManager.get("PasswordField.echoChar"));
+            }
+        });
     }
 
     public static JFrame recoveryFrame = new JFrame(String.valueOf(FlatOneDarkIJTheme.setup()));
@@ -51,29 +55,30 @@ public class LoginPanel extends JPanel {
         String password = String.valueOf(passwordTF.getPassword());
 
         if (!username.isEmpty() && !password.isEmpty()) {
-            if (username.equals("admin") && password.equals("admin")) {
-                AdminPanel adminPanel = new AdminPanel();
-                mainFrame.setContentPane(adminPanel.panel);
-                mainFrame.pack();
-                mainFrame.setVisible(true);
-            } else {
-                User checkUser = userDAO.searchByUsername(username);
-                if (checkUser != null) {
-                    if (username.equals(checkUser.getUsername()) && password.equals(checkUser.getPass())) {
-                        HomePanel homePanel = new HomePanel(checkUser.getUserId());
-                        mainFrame.setContentPane(homePanel.panel);
-                        mainFrame.pack();
-                        mainFrame.setVisible(true);
+            User checkUser = userDAO.searchByUsername(username);
+            if (checkUser != null) {
+                if (username.equals(checkUser.getUsername()) && password.equals(checkUser.getPass())) {
+                    System.out.println("Login successful");
 
-                        BrowseFoodsPanel browseFoodsPanel = new BrowseFoodsPanel();
-                        subHomePanel.setLayout(new java.awt.BorderLayout());
-                        subHomePanel.removeAll();
-                        subHomePanel.add(browseFoodsPanel.panel);
-                        subHomePanel.validate();
-                    } else dialogueBox("Invalid username or password.");
-                } else dialogueBox("Invalid username or password.");
+                    HomePanel homePanel = new HomePanel(checkUser.getUserId());
+                    mainFrame.setContentPane(homePanel.panel);
+                    mainFrame.pack();
+                    mainFrame.setVisible(true);
+
+                    BrowseFoodsPanel browseFoodsPanel = new BrowseFoodsPanel();
+                    subHomePanel.setLayout(new java.awt.BorderLayout());
+                    subHomePanel.removeAll();
+                    subHomePanel.add(browseFoodsPanel.panel);
+                    subHomePanel.validate();
+                } else {
+                    System.out.println("Username/password credential error");
+                }
+            } else {
+                System.out.println("Could not find user");
             }
-        } else dialogueBox("Fill out all the fields properly.");
+        }
+
+
     }
 
     private void initComponents() {
@@ -89,15 +94,13 @@ public class LoginPanel extends JPanel {
         label5 = new JLabel();
         passwordTF = new JPasswordField();
         label4 = new JLabel();
+        seePasswordCheckbox = new JCheckBox();
 
         //======== panel ========
         {
             panel.setMaximumSize(new Dimension(1025, 575));
             panel.setMinimumSize(new Dimension(1025, 575));
             panel.setPreferredSize(new Dimension(1025, 575));
-
-            //---- usernameTF ----
-            usernameTF.setFont(new Font("Segoe UI", Font.PLAIN, 20));
 
             //---- label1 ----
             label1.setText("Welcome!");
@@ -122,11 +125,11 @@ public class LoginPanel extends JPanel {
             });
 
             //---- label2 ----
-            label2.setText(" USERNAME OR EMAIL");
+            label2.setText("Username");
             label2.setFont(new Font("Segoe UI Semibold", Font.PLAIN, 17));
 
             //---- label3 ----
-            label3.setText(" PASSWORD");
+            label3.setText("Password");
             label3.setFont(new Font("Segoe UI Semibold", Font.PLAIN, 17));
 
             //---- forgotPassword ----
@@ -145,11 +148,11 @@ public class LoginPanel extends JPanel {
             label5.setText("New here?");
             label5.setFont(new Font("Segoe UI Semibold", Font.PLAIN, 15));
 
-            //---- passwordTF ----
-            passwordTF.setFont(new Font("Segoe UI", Font.PLAIN, 20));
-
             //---- label4 ----
             label4.setIcon(new ImageIcon("src/main/java/org/apwj/view/resources/logo-2.png"));
+
+            //---- seePasswordCheckbox ----
+            seePasswordCheckbox.setText("See password?");
 
             GroupLayout panelLayout = new GroupLayout(panel);
             panel.setLayout(panelLayout);
@@ -158,31 +161,31 @@ public class LoginPanel extends JPanel {
                     .addGroup(GroupLayout.Alignment.TRAILING, panelLayout.createSequentialGroup()
                         .addGap(97, 97, 97)
                         .addComponent(label4)
-                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 477, Short.MAX_VALUE)
+                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 420, Short.MAX_VALUE)
                         .addGroup(panelLayout.createParallelGroup()
                             .addGroup(GroupLayout.Alignment.TRAILING, panelLayout.createSequentialGroup()
                                 .addGroup(panelLayout.createParallelGroup(GroupLayout.Alignment.TRAILING)
                                     .addGroup(panelLayout.createParallelGroup()
-                                        .addGroup(GroupLayout.Alignment.TRAILING, panelLayout.createSequentialGroup()
-                                            .addComponent(label3)
-                                            .addGap(206, 206, 206))
-                                        .addComponent(loginButton, GroupLayout.PREFERRED_SIZE, 302, GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(panelLayout.createParallelGroup()
                                         .addComponent(usernameTF, GroupLayout.PREFERRED_SIZE, 301, GroupLayout.PREFERRED_SIZE)
                                         .addComponent(label2))
                                     .addGroup(panelLayout.createSequentialGroup()
-                                        .addComponent(forgotPassword)
-                                        .addGap(142, 142, 142))
-                                    .addGroup(panelLayout.createSequentialGroup()
                                         .addComponent(label1)
                                         .addGap(47, 47, 47))
-                                    .addComponent(passwordTF, GroupLayout.PREFERRED_SIZE, 302, GroupLayout.PREFERRED_SIZE))
-                                .addGap(132, 132, 132))
-                            .addGroup(GroupLayout.Alignment.TRAILING, panelLayout.createSequentialGroup()
-                                .addComponent(label5)
-                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(register)
-                                .addGap(176, 176, 176))))
+                                    .addComponent(passwordTF, GroupLayout.PREFERRED_SIZE, 302, GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(loginButton, GroupLayout.PREFERRED_SIZE, 302, GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(seePasswordCheckbox)
+                                .addGap(77, 77, 77))
+                            .addGroup(panelLayout.createSequentialGroup()
+                                .addGroup(panelLayout.createParallelGroup()
+                                    .addGroup(panelLayout.createSequentialGroup()
+                                        .addGap(54, 54, 54)
+                                        .addComponent(label5)
+                                        .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(register))
+                                    .addComponent(forgotPassword)
+                                    .addComponent(label3))
+                                .addContainerGap())))
             );
             panelLayout.setVerticalGroup(
                 panelLayout.createParallelGroup()
@@ -195,17 +198,19 @@ public class LoginPanel extends JPanel {
                         .addComponent(usernameTF, GroupLayout.PREFERRED_SIZE, 37, GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(label3)
-                        .addGap(1, 1, 1)
-                        .addComponent(passwordTF, GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(panelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                            .addComponent(passwordTF, GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE)
+                            .addComponent(seePasswordCheckbox))
+                        .addGap(18, 18, 18)
                         .addComponent(forgotPassword)
-                        .addGap(44, 44, 44)
+                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
                         .addComponent(loginButton, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
                         .addGap(7, 7, 7)
                         .addGroup(panelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                            .addComponent(register)
-                            .addComponent(label5))
-                        .addGap(154, 154, 154))
+                            .addComponent(label5)
+                            .addComponent(register))
+                        .addGap(113, 113, 113))
                     .addGroup(panelLayout.createSequentialGroup()
                         .addGap(46, 46, 46)
                         .addComponent(label4)
@@ -227,5 +232,6 @@ public class LoginPanel extends JPanel {
     private JLabel label5;
     private JPasswordField passwordTF;
     private JLabel label4;
+    private JCheckBox seePasswordCheckbox;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 }
