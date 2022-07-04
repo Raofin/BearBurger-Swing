@@ -4,8 +4,8 @@ new FormModel {
 	contentType: "form/swing"
 	root: new FormRoot {
 		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-			"$horizontalGroup": "par l {seq t {par l:::p {seq l {space :p:24:p, comp logo:::p:214:p}, seq l {space :::p, comp usernameLabel::::249:x}, comp browseButton::::255:x, comp searchButton::::255:x, comp foodCartButton::::255:x, comp userProfileButton::::255:x, comp projectDetailsButton::::255:x, seq l {space :::p, comp logoutLabel::::249:x}}, space :p:22:p, comp subHomePanel:::::x, space :::p}}"
-			"$verticalGroup": "par l {seq t {space :p:21:p, comp logo:::p:89:p, space :p:26:p, comp browseButton:::p:52:p, space :6:6:p, comp searchButton:::p:52:p, space :6:6:p, comp foodCartButton:::p:52:p, space :6:6:p, comp userProfileButton:::p:52:p, space :6:6:p, comp projectDetailsButton:::p:52:p, space ::50:x, comp usernameLabel:::p::p, space :::p, comp logoutLabel:::p::p, space :p:35:p}, seq l {space :::p, comp subHomePanel:::::x, space :::p}}"
+			"$horizontalGroup": "par l {seq t {par l {par l:::p {seq l {space :p:24:p, comp logo:::p:214:p}, comp browseButton::::255:x, comp searchButton::::255:x, comp foodCartButton::::255:x, comp userProfileButton::::255:x, comp projectDetailsButton::::255:x}, seq l {space :::p, par l:::p {comp usernameLabel::l::249:x, comp logoutLabel::l::249:x}}}, space :p:22:p, comp subHomePanel:::::x, space :::p}}"
+			"$verticalGroup": "par l {seq t {space :p:21:p, comp logo:::p:89:p, space :p:26:p, comp browseButton:::p:52:p, space :6:6:p, comp searchButton:::p:52:p, space :6:6:p, comp foodCartButton:::p:52:p, space :6:6:p, comp userProfileButton:::p:52:p, space :6:6:p, comp projectDetailsButton:::p:52:p, space :p:32:p, comp usernameLabel:::p::p, space :::p, comp logoutLabel:::p::p, space ::53:x}, seq l {space :::p, comp subHomePanel:::::x, space :::p}}"
 		} ) {
 			name: "panel"
 			auxiliary() {
@@ -54,6 +54,7 @@ new FormModel {
 				"text": "Project Details"
 				"font": #Font0
 				"border": #LineBorder0
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "projectDetails", true ) )
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "usernameLabel"

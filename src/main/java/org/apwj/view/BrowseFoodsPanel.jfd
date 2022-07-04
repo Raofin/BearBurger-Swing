@@ -21,12 +21,14 @@ new FormModel {
 				name: "scrollPane1"
 				add( new FormComponent( "javax.swing.JList" ) {
 					name: "categoryList"
+					"font": &SwingDerivedFont0 new com.jformdesigner.model.SwingDerivedFont( null, 0, 5, false )
 				} )
 			} )
 			add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
 				name: "scrollPane2"
 				add( new FormComponent( "javax.swing.JList" ) {
 					name: "foodTitleList"
+					"font": #SwingDerivedFont0
 					addEvent( new FormEvent( "javax.swing.event.ListSelectionListener", "valueChanged", "foodTitleListValueChanged", true ) )
 				} )
 			} )

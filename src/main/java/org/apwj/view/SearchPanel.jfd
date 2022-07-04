@@ -21,6 +21,7 @@ new FormModel {
 				name: "scrollPane2"
 				add( new FormComponent( "javax.swing.JList" ) {
 					name: "foodItemsList"
+					"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 5, false )
 				} )
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {

@@ -86,6 +86,10 @@ public class SearchPanel extends JPanel {
         }
     }
 
+    private void searchFoodTFInputMethodTextChanged(InputMethodEvent e) {
+        // TODO add your code here
+    }
+
 
 
     private void initComponents() {
@@ -110,6 +114,9 @@ public class SearchPanel extends JPanel {
 
             //======== scrollPane2 ========
             {
+
+                //---- foodItemsList ----
+                foodItemsList.setFont(foodItemsList.getFont().deriveFont(foodItemsList.getFont().getSize() + 5f));
                 scrollPane2.setViewportView(foodItemsList);
             }
 
@@ -126,7 +133,15 @@ public class SearchPanel extends JPanel {
             foodDetailsButton.setFont(new Font("Segoe UI", Font.BOLD, 20));
             foodDetailsButton.addActionListener(e -> foodDetails(e));
 
-
+            //---- searchFoodTF ----
+            searchFoodTF.addInputMethodListener(new InputMethodListener() {
+                @Override
+                public void caretPositionChanged(InputMethodEvent e) {}
+                @Override
+                public void inputMethodTextChanged(InputMethodEvent e) {
+                    searchFoodTFInputMethodTextChanged(e);
+                }
+            });
             searchFoodTF.addKeyListener(new KeyAdapter() {
                 @Override
                 public void keyReleased(KeyEvent e) {

@@ -58,6 +58,9 @@ public class FoodDetails {
         closeButton = new JButton();
         categoryLabel = new JLabel();
         priceLabel = new JLabel();
+        label1 = new JLabel();
+        label2 = new JLabel();
+        label3 = new JLabel();
 
         //======== panel ========
         {
@@ -73,7 +76,6 @@ public class FoodDetails {
                 //---- foodDetails ----
                 foodDetails.setText("Prepared with beef patty, cheese, burger sauce, pickles & onion");
                 foodDetails.setFont(new Font("Segoe UI", Font.PLAIN, 20));
-                foodDetails.setBorder(null);
                 foodDetails.setEditable(false);
                 scrollPane1.setViewportView(foodDetails);
             }
@@ -85,43 +87,69 @@ public class FoodDetails {
 
             //---- categoryLabel ----
             categoryLabel.setText("Category");
+            categoryLabel.setFont(new Font("Segoe UI Semibold", Font.PLAIN, 24));
 
             //---- priceLabel ----
             priceLabel.setText("Price");
+            priceLabel.setFont(new Font("Segoe UI Semibold", Font.PLAIN, 24));
+
+            //---- label1 ----
+            label1.setText(" Catagory :");
+            label1.setFont(new Font("Segoe UI Semibold", Font.PLAIN, 24));
+
+            //---- label2 ----
+            label2.setText(" Price (tk) :");
+            label2.setFont(new Font("Segoe UI Semibold", Font.PLAIN, 24));
+
+            //---- label3 ----
+            label3.setText(" Description :");
+            label3.setFont(new Font("Segoe UI Semibold", Font.PLAIN, 24));
 
             GroupLayout panelLayout = new GroupLayout(panel);
             panel.setLayout(panelLayout);
             panelLayout.setHorizontalGroup(
                 panelLayout.createParallelGroup()
+                    .addComponent(foodTitle, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(GroupLayout.Alignment.TRAILING, panelLayout.createSequentialGroup()
-                        .addComponent(foodTitle, GroupLayout.DEFAULT_SIZE, 352, Short.MAX_VALUE)
-                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(categoryLabel)
-                        .addGap(18, 18, 18)
-                        .addComponent(priceLabel)
-                        .addGap(20, 20, 20))
+                        .addGap(0, 50, Short.MAX_VALUE)
+                        .addGroup(panelLayout.createParallelGroup()
+                            .addComponent(label3)
+                            .addGroup(panelLayout.createSequentialGroup()
+                                .addComponent(label1)
+                                .addGap(24, 24, 24)
+                                .addComponent(categoryLabel))
+                            .addComponent(scrollPane1, GroupLayout.PREFERRED_SIZE, 370, GroupLayout.PREFERRED_SIZE)
+                            .addGroup(panelLayout.createSequentialGroup()
+                                .addComponent(label2)
+                                .addGap(18, 18, 18)
+                                .addComponent(priceLabel)))
+                        .addGap(50, 50, 50))
                     .addGroup(panelLayout.createSequentialGroup()
-                        .addGap(57, 57, 57)
-                        .addComponent(scrollPane1, GroupLayout.PREFERRED_SIZE, 356, GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(57, Short.MAX_VALUE))
-                    .addGroup(GroupLayout.Alignment.TRAILING, panelLayout.createSequentialGroup()
-                        .addContainerGap(152, Short.MAX_VALUE)
+                        .addGap(145, 145, 145)
                         .addComponent(closeButton, GroupLayout.PREFERRED_SIZE, 171, GroupLayout.PREFERRED_SIZE)
-                        .addGap(147, 147, 147))
+                        .addContainerGap(154, Short.MAX_VALUE))
             );
             panelLayout.setVerticalGroup(
                 panelLayout.createParallelGroup()
                     .addGroup(panelLayout.createSequentialGroup()
-                        .addGap(0, 0, 0)
-                        .addGroup(panelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                            .addComponent(foodTitle)
-                            .addComponent(categoryLabel)
-                            .addComponent(priceLabel))
                         .addGap(18, 18, 18)
-                        .addComponent(scrollPane1, GroupLayout.PREFERRED_SIZE, 147, GroupLayout.PREFERRED_SIZE)
-                        .addGap(51, 51, 51)
+                        .addComponent(foodTitle)
+                        .addGap(18, 18, 18)
+                        .addGroup(panelLayout.createParallelGroup()
+                            .addComponent(categoryLabel)
+                            .addGroup(panelLayout.createSequentialGroup()
+                                .addComponent(label1)
+                                .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(panelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                    .addComponent(label2)
+                                    .addComponent(priceLabel))))
+                        .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(label3)
+                        .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(scrollPane1, GroupLayout.PREFERRED_SIZE, 90, GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
                         .addComponent(closeButton, GroupLayout.PREFERRED_SIZE, 46, GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(72, Short.MAX_VALUE))
+                        .addGap(57, 57, 57))
             );
         }
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
@@ -135,5 +163,8 @@ public class FoodDetails {
     private JButton closeButton;
     private JLabel categoryLabel;
     private JLabel priceLabel;
+    private JLabel label1;
+    private JLabel label2;
+    private JLabel label3;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 }

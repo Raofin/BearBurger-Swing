@@ -77,6 +77,14 @@ public class HomePanel extends JPanel {
         subHomePanel.validate();
     }
 
+    private void projectDetails(ActionEvent e) {
+        ProjectDetails projectDetails = new ProjectDetails();
+        subHomePanel.setLayout(new java.awt.BorderLayout());
+        subHomePanel.removeAll();
+        subHomePanel.add(projectDetails.panel);
+        subHomePanel.validate();
+    }
+
 
 
     private void initComponents() {
@@ -141,6 +149,7 @@ public class HomePanel extends JPanel {
             projectDetailsButton.setText("Project Details");
             projectDetailsButton.setFont(new Font("Segoe UI", Font.BOLD, 22));
             projectDetailsButton.setBorder(new LineBorder(new Color(33, 37, 43)));
+            projectDetailsButton.addActionListener(e -> projectDetails(e));
 
             //---- usernameLabel ----
             usernameLabel.setText("Username");
@@ -163,21 +172,21 @@ public class HomePanel extends JPanel {
             panelLayout.setHorizontalGroup(
                 panelLayout.createParallelGroup()
                     .addGroup(GroupLayout.Alignment.TRAILING, panelLayout.createSequentialGroup()
-                        .addGroup(panelLayout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
-                            .addGroup(panelLayout.createSequentialGroup()
-                                .addGap(24, 24, 24)
-                                .addComponent(logo, GroupLayout.PREFERRED_SIZE, 214, GroupLayout.PREFERRED_SIZE))
-                            .addGroup(panelLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(usernameLabel, GroupLayout.DEFAULT_SIZE, 249, Short.MAX_VALUE))
-                            .addComponent(browseButton, GroupLayout.DEFAULT_SIZE, 255, Short.MAX_VALUE)
-                            .addComponent(searchButton, GroupLayout.DEFAULT_SIZE, 255, Short.MAX_VALUE)
-                            .addComponent(foodCartButton, GroupLayout.DEFAULT_SIZE, 255, Short.MAX_VALUE)
-                            .addComponent(userProfileButton, GroupLayout.DEFAULT_SIZE, 255, Short.MAX_VALUE)
-                            .addComponent(projectDetailsButton, GroupLayout.DEFAULT_SIZE, 255, Short.MAX_VALUE)
+                        .addGroup(panelLayout.createParallelGroup()
+                            .addGroup(panelLayout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
+                                .addGroup(panelLayout.createSequentialGroup()
+                                    .addGap(24, 24, 24)
+                                    .addComponent(logo, GroupLayout.PREFERRED_SIZE, 214, GroupLayout.PREFERRED_SIZE))
+                                .addComponent(browseButton, GroupLayout.DEFAULT_SIZE, 255, Short.MAX_VALUE)
+                                .addComponent(searchButton, GroupLayout.DEFAULT_SIZE, 255, Short.MAX_VALUE)
+                                .addComponent(foodCartButton, GroupLayout.DEFAULT_SIZE, 255, Short.MAX_VALUE)
+                                .addComponent(userProfileButton, GroupLayout.DEFAULT_SIZE, 255, Short.MAX_VALUE)
+                                .addComponent(projectDetailsButton, GroupLayout.DEFAULT_SIZE, 255, Short.MAX_VALUE))
                             .addGroup(panelLayout.createSequentialGroup()
                                 .addContainerGap()
-                                .addComponent(logoutLabel, GroupLayout.DEFAULT_SIZE, 249, Short.MAX_VALUE)))
+                                .addGroup(panelLayout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(usernameLabel, GroupLayout.DEFAULT_SIZE, 249, Short.MAX_VALUE)
+                                    .addComponent(logoutLabel, GroupLayout.DEFAULT_SIZE, 249, Short.MAX_VALUE))))
                         .addGap(22, 22, 22)
                         .addComponent(subHomePanel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addContainerGap())
@@ -197,11 +206,11 @@ public class HomePanel extends JPanel {
                         .addComponent(userProfileButton, GroupLayout.PREFERRED_SIZE, 52, GroupLayout.PREFERRED_SIZE)
                         .addGap(6, 6, 6)
                         .addComponent(projectDetailsButton, GroupLayout.PREFERRED_SIZE, 52, GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
+                        .addGap(32, 32, 32)
                         .addComponent(usernameLabel)
                         .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(logoutLabel)
-                        .addGap(35, 35, 35))
+                        .addContainerGap(53, Short.MAX_VALUE))
                     .addGroup(panelLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(subHomePanel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)

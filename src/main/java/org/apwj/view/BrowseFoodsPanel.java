@@ -117,6 +117,9 @@ public class BrowseFoodsPanel extends JPanel {
 
             //======== scrollPane1 ========
             {
+
+                //---- categoryList ----
+                categoryList.setFont(categoryList.getFont().deriveFont(categoryList.getFont().getSize() + 5f));
                 scrollPane1.setViewportView(categoryList);
             }
 
@@ -124,6 +127,7 @@ public class BrowseFoodsPanel extends JPanel {
             {
 
                 //---- foodTitleList ----
+                foodTitleList.setFont(foodTitleList.getFont().deriveFont(foodTitleList.getFont().getSize() + 5f));
                 foodTitleList.addListSelectionListener(e -> foodTitleListValueChanged(e));
                 scrollPane2.setViewportView(foodTitleList);
             }
