@@ -47,6 +47,7 @@ public class BrowseFoodsPanel extends JPanel {
                         titlesModel.addElement(title);
                     }
                     foodTitleList.setModel(titlesModel);
+                    foodDetailsButton.setEnabled( selectedTitle != null && selectedCategory != null );
                 }
             });
 
@@ -54,12 +55,13 @@ public class BrowseFoodsPanel extends JPanel {
                 @Override
                 public void valueChanged(ListSelectionEvent e) {
                     selectedTitle = foodTitleList.getSelectedValue().toString();
+                    foodDetailsButton.setEnabled( selectedTitle != null && selectedCategory != null );
                 }
             });
 
 
 
-
+            foodDetailsButton.setEnabled( selectedTitle != null && selectedCategory != null );
 
 
 

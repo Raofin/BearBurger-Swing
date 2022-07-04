@@ -61,5 +61,18 @@ public class foodDAO {
                 }
         ).get(0);
     }
-
+    public Food getFoodDetails(int foodId){
+        return this.jdbcTemplate.query(
+                "select * from foods where id = "+foodId+";",
+                (resultSet,rowNum)->{
+                    Food food = new Food();
+                    food.setId(resultSet.getInt("id"));
+                    food.setTitle(resultSet.getString("title"));
+                    food.setPrice(resultSet.getFloat("price"));
+                    food.setCategory(resultSet.getString("catagory"));
+                    food.setDescription(resultSet.getString("description"));
+                    return food;
+                }
+        ).get(0);
+    }
 }

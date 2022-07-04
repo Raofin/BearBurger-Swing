@@ -31,6 +31,16 @@ public class FoodDetails {
         priceLabel.setText(String.valueOf(food.getPrice()));
         categoryLabel.setText(food.getCategory());
     }
+    public FoodDetails(int foodId) {
+        initComponents();
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("application-context.xml");
+        foodDAO foodDao = applicationContext.getBean("foodDao", foodDAO.class);
+        Food food = foodDao.getFoodDetails(foodId);
+        foodTitle.setText(food.getTitle());
+        foodDetails.setText(food.getDescription());
+        priceLabel.setText(String.valueOf(food.getPrice()));
+        categoryLabel.setText(food.getCategory());
+    }
     public FoodDetails(){initComponents();}
 
     public static JFrame foodDetailsFrame = new JFrame(String.valueOf(FlatOneDarkIJTheme.setup()));

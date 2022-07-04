@@ -54,7 +54,7 @@ public class LoginPanel extends JPanel {
                 if (username.equals(checkUser.getUsername()) && password.equals(checkUser.getPass())) {
                     System.out.println("Login successful");
 
-                    HomePanel homePanel = new HomePanel();
+                    HomePanel homePanel = new HomePanel(checkUser.getUserId());
                     mainFrame.setContentPane(homePanel.panel);
                     mainFrame.pack();
                     mainFrame.setVisible(true);
