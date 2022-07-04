@@ -57,4 +57,7 @@ public class Food {
     public void setPrice(float price) {
         this.price = price;
     }
+    public String toString() {
+        return title+" - "+category.toUpperCase()+" - "+price+" tk";
+    }
 }

@@ -4,20 +4,45 @@
 
 package org.apwj.view;
 
+import org.apwj.dao.userDAO;
+import org.apwj.domain.User;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
 import java.awt.event.*;
 import javax.swing.*;
 import java.awt.*;
 
 import static org.apwj.App.mainFrame;
+import static org.apwj.view.FoodDetails.foodDetailsFrame;
 
 /**
  * @author unknown
  */
 public class HomePanel extends JPanel {
-    public HomePanel() {
+
+
+    ApplicationContext applicationContext = new ClassPathXmlApplicationContext("application-context.xml");
+    userDAO userDao = applicationContext.getBean("userDao", userDAO.class);
+    User loggedInUser;
+    public HomePanel(int userId) {
         initComponents();
+        loggedInUser = userDao.searchById(userId);
+        usernameLabel.setText(loggedInUser.getUsername());
+        logoutLabel.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                loggedInUser = null;
+                mainFrame.setContentPane(new LoginPanel().panel);
+                mainFrame.pack();
+                mainFrame.setLocationRelativeTo(null);
+                mainFrame.setVisible(true);
+            }
+        });
+
 
     }
+
 
     private void browse(ActionEvent e) {
         BrowseFoodsPanel browseFoodsPanel = new BrowseFoodsPanel();
@@ -51,13 +76,7 @@ public class HomePanel extends JPanel {
         subHomePanel.validate();
     }
 
-    private void projectDetails(ActionEvent e) {
-        ProjectDetails projectDetails = new ProjectDetails();
-        subHomePanel.setLayout(new java.awt.BorderLayout());
-        subHomePanel.removeAll();
-        subHomePanel.add(projectDetails.panel);
-        subHomePanel.validate();
-    }
+
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
@@ -68,7 +87,7 @@ public class HomePanel extends JPanel {
         foodCartButton = new JButton();
         userProfileButton = new JButton();
         projectDetailsButton = new JButton();
-        label2 = new JLabel();
+        usernameLabel = new JLabel();
         logoutLabel = new JLabel();
         label1 = new JLabel();
 
@@ -116,16 +135,16 @@ public class HomePanel extends JPanel {
             //---- projectDetailsButton ----
             projectDetailsButton.setText("Project Details");
             projectDetailsButton.setFont(new Font("Segoe UI", Font.BOLD, 22));
-            projectDetailsButton.addActionListener(e -> projectDetails(e));
 
-            //---- label2 ----
-            label2.setText("Username");
-            label2.setFont(new Font("Segoe UI Semibold", Font.BOLD, 27));
+            //---- usernameLabel ----
+            usernameLabel.setText("Username");
+            usernameLabel.setFont(new Font("Segoe UI Semibold", Font.BOLD, 27));
 
             //---- logoutLabel ----
             logoutLabel.setText("Logout");
             logoutLabel.setFont(new Font("Segoe UI Semibold", Font.PLAIN, 20));
             logoutLabel.setForeground(new Color(255, 51, 51));
+
 
             //---- label1 ----
             label1.setIcon(new ImageIcon("src/main/java/org/apwj/view/resources/logo-3.png"));
@@ -139,7 +158,7 @@ public class HomePanel extends JPanel {
                         .addGroup(panelLayout.createParallelGroup()
                             .addGroup(panelLayout.createSequentialGroup()
                                 .addGap(68, 68, 68)
-                                .addComponent(label2))
+                                .addComponent(usernameLabel))
                             .addGroup(panelLayout.createSequentialGroup()
                                 .addGap(92, 92, 92)
                                 .addComponent(logoutLabel))
@@ -153,7 +172,7 @@ public class HomePanel extends JPanel {
                                     .addComponent(projectDetailsButton, GroupLayout.PREFERRED_SIZE, 249, GroupLayout.PREFERRED_SIZE)))
                             .addGroup(panelLayout.createSequentialGroup()
                                 .addGap(25, 25, 25)
-                                .addComponent(label1, GroupLayout.PREFERRED_SIZE, 213, GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(label1)))
                         .addGap(22, 22, 22)
                         .addComponent(subHomePanel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addContainerGap())
@@ -162,8 +181,8 @@ public class HomePanel extends JPanel {
                 panelLayout.createParallelGroup()
                     .addGroup(GroupLayout.Alignment.TRAILING, panelLayout.createSequentialGroup()
                         .addGap(26, 26, 26)
-                        .addComponent(label1, GroupLayout.DEFAULT_SIZE, 92, Short.MAX_VALUE)
-                        .addGap(18, 18, 18)
+                        .addComponent(label1)
+                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 94, Short.MAX_VALUE)
                         .addComponent(browseButton, GroupLayout.PREFERRED_SIZE, 52, GroupLayout.PREFERRED_SIZE)
                         .addGap(6, 6, 6)
                         .addComponent(searchButton, GroupLayout.PREFERRED_SIZE, 52, GroupLayout.PREFERRED_SIZE)
@@ -174,7 +193,7 @@ public class HomePanel extends JPanel {
                         .addGap(6, 6, 6)
                         .addComponent(projectDetailsButton, GroupLayout.PREFERRED_SIZE, 52, GroupLayout.PREFERRED_SIZE)
                         .addGap(50, 50, 50)
-                        .addComponent(label2)
+                        .addComponent(usernameLabel)
                         .addGap(6, 6, 6)
                         .addComponent(logoutLabel)
                         .addGap(35, 35, 35))
@@ -195,7 +214,7 @@ public class HomePanel extends JPanel {
     private JButton foodCartButton;
     private JButton userProfileButton;
     private JButton projectDetailsButton;
-    private JLabel label2;
+    private JLabel usernameLabel;
     private JLabel logoutLabel;
     private JLabel label1;
     // JFormDesigner - End of variables declaration  //GEN-END:variables

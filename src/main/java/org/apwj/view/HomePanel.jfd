@@ -4,8 +4,8 @@ new FormModel {
 	contentType: "form/swing"
 	root: new FormRoot {
 		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-			"$horizontalGroup": "par l {seq t {par l {seq l {space :p:68:p, comp label2:::p::p}, seq l {space :p:92:p, comp logoutLabel:::p::p}, seq l {space :::p, par l {comp browseButton:::p:249:p, comp searchButton:::p:249:p, comp foodCartButton:::p:249:p, comp userProfileButton:::p:249:p, comp projectDetailsButton:::p:249:p}}, seq l {space :p:25:p, comp label1:::p:213:p}}, space :p:22:p, comp subHomePanel:::::x, space :::p}}"
-			"$verticalGroup": "par l {seq t {space :p:26:p, comp label1::::92:x, space s:::p, comp browseButton:::p:52:p, space :6:6:p, comp searchButton:::p:52:p, space :6:6:p, comp foodCartButton:::p:52:p, space :6:6:p, comp userProfileButton:::p:52:p, space :6:6:p, comp projectDetailsButton:::p:52:p, space :p:50:p, comp label2:::p::p, space :6:6:p, comp logoutLabel:::p::p, space :p:35:p}, seq l {space :::p, comp subHomePanel:::::x, space :::p}}"
+			"$horizontalGroup": "par l {seq t {par l {seq l {space :p:68:p, comp label2:::p::p}, seq l {space :p:92:p, comp logoutLabel:::p::p}, seq l {space :::p, par l {comp browseButton:::p:249:p, comp searchButton:::p:249:p, comp foodCartButton:::p:249:p, comp userProfileButton:::p:249:p, comp projectDetailsButton:::p:249:p}}, seq l {space :p:25:p, comp label1:::p::p}}, space :p:22:p, comp subHomePanel:::::x, space :::p}}"
+			"$verticalGroup": "par l {seq t {space :p:26:p, comp label1:::p::p, space ::27:x, comp browseButton:::p:52:p, space :6:6:p, comp searchButton:::p:52:p, space :6:6:p, comp foodCartButton:::p:52:p, space :6:6:p, comp userProfileButton:::p:52:p, space :6:6:p, comp projectDetailsButton:::p:52:p, space :p:50:p, comp label2:::p::p, space :6:6:p, comp logoutLabel:::p::p, space :p:35:p}, seq l {space :::p, comp subHomePanel:::::x, space :::p}}"
 		} ) {
 			name: "panel"
 			auxiliary() {
@@ -49,7 +49,6 @@ new FormModel {
 				name: "projectDetailsButton"
 				"text": "Project Details"
 				"font": #Font0
-				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "projectDetails", true ) )
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "label2"

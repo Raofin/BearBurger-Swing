@@ -4,10 +4,18 @@
 
 package org.apwj.view;
 
+import org.apwj.dao.foodDAO;
+import org.apwj.domain.Food;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
 import java.awt.*;
 import java.awt.event.*;
+import java.util.List;
 import javax.swing.*;
 import javax.swing.GroupLayout;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
 import static org.apwj.view.FoodDetails.foodDetailsFrame;
 
@@ -15,31 +23,70 @@ import static org.apwj.view.FoodDetails.foodDetailsFrame;
  * @author unknown
  */
 public class SearchPanel extends JPanel {
+
+    ApplicationContext applicationContext = new ClassPathXmlApplicationContext("application-context.xml");
+    foodDAO foodDao = applicationContext.getBean("foodDao", foodDAO.class);
+
+    Food selectedFood = null;
+    List<Food> foods;
     public SearchPanel() {
         initComponents();
-    }
+        DefaultListModel<Food> foodListModel = new DefaultListModel<>();
+        foods = foodDao.getAllFoods();
+        for(Food food:foods){
+            foodListModel.addElement(food);
+        }
+        foodItemsList.setModel(foodListModel);
 
+        foodItemsList.addListSelectionListener(new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent e) {
+                selectedFood = (Food) foodItemsList.getSelectedValue();
+            }
+        });
+
+    }
     private void foodDetails(ActionEvent e) {
+        if(selectedFood!=null){
+        System.out.println(selectedFood.getTitle());
         foodDetailsFrame.setTitle("BearBurger");
         foodDetailsFrame.setResizable(false);
-        FoodDetails foodDetails = new FoodDetails();
+        FoodDetails foodDetails = new FoodDetails(selectedFood.getId());
         foodDetailsFrame.setContentPane(foodDetails.panel);
         foodDetailsFrame.pack();
         foodDetailsFrame.setLocationRelativeTo(null);
         foodDetailsFrame.setVisible(true);
     }
 
+
+    }
+    
+    private void searchFoodTFKeyReleased(KeyEvent e) {
+        System.out.println("Key released");
+        foods.removeAll(foods);
+        for (Food food : foods) {
+            if(food.getTitle().contains(searchFoodTF.getText())){
+
+            }
+        }
+    }
+
+    private void searchFoodTFInputMethodTextChanged(InputMethodEvent e) {
+        // TODO add your code here
+    }
+
+
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
         panel = new JPanel();
         label1 = new JLabel();
         scrollPane2 = new JScrollPane();
-        list2 = new JList();
+        foodItemsList = new JList();
         label5 = new JLabel();
         addToCartButton = new JButton();
         foodDetailsButton = new JButton();
-        textField1 = new JTextField();
-        button9 = new JButton();
+        searchFoodTF = new JTextField();
+        searchButton = new JButton();
 
         //======== panel ========
         {
@@ -51,7 +98,7 @@ public class SearchPanel extends JPanel {
 
             //======== scrollPane2 ========
             {
-                scrollPane2.setViewportView(list2);
+                scrollPane2.setViewportView(foodItemsList);
             }
 
             //---- label5 ----
@@ -67,9 +114,25 @@ public class SearchPanel extends JPanel {
             foodDetailsButton.setFont(new Font("Segoe UI", Font.BOLD, 20));
             foodDetailsButton.addActionListener(e -> foodDetails(e));
 
-            //---- button9 ----
-            button9.setText("Search");
-            button9.setFont(new Font("Segoe UI", Font.BOLD, 20));
+            //---- searchFoodTF ----
+            searchFoodTF.addInputMethodListener(new InputMethodListener() {
+                @Override
+                public void caretPositionChanged(InputMethodEvent e) {}
+                @Override
+                public void inputMethodTextChanged(InputMethodEvent e) {
+                    searchFoodTFInputMethodTextChanged(e);
+                }
+            });
+            searchFoodTF.addKeyListener(new KeyAdapter() {
+                @Override
+                public void keyReleased(KeyEvent e) {
+                    searchFoodTFKeyReleased(e);
+                }
+            });
+
+            //---- searchButton ----
+            searchButton.setText("Search");
+            searchButton.setFont(new Font("Segoe UI", Font.BOLD, 20));
 
             GroupLayout panelLayout = new GroupLayout(panel);
             panel.setLayout(panelLayout);
@@ -91,12 +154,14 @@ public class SearchPanel extends JPanel {
                                         .addGap(54, 54, 54)
                                         .addGroup(panelLayout.createParallelGroup()
                                             .addComponent(scrollPane2, GroupLayout.PREFERRED_SIZE, 636, GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(label5)
+                                            .addGroup(panelLayout.createSequentialGroup()
+                                                .addGap(106, 106, 106)
+                                                .addComponent(label5))
                                             .addGroup(panelLayout.createSequentialGroup()
                                                 .addGap(88, 88, 88)
-                                                .addComponent(textField1, GroupLayout.PREFERRED_SIZE, 309, GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(searchFoodTF, GroupLayout.PREFERRED_SIZE, 309, GroupLayout.PREFERRED_SIZE)
                                                 .addGap(26, 26, 26)
-                                                .addComponent(button9, GroupLayout.PREFERRED_SIZE, 156, GroupLayout.PREFERRED_SIZE)))))
+                                                .addComponent(searchButton, GroupLayout.PREFERRED_SIZE, 156, GroupLayout.PREFERRED_SIZE)))))
                                 .addGap(0, 62, Short.MAX_VALUE)))
                         .addContainerGap())
             );
@@ -107,8 +172,8 @@ public class SearchPanel extends JPanel {
                         .addComponent(label1)
                         .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
                         .addGroup(panelLayout.createParallelGroup()
-                            .addComponent(textField1, GroupLayout.PREFERRED_SIZE, 41, GroupLayout.PREFERRED_SIZE)
-                            .addComponent(button9, GroupLayout.PREFERRED_SIZE, 41, GroupLayout.PREFERRED_SIZE))
+                            .addComponent(searchFoodTF, GroupLayout.PREFERRED_SIZE, 41, GroupLayout.PREFERRED_SIZE)
+                            .addComponent(searchButton, GroupLayout.PREFERRED_SIZE, 41, GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addComponent(label5)
                         .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
@@ -127,11 +192,11 @@ public class SearchPanel extends JPanel {
     public JPanel panel;
     private JLabel label1;
     private JScrollPane scrollPane2;
-    private JList list2;
+    private JList foodItemsList;
     private JLabel label5;
     private JButton addToCartButton;
     private JButton foodDetailsButton;
-    private JTextField textField1;
-    private JButton button9;
+    private JTextField searchFoodTF;
+    private JButton searchButton;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 }
