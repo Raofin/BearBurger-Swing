@@ -4,6 +4,9 @@
 
 package org.apwj.view.admin;
 
+import javax.swing.border.*;
+import org.apwj.view.ProjectDetails;
+
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
@@ -65,6 +68,14 @@ public class AdminPanel extends JPanel {
         subAdminPanel.validate();
     }
 
+    private void projectDetails(ActionEvent e) {
+        ProjectDetails projectDetails = new ProjectDetails();
+        subAdminPanel.setLayout(new java.awt.BorderLayout());
+        subAdminPanel.removeAll();
+        subAdminPanel.add(projectDetails.panel);
+        subAdminPanel.validate();
+    }
+
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
         panel = new JPanel();
@@ -101,6 +112,8 @@ public class AdminPanel extends JPanel {
             //---- manageUsersButton ----
             manageUsersButton.setText("Manage Users");
             manageUsersButton.setFont(new Font("Segoe UI", Font.BOLD, 22));
+            manageUsersButton.setBorder(new LineBorder(new Color(54, 55, 57)));
+            manageUsersButton.setBackground(new Color(54, 55, 57));
             manageUsersButton.addActionListener(e -> {
 			browse(e);
 			manageUsers(e);
@@ -109,6 +122,8 @@ public class AdminPanel extends JPanel {
             //---- addUserButton ----
             addUserButton.setText("Add Users");
             addUserButton.setFont(new Font("Segoe UI", Font.BOLD, 22));
+            addUserButton.setBorder(new LineBorder(new Color(54, 55, 57)));
+            addUserButton.setBackground(new Color(54, 55, 57));
             addUserButton.addActionListener(e -> {
 			search(e);
 			addUser(e);
@@ -117,6 +132,8 @@ public class AdminPanel extends JPanel {
             //---- addFoodsButton ----
             addFoodsButton.setText("Add Foods");
             addFoodsButton.setFont(new Font("Segoe UI", Font.BOLD, 22));
+            addFoodsButton.setBorder(new LineBorder(new Color(54, 55, 57)));
+            addFoodsButton.setBackground(new Color(54, 55, 57));
             addFoodsButton.addActionListener(e -> {
 			foodCart(e);
 			addFoods(e);
@@ -125,6 +142,8 @@ public class AdminPanel extends JPanel {
             //---- purchaseLogButton ----
             purchaseLogButton.setText("Purchase Log");
             purchaseLogButton.setFont(new Font("Segoe UI", Font.BOLD, 22));
+            purchaseLogButton.setBorder(new LineBorder(new Color(54, 55, 57)));
+            purchaseLogButton.setBackground(new Color(54, 55, 57));
             purchaseLogButton.addActionListener(e -> {
 			userProfile(e);
 			purchaseLog(e);
@@ -133,6 +152,9 @@ public class AdminPanel extends JPanel {
             //---- projectDetailsButton ----
             projectDetailsButton.setText("Project Details");
             projectDetailsButton.setFont(new Font("Segoe UI", Font.BOLD, 22));
+            projectDetailsButton.setBorder(new LineBorder(new Color(54, 55, 57)));
+            projectDetailsButton.setBackground(new Color(54, 55, 57));
+            projectDetailsButton.addActionListener(e -> projectDetails(e));
 
             //---- label2 ----
             label2.setText("Admin");
@@ -158,20 +180,17 @@ public class AdminPanel extends JPanel {
                                 .addGap(92, 92, 92)
                                 .addComponent(logoutLabel))
                             .addGroup(panelLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addGroup(panelLayout.createParallelGroup()
-                                    .addComponent(manageUsersButton, GroupLayout.PREFERRED_SIZE, 249, GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(addUserButton, GroupLayout.PREFERRED_SIZE, 249, GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(addFoodsButton, GroupLayout.PREFERRED_SIZE, 249, GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(purchaseLogButton, GroupLayout.PREFERRED_SIZE, 249, GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(projectDetailsButton, GroupLayout.PREFERRED_SIZE, 249, GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(panelLayout.createSequentialGroup()
                                 .addGap(36, 36, 36)
                                 .addComponent(label2, GroupLayout.PREFERRED_SIZE, 177, GroupLayout.PREFERRED_SIZE))
                             .addGroup(panelLayout.createSequentialGroup()
                                 .addGap(25, 25, 25)
-                                .addComponent(label1, GroupLayout.PREFERRED_SIZE, 215, GroupLayout.PREFERRED_SIZE)))
-                        .addGap(22, 22, 22)
+                                .addComponent(label1, GroupLayout.PREFERRED_SIZE, 215, GroupLayout.PREFERRED_SIZE))
+                            .addComponent(manageUsersButton, GroupLayout.PREFERRED_SIZE, 249, GroupLayout.PREFERRED_SIZE)
+                            .addComponent(addUserButton, GroupLayout.PREFERRED_SIZE, 249, GroupLayout.PREFERRED_SIZE)
+                            .addComponent(addFoodsButton, GroupLayout.PREFERRED_SIZE, 249, GroupLayout.PREFERRED_SIZE)
+                            .addComponent(purchaseLogButton, GroupLayout.PREFERRED_SIZE, 249, GroupLayout.PREFERRED_SIZE)
+                            .addComponent(projectDetailsButton, GroupLayout.PREFERRED_SIZE, 249, GroupLayout.PREFERRED_SIZE))
+                        .addGap(28, 28, 28)
                         .addComponent(subAdminPanel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addContainerGap())
             );
@@ -182,9 +201,9 @@ public class AdminPanel extends JPanel {
                         .addComponent(label1, GroupLayout.DEFAULT_SIZE, 92, Short.MAX_VALUE)
                         .addGap(18, 18, 18)
                         .addComponent(manageUsersButton, GroupLayout.PREFERRED_SIZE, 52, GroupLayout.PREFERRED_SIZE)
-                        .addGap(6, 6, 6)
+                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(addUserButton, GroupLayout.PREFERRED_SIZE, 52, GroupLayout.PREFERRED_SIZE)
-                        .addGap(6, 6, 6)
+                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(addFoodsButton, GroupLayout.PREFERRED_SIZE, 52, GroupLayout.PREFERRED_SIZE)
                         .addGap(6, 6, 6)
                         .addComponent(purchaseLogButton, GroupLayout.PREFERRED_SIZE, 52, GroupLayout.PREFERRED_SIZE)

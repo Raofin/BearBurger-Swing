@@ -61,7 +61,11 @@ public class HomePanel extends JPanel {
     }
 
     private void foodCart(ActionEvent e) {
-        // TODO add your code here
+        FoodCartPanel foodCartPanel = new FoodCartPanel();
+        subHomePanel.setLayout(new java.awt.BorderLayout());
+        subHomePanel.removeAll();
+        subHomePanel.add(foodCartPanel.panel);
+        subHomePanel.validate();
     }
 
     private void userProfile(ActionEvent e) {
@@ -118,7 +122,10 @@ public class HomePanel extends JPanel {
             //---- foodCartButton ----
             foodCartButton.setText("Food Cart");
             foodCartButton.setFont(new Font("Segoe UI", Font.BOLD, 22));
-            foodCartButton.addActionListener(e -> foodCart(e));
+            foodCartButton.addActionListener(e -> {
+			foodCart(e);
+			foodCart(e);
+		});
 
             //---- userProfileButton ----
             userProfileButton.setText("User Profile");

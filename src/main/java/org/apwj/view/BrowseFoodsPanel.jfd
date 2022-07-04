@@ -44,6 +44,7 @@ new FormModel {
 				name: "addToCartButton"
 				"text": "Add to Cart"
 				"font": &Font1 new java.awt.Font( "Segoe UI", 1, 20 )
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "addToCart", true ) )
 			} )
 			add( new FormComponent( "javax.swing.JButton" ) {
 				name: "foodDetailsButton"
