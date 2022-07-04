@@ -7,6 +7,7 @@ package org.apwj.view;
 import com.formdev.flatlaf.intellijthemes.FlatOneDarkIJTheme;
 import org.apwj.dao.userDAO;
 import org.apwj.domain.User;
+import org.apwj.view.admin.AdminPanel;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -16,6 +17,7 @@ import javax.swing.*;
 import javax.swing.GroupLayout;
 
 import static org.apwj.App.mainFrame;
+import static org.apwj.view.DialogueBox.dialogueBox;
 import static org.apwj.view.HomePanel.subHomePanel;
 
 public class LoginPanel extends JPanel {
@@ -55,30 +57,29 @@ public class LoginPanel extends JPanel {
         String password = String.valueOf(passwordTF.getPassword());
 
         if (!username.isEmpty() && !password.isEmpty()) {
-            User checkUser = userDAO.searchByUsername(username);
-            if (checkUser != null) {
-                if (username.equals(checkUser.getUsername()) && password.equals(checkUser.getPass())) {
-                    System.out.println("Login successful");
-
-                    HomePanel homePanel = new HomePanel(checkUser.getUserId());
-                    mainFrame.setContentPane(homePanel.panel);
-                    mainFrame.pack();
-                    mainFrame.setVisible(true);
-
-                    BrowseFoodsPanel browseFoodsPanel = new BrowseFoodsPanel();
-                    subHomePanel.setLayout(new java.awt.BorderLayout());
-                    subHomePanel.removeAll();
-                    subHomePanel.add(browseFoodsPanel.panel);
-                    subHomePanel.validate();
-                } else {
-                    System.out.println("Username/password credential error");
-                }
+            if (username.equals("admin") && password.equals("admin")) {
+                AdminPanel adminPanel = new AdminPanel();
+                mainFrame.setContentPane(adminPanel.panel);
+                mainFrame.pack();
+                mainFrame.setVisible(true);
             } else {
-                System.out.println("Could not find user");
+                User checkUser = userDAO.searchByUsername(username);
+                if (checkUser != null) {
+                    if (username.equals(checkUser.getUsername()) && password.equals(checkUser.getPass())) {
+                        HomePanel homePanel = new HomePanel(checkUser.getUserId());
+                        mainFrame.setContentPane(homePanel.panel);
+                        mainFrame.pack();
+                        mainFrame.setVisible(true);
+
+                        BrowseFoodsPanel browseFoodsPanel = new BrowseFoodsPanel();
+                        subHomePanel.setLayout(new java.awt.BorderLayout());
+                        subHomePanel.removeAll();
+                        subHomePanel.add(browseFoodsPanel.panel);
+                        subHomePanel.validate();
+                    } else dialogueBox("Invalid username or password.");
+                } else dialogueBox("Invalid username or password.");
             }
-        }
-
-
+        } else dialogueBox("Fill out all the fields properly.");
     }
 
     private void initComponents() {
