@@ -4,8 +4,8 @@ new FormModel {
 	contentType: "form/swing"
 	root: new FormRoot {
 		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-			"$horizontalGroup": "par l {seq l {space :p:80:p, comp label8:::p:395:p, space s:::p, par l {seq l {space :2:2:p, par l {comp label2::l:p::p, comp label4::l:p::p, comp label3:::p::p}, space :p:73:p, par l {comp textField2:::p:243:p, comp textField1:::p:243:p, comp passwordField1:::p:244:p}}, comp registerButton::::471:x, seq t {comp label5:::p::p, space :6:6:p, comp loginLabel:::p::p, space :p:91:p}, seq l {par l {seq l {comp label7:::p::p, space :p:83:p}, comp label6::t:p::p}, par l {seq l {space :p:18:p, comp radioButton1:::p::p, space s:::p, comp radioButton2:::p::p, space s:::p, comp radioButton3:::p::p}, seq l {space u:::p, comp passwordField2:::p:244:p}}}}, space :p:61:p}, seq t {space ::537:x, comp label1:::p::p, space :p:101:p}}"
-			"$verticalGroup": "par l {seq {par l {seq {space :p:95:p, comp label1:::p::p, space s:::p, par b {comp label2::b:p::p, comp textField1::b:p:37:p}, space :p:6:p, par b {comp label4::b:p::p, comp textField2::b:p:37:p}, space :::p, par b {comp passwordField1::b:p:40:p, comp label3::b:p::p}, space :::p, par b {comp passwordField2::b:p:37:p, comp label6::b:p::p}, space :::p, par b {comp label7::b:p::p, comp radioButton1::b:p::p, comp radioButton2::b:p::p, comp radioButton3::b:p::p}, space :p:34:p, comp registerButton:::p:40:p, space :::p, par l {comp label5:::p::p, comp loginLabel:::p::p}}, seq l {space :p:47:p, comp label8:::p::p}}, space ::99:x}}"
+			"$horizontalGroup": "par l {seq t {space ::93:x, comp label8:::p:393:p, space :p:38:p, par l {seq l {space :2:2:p, par l {comp label2::l:p::p, comp label4::l:p::p, comp label3:::p::p}}, seq l {par l {seq l {comp label7:::p::p, space :p:83:p}, comp label6::t:p::p}, space u:::p, par l:::p {seq l {comp radioButton1:::p::p, space :p:12:p, comp radioButton2:::p::p, space u:::p, comp radioButton3:::p::p}, comp passwordField2::l:::x, comp passwordField1::l:::x, comp textField2::l:::x, comp textField1::l:p:254:p}}, comp registerButton:::p:431:p, seq t {space ::22:p, par l {seq t {comp label5:::p::p, space :6:6:p, comp loginLabel:::p::p, space :p:95:p}, seq t {comp label1:::p::p, space :p:22:p}}}}, space :p:70:p}}"
+			"$verticalGroup": "par l {seq l {space :p:80:p, comp label1:::p::p, space s:::x, par b {comp label2::b:p::p, comp textField1::b:p:37:p}, space :p:6:p, par b {comp label4::b:p::p, comp textField2::b:p:37:p}, space :::p, par b {comp label3::b:p::p, comp passwordField1::b:p:37:p}, space :::p, par b {comp label6::b:p::p, comp passwordField2::b:p:37:p}, space :::p, par b {comp label7::b:p::p, comp radioButton3::b:p::p, comp radioButton1::b:p::p, comp radioButton2::b:p::p}, space :p:34:p, comp registerButton:::p:40:p, space :::p, par l {comp label5:::p::p, comp loginLabel:::p::p}, space :p:112:p}, seq l {space :p:32:p, comp label8:::p:507:p, space :::x}}"
 		} ) {
 			name: "panel"
 			"maximumSize": new java.awt.Dimension( 1025, 575 )
@@ -22,18 +22,20 @@ new FormModel {
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "label2"
 				"text": "Username"
-				"font": &Font0 new java.awt.Font( "Segoe UI Semibold", 0, 17 )
+				"font": &Font0 new java.awt.Font( "Segoe UI Semibold", 0, 20 )
 			} )
 			add( new FormComponent( "javax.swing.JTextField" ) {
 				name: "textField1"
+				"font": #Font0
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "label3"
 				"text": "Password"
-				"font": &Font1 new java.awt.Font( "Segoe UI Semibold", 0, 17 )
+				"font": #Font0
 			} )
 			add( new FormComponent( "javax.swing.JPasswordField" ) {
 				name: "passwordField1"
+				"font": #Font0
 			} )
 			add( new FormComponent( "javax.swing.JButton" ) {
 				name: "registerButton"
@@ -44,12 +46,12 @@ new FormModel {
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "label5"
 				"text": "Already have an account?"
-				"font": &Font2 new java.awt.Font( "Segoe UI Semibold", 0, 15 )
+				"font": &Font1 new java.awt.Font( "Segoe UI Semibold", 0, 15 )
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "loginLabel"
 				"text": "Login"
-				"font": #Font2
+				"font": #Font1
 				"foreground": new java.awt.Color( 56, 117, 237, 255 )
 				"cursor": #Cursor0
 				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "registerMouseClicked", true ) )
@@ -63,33 +65,35 @@ new FormModel {
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "label6"
 				"text": "Confirm Password"
-				"font": #Font1
+				"font": #Font0
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "label7"
 				"text": "Gender"
-				"font": #Font1
+				"font": #Font0
 			} )
 			add( new FormComponent( "javax.swing.JTextField" ) {
 				name: "textField2"
+				"font": #Font0
 			} )
 			add( new FormComponent( "javax.swing.JPasswordField" ) {
 				name: "passwordField2"
+				"font": #Font0
 			} )
 			add( new FormComponent( "javax.swing.JRadioButton" ) {
 				name: "radioButton1"
 				"text": "Male"
-				"font": &Font3 new java.awt.Font( "Segoe UI", 0, 16 )
+				"font": #Font0
 			} )
 			add( new FormComponent( "javax.swing.JRadioButton" ) {
 				name: "radioButton2"
 				"text": "Female"
-				"font": #Font3
+				"font": #Font0
 			} )
 			add( new FormComponent( "javax.swing.JRadioButton" ) {
 				name: "radioButton3"
 				"text": "Other"
-				"font": #Font3
+				"font": #Font0
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "label8"

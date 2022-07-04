@@ -81,42 +81,22 @@ public class HomePanel extends JPanel {
             //---- browseButton ----
             browseButton.setText("Browse Foods");
             browseButton.setFont(new Font("Segoe UI", Font.BOLD, 22));
-            browseButton.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    browse(e);
-                }
-            });
+            browseButton.addActionListener(e -> browse(e));
 
             //---- searchButton ----
             searchButton.setText("Search");
             searchButton.setFont(new Font("Segoe UI", Font.BOLD, 22));
-            searchButton.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    search(e);
-                }
-            });
+            searchButton.addActionListener(e -> search(e));
 
             //---- foodCartButton ----
             foodCartButton.setText("Food Cart");
             foodCartButton.setFont(new Font("Segoe UI", Font.BOLD, 22));
-            foodCartButton.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    foodCart(e);
-                }
-            });
+            foodCartButton.addActionListener(e -> foodCart(e));
 
             //---- userProfileButton ----
             userProfileButton.setText("User Profile");
             userProfileButton.setFont(new Font("Segoe UI", Font.BOLD, 22));
-            userProfileButton.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    userProfile(e);
-                }
-            });
+            userProfileButton.addActionListener(e -> userProfile(e));
 
             //---- projectDetailsButton ----
             projectDetailsButton.setText("Project Details");

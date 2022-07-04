@@ -1,0 +1,45 @@
+JFDML JFormDesigner: "7.0.5.4.420" Java: "11.0.14.1" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+			"$horizontalGroup": "par l {comp label5::l::742:x, seq {par l {seq l {space :p:41:p, comp scrollPane1:::p:631:p}, seq l {space :p:172:p, comp closeButton:::p:149:p, space :p:93:p, comp closeButton2:::p:149:p}}, space ::70:x}}"
+			"$verticalGroup": "par l {seq l {space :p:26:p, comp label5:::p::p, space s:::p, comp scrollPane1:::p:348:p, space :p:29:p, par b {comp closeButton2::b:p:40:p, comp closeButton::b:p:40:p}, space ::41:x}}"
+		} ) {
+			name: "panel"
+			auxiliary() {
+				"JavaCodeGenerator.variableModifiers": 1
+			}
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label5"
+				"text": "Manage Users"
+				"font": new java.awt.Font( "Segoe UI", 1, 45 )
+				"horizontalAlignment": 0
+			} )
+			add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+				name: "scrollPane1"
+				add( new FormComponent( "javax.swing.JTable" ) {
+					name: "table1"
+				} )
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "closeButton"
+				"text": "Delete"
+				"font": &Font0 new java.awt.Font( "Segoe UI Semibold", 0, 17 )
+				"cursor": &Cursor0 new java.awt.Cursor( 12 )
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "close", true ) )
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "closeButton2"
+				"text": "Modify"
+				"font": #Font0
+				"cursor": #Cursor0
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "close", true ) )
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 0 )
+			"size": new java.awt.Dimension( 742, 563 )
+		} )
+	}
+}

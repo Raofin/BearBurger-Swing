@@ -74,12 +74,7 @@ public class RecoveryPanel extends JPanel {
             closeButton.setText("Close");
             closeButton.setFont(new Font("Segoe UI Semibold", Font.PLAIN, 17));
             closeButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-            closeButton.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    close(e);
-                }
-            });
+            closeButton.addActionListener(e -> close(e));
 
             GroupLayout panelLayout = new GroupLayout(panel);
             panel.setLayout(panelLayout);
@@ -94,8 +89,9 @@ public class RecoveryPanel extends JPanel {
                                     .addGroup(panelLayout.createParallelGroup(GroupLayout.Alignment.TRAILING, false)
                                         .addComponent(textField1, GroupLayout.Alignment.LEADING, GroupLayout.PREFERRED_SIZE, 332, GroupLayout.PREFERRED_SIZE)
                                         .addGroup(GroupLayout.Alignment.LEADING, panelLayout.createSequentialGroup()
-                                            .addGroup(panelLayout.createParallelGroup(GroupLayout.Alignment.TRAILING)
+                                            .addGroup(panelLayout.createParallelGroup()
                                                 .addGroup(panelLayout.createSequentialGroup()
+                                                    .addGap(12, 12, 12)
                                                     .addGroup(panelLayout.createParallelGroup()
                                                         .addComponent(label4)
                                                         .addComponent(label3))
@@ -132,8 +128,8 @@ public class RecoveryPanel extends JPanel {
                                 .addComponent(label6)))
                         .addGap(44, 44, 44)
                         .addGroup(panelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                            .addComponent(closeButton, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
-                            .addComponent(loginButton, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE))
+                            .addComponent(loginButton, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
+                            .addComponent(closeButton, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE))
                         .addContainerGap(55, Short.MAX_VALUE))
             );
         }
