@@ -12,72 +12,74 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.List;
+import java.util.Random;
 import javax.swing.*;
 import javax.swing.GroupLayout;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
+import static org.apwj.view.FoodCartPanel.totalCost;
+import static org.apwj.view.FoodCartPanel.totalFoodNumber;
 import static org.apwj.view.FoodDetails.foodDetailsFrame;
 
 /**
  * @author unknown
  */
 public class BrowseFoodsPanel extends JPanel {
-    String selectedCategory=null;
-    String selectedTitle=null;
+    String selectedCategory = null;
+    String selectedTitle = null;
+
     public BrowseFoodsPanel() {
         initComponents();
+
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext("application-context.xml");
         foodDAO foodDao = applicationContext.getBean("foodDao", foodDAO.class);
+
         List<String> categories = foodDao.getAllCategory();
         DefaultListModel<String> categoryListModel = new DefaultListModel<>();
-        for(String category:categories){
+
+        for (String category : categories) {
             categoryListModel.addElement(category);
         }
         categoryList.setModel(categoryListModel);
 
-
-            categoryList.addListSelectionListener(new ListSelectionListener() {
-                @Override
-                public void valueChanged(ListSelectionEvent e) {
-                    selectedCategory = categoryList.getSelectedValue().toString();
-                    List<String> titles = foodDao.getTitlesByCategory(selectedCategory);
-                    DefaultListModel<String> titlesModel = new DefaultListModel<>();
-                    for(String title:titles){
-                        titlesModel.addElement(title);
-                    }
-                    foodTitleList.setModel(titlesModel);
-                    foodDetailsButton.setEnabled( selectedTitle != null && selectedCategory != null );
+        categoryList.addListSelectionListener(new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent e) {
+                selectedCategory = categoryList.getSelectedValue().toString();
+                List<String> titles = foodDao.getTitlesByCategory(selectedCategory);
+                DefaultListModel<String> titlesModel = new DefaultListModel<>();
+                for (String title : titles) {
+                    titlesModel.addElement(title);
                 }
-            });
+                foodTitleList.setModel(titlesModel);
+                foodDetailsButton.setEnabled(selectedTitle != null && selectedCategory != null);
+                addToCartButton.setEnabled(selectedTitle != null && selectedCategory != null);
+            }
+        });
 
-            foodTitleList.addListSelectionListener(new ListSelectionListener() {
-                @Override
-                public void valueChanged(ListSelectionEvent e) {
-                    selectedTitle = foodTitleList.getSelectedValue().toString();
-                    foodDetailsButton.setEnabled( selectedTitle != null && selectedCategory != null );
-                }
-            });
+        foodTitleList.addListSelectionListener(new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent e) {
+                selectedTitle = foodTitleList.getSelectedValue().toString();
+                foodDetailsButton.setEnabled(selectedTitle != null && selectedCategory != null);
+                addToCartButton.setEnabled(selectedTitle != null && selectedCategory != null);
+            }
+        });
 
-
-
-            foodDetailsButton.setEnabled( selectedTitle != null && selectedCategory != null );
-
-
-
-
+        foodDetailsButton.setEnabled(selectedTitle != null && selectedCategory != null);
+        addToCartButton.setEnabled(selectedTitle != null && selectedCategory != null);
     }
 
     private void foodDetails(ActionEvent e) {
-        if( selectedTitle != null && selectedCategory != null ){
-        foodDetailsFrame.setTitle("BearBurger");
-        foodDetailsFrame.setResizable(false);
-        FoodDetails foodDetails = new FoodDetails(selectedCategory,selectedTitle);
-        foodDetailsFrame.setContentPane(foodDetails.panel);
-        foodDetailsFrame.pack();
-        foodDetailsFrame.setLocationRelativeTo(null);
-        foodDetailsFrame.setVisible(true);
-
+        if (selectedTitle != null && selectedCategory != null) {
+            foodDetailsFrame.setTitle("BearBurger");
+            foodDetailsFrame.setResizable(false);
+            FoodDetails foodDetails = new FoodDetails(selectedCategory, selectedTitle);
+            foodDetailsFrame.setContentPane(foodDetails.panel);
+            foodDetailsFrame.pack();
+            foodDetailsFrame.setLocationRelativeTo(null);
+            foodDetailsFrame.setVisible(true);
         }
     }
 
@@ -85,7 +87,12 @@ public class BrowseFoodsPanel extends JPanel {
         // TODO add your code here
     }
 
+    private void addToCart(ActionEvent e) {
+        Random random = new Random();
 
+        totalCost += random.nextInt(((1000-400) + 1) + 400);
+        totalFoodNumber++;
+    }
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
@@ -132,6 +139,7 @@ public class BrowseFoodsPanel extends JPanel {
             //---- addToCartButton ----
             addToCartButton.setText("Add to Cart");
             addToCartButton.setFont(new Font("Segoe UI", Font.BOLD, 20));
+            addToCartButton.addActionListener(e -> addToCart(e));
 
             //---- foodDetailsButton ----
             foodDetailsButton.setText("View Details");
