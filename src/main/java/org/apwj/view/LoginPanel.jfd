@@ -16,6 +16,7 @@ new FormModel {
 			}
 			add( new FormComponent( "javax.swing.JTextField" ) {
 				name: "usernameTF"
+				"font": &Font0 new java.awt.Font( "Segoe UI", 0, 20 )
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "label1"
@@ -32,7 +33,7 @@ new FormModel {
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "register"
 				"text": "Create an Account"
-				"font": &Font0 new java.awt.Font( "Segoe UI Semibold", 0, 15 )
+				"font": &Font1 new java.awt.Font( "Segoe UI Semibold", 0, 15 )
 				"foreground": new java.awt.Color( 56, 117, 237, 255 )
 				"cursor": #Cursor0
 				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "registerMouseClicked", true ) )
@@ -58,10 +59,11 @@ new FormModel {
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "label5"
 				"text": "New here?"
-				"font": #Font0
+				"font": #Font1
 			} )
 			add( new FormComponent( "javax.swing.JPasswordField" ) {
 				name: "passwordTF"
+				"font": #Font0
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "label4"

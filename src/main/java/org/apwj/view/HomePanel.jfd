@@ -4,8 +4,8 @@ new FormModel {
 	contentType: "form/swing"
 	root: new FormRoot {
 		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-			"$horizontalGroup": "par l {seq t {par l {seq l {space :p:68:p, comp label2:::p::p}, seq l {space :p:92:p, comp logoutLabel:::p::p}, seq l {space :::p, par l {comp browseButton:::p:249:p, comp searchButton:::p:249:p, comp foodCartButton:::p:249:p, comp userProfileButton:::p:249:p, comp projectDetailsButton:::p:249:p}}, seq l {space :p:25:p, comp label1:::p::p}}, space :p:22:p, comp subHomePanel:::::x, space :::p}}"
-			"$verticalGroup": "par l {seq t {space :p:26:p, comp label1:::p::p, space ::27:x, comp browseButton:::p:52:p, space :6:6:p, comp searchButton:::p:52:p, space :6:6:p, comp foodCartButton:::p:52:p, space :6:6:p, comp userProfileButton:::p:52:p, space :6:6:p, comp projectDetailsButton:::p:52:p, space :p:50:p, comp label2:::p::p, space :6:6:p, comp logoutLabel:::p::p, space :p:35:p}, seq l {space :::p, comp subHomePanel:::::x, space :::p}}"
+			"$horizontalGroup": "par l {seq t {par l:::p {seq l {space :p:24:p, comp logo:::p:214:p}, seq l {space :::p, comp usernameLabel::::249:x}, comp browseButton::::255:x, comp searchButton::::255:x, comp foodCartButton::::255:x, comp userProfileButton::::255:x, comp projectDetailsButton::::255:x, seq l {space :::p, comp logoutLabel::::249:x}}, space :p:22:p, comp subHomePanel:::::x, space :::p}}"
+			"$verticalGroup": "par l {seq t {space :p:21:p, comp logo:::p:89:p, space :p:26:p, comp browseButton:::p:52:p, space :6:6:p, comp searchButton:::p:52:p, space :6:6:p, comp foodCartButton:::p:52:p, space :6:6:p, comp userProfileButton:::p:52:p, space :6:6:p, comp projectDetailsButton:::p:52:p, space ::50:x, comp usernameLabel:::p::p, space :::p, comp logoutLabel:::p::p, space :p:35:p}, seq l {space :::p, comp subHomePanel:::::x, space :::p}}"
 		} ) {
 			name: "panel"
 			auxiliary() {
@@ -24,18 +24,21 @@ new FormModel {
 				name: "browseButton"
 				"text": "Browse Foods"
 				"font": &Font0 new java.awt.Font( "Segoe UI", 1, 22 )
+				"border": &LineBorder0 new javax.swing.border.LineBorder( new java.awt.Color( 33, 37, 43, 255 ), 1, false )
 				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "browse", true ) )
 			} )
 			add( new FormComponent( "javax.swing.JButton" ) {
 				name: "searchButton"
 				"text": "Search"
 				"font": #Font0
+				"border": #LineBorder0
 				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "search", true ) )
 			} )
 			add( new FormComponent( "javax.swing.JButton" ) {
 				name: "foodCartButton"
 				"text": "Food Cart"
 				"font": #Font0
+				"border": #LineBorder0
 				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "foodCart", true ) )
 				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "foodCart", true ) )
 			} )
@@ -43,26 +46,31 @@ new FormModel {
 				name: "userProfileButton"
 				"text": "User Profile"
 				"font": #Font0
+				"border": #LineBorder0
 				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "userProfile", true ) )
 			} )
 			add( new FormComponent( "javax.swing.JButton" ) {
 				name: "projectDetailsButton"
 				"text": "Project Details"
 				"font": #Font0
+				"border": #LineBorder0
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
-				name: "label2"
+				name: "usernameLabel"
 				"text": "Username"
 				"font": new java.awt.Font( "Segoe UI Semibold", 1, 27 )
+				"horizontalAlignment": 0
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "logoutLabel"
 				"text": "Logout"
 				"font": new java.awt.Font( "Segoe UI Semibold", 0, 20 )
 				"foreground": new java.awt.Color( 255, 51, 51, 255 )
+				"cursor": new java.awt.Cursor( 12 )
+				"horizontalAlignment": 0
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
-				name: "label1"
+				name: "logo"
 				"icon": new com.jformdesigner.model.SwingIcon( 1, "src/main/java/org/apwj/view/resources/logo-3.png" )
 				"disabledIcon": new com.jformdesigner.model.SwingIcon( 1, "src/main/java/org/apwj/view/resources/logo-3.png" )
 			} )

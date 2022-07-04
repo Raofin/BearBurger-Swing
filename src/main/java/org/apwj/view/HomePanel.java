@@ -4,6 +4,7 @@
 
 package org.apwj.view;
 
+import javax.swing.border.*;
 import org.apwj.dao.userDAO;
 import org.apwj.domain.User;
 import org.springframework.context.ApplicationContext;
@@ -89,7 +90,7 @@ public class HomePanel extends JPanel {
         projectDetailsButton = new JButton();
         usernameLabel = new JLabel();
         logoutLabel = new JLabel();
-        label1 = new JLabel();
+        logo = new JLabel();
 
         //======== panel ========
         {
@@ -112,16 +113,19 @@ public class HomePanel extends JPanel {
             //---- browseButton ----
             browseButton.setText("Browse Foods");
             browseButton.setFont(new Font("Segoe UI", Font.BOLD, 22));
+            browseButton.setBorder(new LineBorder(new Color(33, 37, 43)));
             browseButton.addActionListener(e -> browse(e));
 
             //---- searchButton ----
             searchButton.setText("Search");
             searchButton.setFont(new Font("Segoe UI", Font.BOLD, 22));
+            searchButton.setBorder(new LineBorder(new Color(33, 37, 43)));
             searchButton.addActionListener(e -> search(e));
 
             //---- foodCartButton ----
             foodCartButton.setText("Food Cart");
             foodCartButton.setFont(new Font("Segoe UI", Font.BOLD, 22));
+            foodCartButton.setBorder(new LineBorder(new Color(33, 37, 43)));
             foodCartButton.addActionListener(e -> {
 			foodCart(e);
 			foodCart(e);
@@ -130,49 +134,50 @@ public class HomePanel extends JPanel {
             //---- userProfileButton ----
             userProfileButton.setText("User Profile");
             userProfileButton.setFont(new Font("Segoe UI", Font.BOLD, 22));
+            userProfileButton.setBorder(new LineBorder(new Color(33, 37, 43)));
             userProfileButton.addActionListener(e -> userProfile(e));
 
             //---- projectDetailsButton ----
             projectDetailsButton.setText("Project Details");
             projectDetailsButton.setFont(new Font("Segoe UI", Font.BOLD, 22));
+            projectDetailsButton.setBorder(new LineBorder(new Color(33, 37, 43)));
 
             //---- usernameLabel ----
             usernameLabel.setText("Username");
             usernameLabel.setFont(new Font("Segoe UI Semibold", Font.BOLD, 27));
+            usernameLabel.setHorizontalAlignment(SwingConstants.CENTER);
 
             //---- logoutLabel ----
             logoutLabel.setText("Logout");
             logoutLabel.setFont(new Font("Segoe UI Semibold", Font.PLAIN, 20));
             logoutLabel.setForeground(new Color(255, 51, 51));
+            logoutLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+            logoutLabel.setHorizontalAlignment(SwingConstants.CENTER);
 
-
-            //---- label1 ----
-            label1.setIcon(new ImageIcon("src/main/java/org/apwj/view/resources/logo-3.png"));
-            label1.setDisabledIcon(new ImageIcon("src/main/java/org/apwj/view/resources/logo-3.png"));
+            //---- logo ----
+            logo.setIcon(new ImageIcon("src/main/java/org/apwj/view/resources/logo-3.png"));
+            logo.setDisabledIcon(new ImageIcon("src/main/java/org/apwj/view/resources/logo-3.png"));
 
             GroupLayout panelLayout = new GroupLayout(panel);
             panel.setLayout(panelLayout);
             panelLayout.setHorizontalGroup(
                 panelLayout.createParallelGroup()
                     .addGroup(GroupLayout.Alignment.TRAILING, panelLayout.createSequentialGroup()
-                        .addGroup(panelLayout.createParallelGroup()
+                        .addGroup(panelLayout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
                             .addGroup(panelLayout.createSequentialGroup()
-                                .addGap(68, 68, 68)
-                                .addComponent(usernameLabel))
-                            .addGroup(panelLayout.createSequentialGroup()
-                                .addGap(92, 92, 92)
-                                .addComponent(logoutLabel))
+                                .addGap(24, 24, 24)
+                                .addComponent(logo, GroupLayout.PREFERRED_SIZE, 214, GroupLayout.PREFERRED_SIZE))
                             .addGroup(panelLayout.createSequentialGroup()
                                 .addContainerGap()
-                                .addGroup(panelLayout.createParallelGroup()
-                                    .addComponent(browseButton, GroupLayout.PREFERRED_SIZE, 249, GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(searchButton, GroupLayout.PREFERRED_SIZE, 249, GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(foodCartButton, GroupLayout.PREFERRED_SIZE, 249, GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(userProfileButton, GroupLayout.PREFERRED_SIZE, 249, GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(projectDetailsButton, GroupLayout.PREFERRED_SIZE, 249, GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(usernameLabel, GroupLayout.DEFAULT_SIZE, 249, Short.MAX_VALUE))
+                            .addComponent(browseButton, GroupLayout.DEFAULT_SIZE, 255, Short.MAX_VALUE)
+                            .addComponent(searchButton, GroupLayout.DEFAULT_SIZE, 255, Short.MAX_VALUE)
+                            .addComponent(foodCartButton, GroupLayout.DEFAULT_SIZE, 255, Short.MAX_VALUE)
+                            .addComponent(userProfileButton, GroupLayout.DEFAULT_SIZE, 255, Short.MAX_VALUE)
+                            .addComponent(projectDetailsButton, GroupLayout.DEFAULT_SIZE, 255, Short.MAX_VALUE)
                             .addGroup(panelLayout.createSequentialGroup()
-                                .addGap(25, 25, 25)
-                                .addComponent(label1)))
+                                .addContainerGap()
+                                .addComponent(logoutLabel, GroupLayout.DEFAULT_SIZE, 249, Short.MAX_VALUE)))
                         .addGap(22, 22, 22)
                         .addComponent(subHomePanel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addContainerGap())
@@ -180,9 +185,9 @@ public class HomePanel extends JPanel {
             panelLayout.setVerticalGroup(
                 panelLayout.createParallelGroup()
                     .addGroup(GroupLayout.Alignment.TRAILING, panelLayout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addComponent(logo, GroupLayout.PREFERRED_SIZE, 89, GroupLayout.PREFERRED_SIZE)
                         .addGap(26, 26, 26)
-                        .addComponent(label1)
-                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 94, Short.MAX_VALUE)
                         .addComponent(browseButton, GroupLayout.PREFERRED_SIZE, 52, GroupLayout.PREFERRED_SIZE)
                         .addGap(6, 6, 6)
                         .addComponent(searchButton, GroupLayout.PREFERRED_SIZE, 52, GroupLayout.PREFERRED_SIZE)
@@ -192,9 +197,9 @@ public class HomePanel extends JPanel {
                         .addComponent(userProfileButton, GroupLayout.PREFERRED_SIZE, 52, GroupLayout.PREFERRED_SIZE)
                         .addGap(6, 6, 6)
                         .addComponent(projectDetailsButton, GroupLayout.PREFERRED_SIZE, 52, GroupLayout.PREFERRED_SIZE)
-                        .addGap(50, 50, 50)
+                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
                         .addComponent(usernameLabel)
-                        .addGap(6, 6, 6)
+                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(logoutLabel)
                         .addGap(35, 35, 35))
                     .addGroup(panelLayout.createSequentialGroup()
@@ -216,6 +221,6 @@ public class HomePanel extends JPanel {
     private JButton projectDetailsButton;
     private JLabel usernameLabel;
     private JLabel logoutLabel;
-    private JLabel label1;
+    private JLabel logo;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 }

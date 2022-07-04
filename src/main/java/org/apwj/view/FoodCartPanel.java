@@ -9,6 +9,8 @@ import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.GroupLayout;
 
+import static org.apwj.view.DialogueBox.dialogueBox;
+
 /**
  * @author unknown
  */
@@ -23,10 +25,12 @@ public class FoodCartPanel extends JPanel {
     }
 
     private void buy(ActionEvent e) {
-        if (nameTF.getText().isEmpty() || cardNumberTF.getText().isEmpty() || expDateTF.getText().isEmpty() || cvvTF.getText().isEmpty())
+        if (nameTF.getText().isEmpty() || cardNumberTF.getText().isEmpty() || expDateTF.getText().isEmpty() || cvvTF.getText().isEmpty()) {
+            dialogueBox("Fill out all the fields properly");
             System.out.println("Fill out all the fields properly");
+        }
         else {
-            System.out.println("Payment Successful");
+            dialogueBox("Payment Successful");
             totalFoodNumber = totalCost = 0;
             totalFoodNumberLabel.setText("0");
             totalCostLabel.setText("0");
