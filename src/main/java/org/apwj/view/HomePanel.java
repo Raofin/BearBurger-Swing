@@ -47,6 +47,14 @@ public class HomePanel extends JPanel {
         subHomePanel.validate();
     }
 
+    private void projectDetails(ActionEvent e) {
+        ProjectDetails projectDetails = new ProjectDetails();
+        subHomePanel.setLayout(new java.awt.BorderLayout());
+        subHomePanel.removeAll();
+        subHomePanel.add(projectDetails.panel);
+        subHomePanel.validate();
+    }
+
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
         panel = new JPanel();
@@ -101,6 +109,7 @@ public class HomePanel extends JPanel {
             //---- projectDetailsButton ----
             projectDetailsButton.setText("Project Details");
             projectDetailsButton.setFont(new Font("Segoe UI", Font.BOLD, 22));
+            projectDetailsButton.addActionListener(e -> projectDetails(e));
 
             //---- label2 ----
             label2.setText("Username");
@@ -137,7 +146,7 @@ public class HomePanel extends JPanel {
                                     .addComponent(projectDetailsButton, GroupLayout.PREFERRED_SIZE, 249, GroupLayout.PREFERRED_SIZE)))
                             .addGroup(panelLayout.createSequentialGroup()
                                 .addGap(25, 25, 25)
-                                .addComponent(label1)))
+                                .addComponent(label1, GroupLayout.PREFERRED_SIZE, 213, GroupLayout.PREFERRED_SIZE)))
                         .addGap(22, 22, 22)
                         .addComponent(subHomePanel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addContainerGap())
@@ -146,8 +155,8 @@ public class HomePanel extends JPanel {
                 panelLayout.createParallelGroup()
                     .addGroup(GroupLayout.Alignment.TRAILING, panelLayout.createSequentialGroup()
                         .addGap(26, 26, 26)
-                        .addComponent(label1)
-                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                        .addComponent(label1, GroupLayout.DEFAULT_SIZE, 92, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
                         .addComponent(browseButton, GroupLayout.PREFERRED_SIZE, 52, GroupLayout.PREFERRED_SIZE)
                         .addGap(6, 6, 6)
                         .addComponent(searchButton, GroupLayout.PREFERRED_SIZE, 52, GroupLayout.PREFERRED_SIZE)

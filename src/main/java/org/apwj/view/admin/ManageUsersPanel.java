@@ -29,10 +29,6 @@ public class ManageUsersPanel extends JPanel {
         List<User> allUsers = userDAO.getAllUsers();
         Object[][] data = new Object[allUsers.size()][];
 
-        usersTable.setModel(new DefaultTableModel(
-                data, new String[]{"Username", "Email", "Password", "Gender", "Phone", "Joined"}
-        ));
-
         for (int i = 0; i < allUsers.size(); i++) {
             for (User user : allUsers) {
                 data[i][0] = user.getUsername();
@@ -43,6 +39,10 @@ public class ManageUsersPanel extends JPanel {
                 data[i][5] = user.getReg_date();
             }
         }
+
+        usersTable.setModel(new DefaultTableModel(
+                data, new String[]{"Username", "Email", "Password", "Gender", "Phone", "Joined"}
+        ));
     }
 
     private void close(ActionEvent e) {
