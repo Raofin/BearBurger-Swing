@@ -4,6 +4,11 @@
 
 package org.apwj.view;
 
+import org.apwj.dao.userDAO;
+import org.apwj.domain.User;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
@@ -15,12 +20,84 @@ import static org.apwj.view.HomePanel.subHomePanel;
  * @author unknown
  */
 public class ProfileModifyPanel extends JPanel {
-    public ProfileModifyPanel() {
+    ApplicationContext applicationContext = new ClassPathXmlApplicationContext("application-context.xml");
+    userDAO userDao = applicationContext.getBean("userDao", userDAO.class);
+    User loggedInUser=null;
+    String selectedGender=null;
+    private ButtonGroup gendersButton;
+
+
+    public ProfileModifyPanel(User loggedInUser) {
         initComponents();
+
+        this.loggedInUser = loggedInUser;
+
+
+        gendersButton = new ButtonGroup();
+        gendersButton.add(maleRadioButton);
+        gendersButton.add(femaleRadioButton);
+        gendersButton.add(otherRadioButton);
+        this.loggedInUser=loggedInUser;
+        usernameLabel.setText(loggedInUser.getUsername());
+        emailLabel.setText(loggedInUser.getEmail());
+        passwordTF.setText(loggedInUser.getPass());
+        phoneTF.setText(loggedInUser.getPhone());
+
+        maleRadioButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                selectedGender = maleRadioButton.getText();
+                System.out.println("Selected button: "+selectedGender);
+            }
+        });
+
+        femaleRadioButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                selectedGender = femaleRadioButton.getText();
+                System.out.println("Selected button: "+selectedGender);
+            }
+        });
+
+        otherRadioButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                selectedGender = otherRadioButton.getText();
+                System.out.println("Selected button: "+selectedGender);
+            }
+        });
+        selectedGender = loggedInUser.getGender();
+        switch (loggedInUser.getGender()){
+            case "Male":
+                maleRadioButton.setSelected(true);
+                break;
+            case "Female":
+                femaleRadioButton.setSelected(true);
+                break;
+            case "Other":
+                otherRadioButton.setSelected(true);
+                break;
+        }
+
+        seePasswordCheckbox.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                passwordTF.setEchoChar(seePasswordCheckbox.isSelected() ? '\u0000' : (Character) UIManager.get("PasswordField.echoChar"));
+            }
+        });
+
     }
 
     private void confirm(ActionEvent e) {
-        ProfileViewPanel profileViewPanel = new ProfileViewPanel();
+
+        String phone = phoneTF.getText();
+        String pass = String.valueOf(passwordTF.getPassword());
+        userDao.updateUser(loggedInUser.getUserId(),pass,phone,selectedGender);
+
+
+
+
+        ProfileViewPanel profileViewPanel = new ProfileViewPanel(loggedInUser.getUserId());
         subHomePanel.setLayout(new java.awt.BorderLayout());
         subHomePanel.removeAll();
         subHomePanel.add(profileViewPanel.panel);
@@ -33,19 +110,22 @@ public class ProfileModifyPanel extends JPanel {
         label5 = new JLabel();
         confirmButton = new JButton();
         label2 = new JLabel();
-        textField1 = new JTextField();
         label4 = new JLabel();
-        textField2 = new JTextField();
         label3 = new JLabel();
-        textField4 = new JTextField();
         label6 = new JLabel();
-        textField3 = new JTextField();
+        phoneTF = new JTextField();
         label7 = new JLabel();
-        label9 = new JLabel();
         label8 = new JLabel();
-        label10 = new JLabel();
+        reg_date_label = new JLabel();
         label11 = new JLabel();
         label12 = new JLabel();
+        usernameLabel = new JLabel();
+        emailLabel = new JLabel();
+        maleRadioButton = new JRadioButton();
+        femaleRadioButton = new JRadioButton();
+        otherRadioButton = new JRadioButton();
+        passwordTF = new JPasswordField();
+        seePasswordCheckbox = new JCheckBox();
 
         //======== panel ========
         {
@@ -58,56 +138,38 @@ public class ProfileModifyPanel extends JPanel {
             //---- confirmButton ----
             confirmButton.setText("Confirm");
             confirmButton.setFont(new Font("Segoe UI", Font.BOLD, 20));
-            confirmButton.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    confirm(e);
-                }
-            });
+            confirmButton.addActionListener(e -> confirm(e));
 
             //---- label2 ----
             label2.setText("Username");
             label2.setFont(new Font("Segoe UI Semibold", Font.PLAIN, 26));
 
-            //---- textField1 ----
-            textField1.setFont(new Font("Segoe UI Semibold", Font.PLAIN, 26));
-
             //---- label4 ----
             label4.setText("Email");
             label4.setFont(new Font("Segoe UI Semibold", Font.PLAIN, 26));
-
-            //---- textField2 ----
-            textField2.setFont(new Font("Segoe UI Semibold", Font.PLAIN, 26));
 
             //---- label3 ----
             label3.setText("Password");
             label3.setFont(new Font("Segoe UI Semibold", Font.PLAIN, 26));
 
-            //---- textField4 ----
-            textField4.setFont(new Font("Segoe UI Semibold", Font.PLAIN, 26));
-
             //---- label6 ----
             label6.setText("Phone");
             label6.setFont(new Font("Segoe UI Semibold", Font.PLAIN, 26));
 
-            //---- textField3 ----
-            textField3.setFont(new Font("Segoe UI Semibold", Font.PLAIN, 26));
+            //---- phoneTF ----
+            phoneTF.setFont(new Font("Segoe UI Semibold", Font.PLAIN, 26));
 
             //---- label7 ----
             label7.setText("Gender");
             label7.setFont(new Font("Segoe UI Semibold", Font.PLAIN, 26));
 
-            //---- label9 ----
-            label9.setText("Male");
-            label9.setFont(new Font("Segoe UI Semibold", Font.PLAIN, 26));
-
             //---- label8 ----
             label8.setText("Joined");
             label8.setFont(new Font("Segoe UI Semibold", Font.PLAIN, 26));
 
-            //---- label10 ----
-            label10.setText("July 2, 2022");
-            label10.setFont(new Font("Segoe UI Semibold", Font.PLAIN, 26));
+            //---- reg_date_label ----
+            reg_date_label.setText("July 2, 2022");
+            reg_date_label.setFont(new Font("Segoe UI Semibold", Font.PLAIN, 26));
 
             //---- label11 ----
             label11.setText("Spend");
@@ -116,6 +178,26 @@ public class ProfileModifyPanel extends JPanel {
             //---- label12 ----
             label12.setText("$680");
             label12.setFont(new Font("Segoe UI Semibold", Font.PLAIN, 26));
+
+            //---- usernameLabel ----
+            usernameLabel.setText("username");
+            usernameLabel.setFont(new Font("Segoe UI Semibold", Font.PLAIN, 26));
+
+            //---- emailLabel ----
+            emailLabel.setText("email");
+            emailLabel.setFont(new Font("Segoe UI Semibold", Font.PLAIN, 26));
+
+            //---- maleRadioButton ----
+            maleRadioButton.setText("Male");
+
+            //---- femaleRadioButton ----
+            femaleRadioButton.setText("Female");
+
+            //---- otherRadioButton ----
+            otherRadioButton.setText("Other");
+
+            //---- seePasswordCheckbox ----
+            seePasswordCheckbox.setText("See password?");
 
             GroupLayout panelLayout = new GroupLayout(panel);
             panel.setLayout(panelLayout);
@@ -130,6 +212,14 @@ public class ProfileModifyPanel extends JPanel {
                                 .addGap(110, 110, 110)
                                 .addGroup(panelLayout.createParallelGroup()
                                     .addGroup(panelLayout.createSequentialGroup()
+                                        .addComponent(label8)
+                                        .addGap(65, 65, 65)
+                                        .addComponent(reg_date_label))
+                                    .addGroup(panelLayout.createSequentialGroup()
+                                        .addComponent(label11)
+                                        .addGap(65, 65, 65)
+                                        .addComponent(label12))
+                                    .addGroup(panelLayout.createSequentialGroup()
                                         .addGroup(panelLayout.createParallelGroup()
                                             .addComponent(label2)
                                             .addComponent(label6)
@@ -138,23 +228,19 @@ public class ProfileModifyPanel extends JPanel {
                                             .addComponent(label7))
                                         .addGap(18, 18, 18)
                                         .addGroup(panelLayout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(phoneTF, GroupLayout.DEFAULT_SIZE, 352, Short.MAX_VALUE)
+                                            .addComponent(usernameLabel)
+                                            .addComponent(emailLabel)
                                             .addGroup(panelLayout.createSequentialGroup()
-                                                .addGap(6, 6, 6)
-                                                .addComponent(label9)
-                                                .addGap(76, 76, 76))
-                                            .addComponent(textField1, GroupLayout.DEFAULT_SIZE, 352, Short.MAX_VALUE)
-                                            .addComponent(textField2, GroupLayout.DEFAULT_SIZE, 352, Short.MAX_VALUE)
-                                            .addComponent(textField4, GroupLayout.DEFAULT_SIZE, 352, Short.MAX_VALUE)
-                                            .addComponent(textField3, GroupLayout.DEFAULT_SIZE, 352, Short.MAX_VALUE)))
-                                    .addGroup(panelLayout.createSequentialGroup()
-                                        .addComponent(label8)
-                                        .addGap(65, 65, 65)
-                                        .addComponent(label10))
-                                    .addGroup(panelLayout.createSequentialGroup()
-                                        .addComponent(label11)
-                                        .addGap(65, 65, 65)
-                                        .addComponent(label12)))
-                                .addGap(0, 153, Short.MAX_VALUE)))
+                                                .addComponent(maleRadioButton)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(femaleRadioButton)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(otherRadioButton))
+                                            .addComponent(passwordTF, GroupLayout.DEFAULT_SIZE, 352, Short.MAX_VALUE))
+                                        .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(seePasswordCheckbox)))
+                                .addGap(0, 41, Short.MAX_VALUE)))
                         .addContainerGap())
                     .addGroup(GroupLayout.Alignment.TRAILING, panelLayout.createSequentialGroup()
                         .addGap(0, 296, Short.MAX_VALUE)
@@ -166,35 +252,38 @@ public class ProfileModifyPanel extends JPanel {
                     .addGroup(panelLayout.createSequentialGroup()
                         .addGap(28, 28, 28)
                         .addComponent(label5)
-                        .addGap(51, 51, 51)
+                        .addGap(52, 52, 52)
                         .addGroup(panelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                             .addComponent(label2)
-                            .addComponent(textField1, GroupLayout.PREFERRED_SIZE, 37, GroupLayout.PREFERRED_SIZE))
+                            .addComponent(usernameLabel))
                         .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(panelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                             .addComponent(label4)
-                            .addComponent(textField2, GroupLayout.PREFERRED_SIZE, 37, GroupLayout.PREFERRED_SIZE))
+                            .addComponent(emailLabel))
                         .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(panelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                             .addComponent(label3)
-                            .addComponent(textField4, GroupLayout.PREFERRED_SIZE, 37, GroupLayout.PREFERRED_SIZE))
+                            .addComponent(passwordTF, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                            .addComponent(seePasswordCheckbox))
                         .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(panelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                             .addComponent(label6)
-                            .addComponent(textField3, GroupLayout.PREFERRED_SIZE, 37, GroupLayout.PREFERRED_SIZE))
+                            .addComponent(phoneTF, GroupLayout.PREFERRED_SIZE, 37, GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(panelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                             .addComponent(label7)
-                            .addComponent(label9))
+                            .addComponent(maleRadioButton)
+                            .addComponent(femaleRadioButton)
+                            .addComponent(otherRadioButton))
                         .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(panelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                             .addComponent(label8)
-                            .addComponent(label10))
+                            .addComponent(reg_date_label))
                         .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(panelLayout.createParallelGroup()
                             .addComponent(label11)
                             .addComponent(label12))
-                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
                         .addComponent(confirmButton, GroupLayout.PREFERRED_SIZE, 42, GroupLayout.PREFERRED_SIZE)
                         .addGap(58, 58, 58))
             );
@@ -207,18 +296,21 @@ public class ProfileModifyPanel extends JPanel {
     private JLabel label5;
     private JButton confirmButton;
     private JLabel label2;
-    private JTextField textField1;
     private JLabel label4;
-    private JTextField textField2;
     private JLabel label3;
-    private JTextField textField4;
     private JLabel label6;
-    private JTextField textField3;
+    private JTextField phoneTF;
     private JLabel label7;
-    private JLabel label9;
     private JLabel label8;
-    private JLabel label10;
+    private JLabel reg_date_label;
     private JLabel label11;
     private JLabel label12;
+    private JLabel usernameLabel;
+    private JLabel emailLabel;
+    private JRadioButton maleRadioButton;
+    private JRadioButton femaleRadioButton;
+    private JRadioButton otherRadioButton;
+    private JPasswordField passwordTF;
+    private JCheckBox seePasswordCheckbox;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 }

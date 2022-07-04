@@ -65,7 +65,7 @@ public class HomePanel extends JPanel {
     }
 
     private void userProfile(ActionEvent e) {
-        ProfileViewPanel profileViewPanel = new ProfileViewPanel();
+        ProfileViewPanel profileViewPanel = new ProfileViewPanel(loggedInUser.getUserId());
         subHomePanel.setLayout(new java.awt.BorderLayout());
         subHomePanel.removeAll();
         subHomePanel.add(profileViewPanel.panel);

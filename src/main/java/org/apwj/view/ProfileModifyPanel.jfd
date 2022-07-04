@@ -4,8 +4,8 @@ new FormModel {
 	contentType: "form/swing"
 	root: new FormRoot {
 		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-			"$horizontalGroup": "par l {seq {par l {seq {space :::p, comp label5:::::x}, seq {space :p:110:p, par l {seq {par l {comp label2:::p::p, comp label6::l:p::p, comp label4::l:p::p, comp label3::l:p::p, comp label7::l:p::p}, space s:::p, par l:::p {seq l {space :6:6:p, comp label9:::p::p, space :p:76:p}, comp textField1::l::352:x, comp textField2::l::352:x, comp textField4::l::352:x, comp textField3::l::352:x}}, seq {comp label8:::p::p, space :p:65:p, comp label10:::p::p}, seq l {comp label11:::p::p, space :65:65:p, comp label12:::p::p}}, space :0:153:x}}, space :::p}, seq t {space :0:296:x, comp confirmButton:::p:171:p, space :p:291:p}}"
-			"$verticalGroup": "par l {seq l {space :p:28:p, comp label5:::p::p, space :p:51:p, par b {comp label2::b:p::p, comp textField1::b:p:37:p}, space :::p, par b {comp label4::b:p::p, comp textField2::b:p:37:p}, space :::p, par b {comp label3::b:p::p, comp textField4::b:p:37:p}, space :::p, par b {comp label6::b:p::p, comp textField3::b:p:37:p}, space :::p, par b {comp label7::b:p::p, comp label9::b:p::p}, space :::p, par b {comp label8::b:p::p, comp label10::b:p::p}, space :::p, par l {comp label11:::p::p, comp label12:::p::p}, space ::31:x, comp confirmButton:::p:42:p, space :p:58:p}}"
+			"$horizontalGroup": "par l {seq {par l {seq {space :::p, comp label5:::::x}, seq {space :p:110:p, par l {seq {comp label8:::p::p, space :p:65:p, comp reg_date_label:::p::p}, seq l {comp label11:::p::p, space :65:65:p, comp label12:::p::p}, seq l {par l {comp label2:::p::p, comp label6::l:p::p, comp label4::l:p::p, comp label3::l:p::p, comp label7::l:p::p}, space s:::p, par l:::p {comp phoneTF::l::352:x, comp usernameLabel:::p::p, comp emailLabel:::p::p, seq {comp maleRadioButton:::p::p, space s:::p, comp femaleRadioButton:::p::p, space s:::p, comp otherRadioButton:::p::p}, comp passwordTF::l::352:x}, space u:::p, comp seePasswordCheckbox:::p::p}}, space :0:41:x}}, space :::p}, seq t {space :0:296:x, comp confirmButton:::p:171:p, space :p:291:p}}"
+			"$verticalGroup": "par l {seq l {space :p:28:p, comp label5:::p::p, space :p:52:p, par b {comp label2::b:p::p, comp usernameLabel::b:p::p}, space :::p, par b {comp label4::b:p::p, comp emailLabel::b:p::p}, space :::p, par b {comp label3::b:p::p, comp passwordTF::b:p::p, comp seePasswordCheckbox::b:p::p}, space :::p, par b {comp label6::b:p::p, comp phoneTF::b:p:37:p}, space :::p, par b {comp label7::b:p::p, comp maleRadioButton::b:p::p, comp femaleRadioButton::b:p::p, comp otherRadioButton::b:p::p}, space :::p, par b {comp label8::b:p::p, comp reg_date_label::b:p::p}, space :::p, par l {comp label11:::p::p, comp label12:::p::p}, space ::29:x, comp confirmButton:::p:42:p, space :p:58:p}}"
 		} ) {
 			name: "panel"
 			auxiliary() {
@@ -28,26 +28,14 @@ new FormModel {
 				"text": "Username"
 				"font": &Font0 new java.awt.Font( "Segoe UI Semibold", 0, 26 )
 			} )
-			add( new FormComponent( "javax.swing.JTextField" ) {
-				name: "textField1"
-				"font": #Font0
-			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "label4"
 				"text": "Email"
 				"font": #Font0
 			} )
-			add( new FormComponent( "javax.swing.JTextField" ) {
-				name: "textField2"
-				"font": #Font0
-			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "label3"
 				"text": "Password"
-				"font": #Font0
-			} )
-			add( new FormComponent( "javax.swing.JTextField" ) {
-				name: "textField4"
 				"font": #Font0
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
@@ -56,7 +44,7 @@ new FormModel {
 				"font": #Font0
 			} )
 			add( new FormComponent( "javax.swing.JTextField" ) {
-				name: "textField3"
+				name: "phoneTF"
 				"font": #Font0
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
@@ -65,17 +53,12 @@ new FormModel {
 				"font": #Font0
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
-				name: "label9"
-				"text": "Male"
-				"font": #Font0
-			} )
-			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "label8"
 				"text": "Joined"
 				"font": #Font0
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
-				name: "label10"
+				name: "reg_date_label"
 				"text": "July 2, 2022"
 				"font": #Font0
 			} )
@@ -88,6 +71,35 @@ new FormModel {
 				name: "label12"
 				"text": "$680"
 				"font": #Font0
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "usernameLabel"
+				"text": "username"
+				"font": #Font0
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "emailLabel"
+				"text": "email"
+				"font": #Font0
+			} )
+			add( new FormComponent( "javax.swing.JRadioButton" ) {
+				name: "maleRadioButton"
+				"text": "Male"
+			} )
+			add( new FormComponent( "javax.swing.JRadioButton" ) {
+				name: "femaleRadioButton"
+				"text": "Female"
+			} )
+			add( new FormComponent( "javax.swing.JRadioButton" ) {
+				name: "otherRadioButton"
+				"text": "Other"
+			} )
+			add( new FormComponent( "javax.swing.JPasswordField" ) {
+				name: "passwordTF"
+			} )
+			add( new FormComponent( "javax.swing.JCheckBox" ) {
+				name: "seePasswordCheckbox"
+				"text": "See password?"
 			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 0, 0 )

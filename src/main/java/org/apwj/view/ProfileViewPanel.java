@@ -4,6 +4,11 @@
 
 package org.apwj.view;
 
+import org.apwj.dao.userDAO;
+import org.apwj.domain.User;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
@@ -15,12 +20,21 @@ import static org.apwj.view.HomePanel.subHomePanel;
  * @author unknown
  */
 public class ProfileViewPanel extends JPanel {
-    public ProfileViewPanel() {
+    ApplicationContext applicationContext = new ClassPathXmlApplicationContext("application-context.xml");
+    userDAO userDao = applicationContext.getBean("userDao", userDAO.class);
+    User loggedInUser = null;
+    public ProfileViewPanel(int userId) {
         initComponents();
+        loggedInUser = userDao.searchById(userId);
+        usernameLabel.setText(loggedInUser.getUsername());
+        emailLabel.setText(loggedInUser.getEmail());
+        phoneLabel.setText(loggedInUser.getPhone());
+        genderLabel.setText(loggedInUser.getGender());
+        reg_date_label.setText(String.valueOf(loggedInUser.getReg_date()));
     }
 
     private void modify(ActionEvent e) {
-        ProfileModifyPanel profileModifyPanel = new ProfileModifyPanel();
+        ProfileModifyPanel profileModifyPanel = new ProfileModifyPanel(loggedInUser);
         subHomePanel.setLayout(new java.awt.BorderLayout());
         subHomePanel.removeAll();
         subHomePanel.add(profileModifyPanel.panel);
@@ -33,17 +47,15 @@ public class ProfileViewPanel extends JPanel {
         label5 = new JLabel();
         modifyButton = new JButton();
         label2 = new JLabel();
-        label13 = new JLabel();
+        usernameLabel = new JLabel();
         label4 = new JLabel();
-        label14 = new JLabel();
-        label3 = new JLabel();
-        label15 = new JLabel();
+        emailLabel = new JLabel();
         label6 = new JLabel();
-        label16 = new JLabel();
+        phoneLabel = new JLabel();
         label7 = new JLabel();
-        label9 = new JLabel();
+        genderLabel = new JLabel();
         label8 = new JLabel();
-        label10 = new JLabel();
+        reg_date_label = new JLabel();
         label11 = new JLabel();
         label12 = new JLabel();
 
@@ -58,66 +70,52 @@ public class ProfileViewPanel extends JPanel {
             //---- modifyButton ----
             modifyButton.setText("Modify");
             modifyButton.setFont(new Font("Segoe UI", Font.BOLD, 20));
-            modifyButton.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    modify(e);
-                }
-            });
+            modifyButton.addActionListener(e -> modify(e));
 
             //---- label2 ----
             label2.setText("Username");
             label2.setFont(new Font("Segoe UI Semibold", Font.PLAIN, 26));
 
-            //---- label13 ----
-            label13.setText("User Name");
-            label13.setFont(new Font("Segoe UI Semibold", Font.PLAIN, 26));
-            label13.setForeground(Color.white);
+            //---- usernameLabel ----
+            usernameLabel.setText("User Name");
+            usernameLabel.setFont(new Font("Segoe UI Semibold", Font.PLAIN, 26));
+            usernameLabel.setForeground(Color.white);
 
             //---- label4 ----
             label4.setText("Email");
             label4.setFont(new Font("Segoe UI Semibold", Font.PLAIN, 26));
 
-            //---- label14 ----
-            label14.setText("user@email.com");
-            label14.setFont(new Font("Segoe UI Semibold", Font.PLAIN, 26));
-            label14.setForeground(Color.white);
-
-            //---- label3 ----
-            label3.setText("Password");
-            label3.setFont(new Font("Segoe UI Semibold", Font.PLAIN, 26));
-
-            //---- label15 ----
-            label15.setText("Password");
-            label15.setFont(new Font("Segoe UI Semibold", Font.PLAIN, 26));
-            label15.setForeground(Color.white);
+            //---- emailLabel ----
+            emailLabel.setText("user@email.com");
+            emailLabel.setFont(new Font("Segoe UI Semibold", Font.PLAIN, 26));
+            emailLabel.setForeground(Color.white);
 
             //---- label6 ----
             label6.setText("Phone");
             label6.setFont(new Font("Segoe UI Semibold", Font.PLAIN, 26));
 
-            //---- label16 ----
-            label16.setText("0123456789");
-            label16.setFont(new Font("Segoe UI Semibold", Font.PLAIN, 26));
-            label16.setForeground(Color.white);
+            //---- phoneLabel ----
+            phoneLabel.setText("0123456789");
+            phoneLabel.setFont(new Font("Segoe UI Semibold", Font.PLAIN, 26));
+            phoneLabel.setForeground(Color.white);
 
             //---- label7 ----
             label7.setText("Gender");
             label7.setFont(new Font("Segoe UI Semibold", Font.PLAIN, 26));
 
-            //---- label9 ----
-            label9.setText("Male");
-            label9.setFont(new Font("Segoe UI Semibold", Font.PLAIN, 26));
-            label9.setForeground(Color.white);
+            //---- genderLabel ----
+            genderLabel.setText("Male");
+            genderLabel.setFont(new Font("Segoe UI Semibold", Font.PLAIN, 26));
+            genderLabel.setForeground(Color.white);
 
             //---- label8 ----
             label8.setText("Joined");
             label8.setFont(new Font("Segoe UI Semibold", Font.PLAIN, 26));
 
-            //---- label10 ----
-            label10.setText("July 2, 2022");
-            label10.setFont(new Font("Segoe UI Semibold", Font.PLAIN, 26));
-            label10.setForeground(Color.white);
+            //---- reg_date_label ----
+            reg_date_label.setText("July 2, 2022");
+            reg_date_label.setFont(new Font("Segoe UI Semibold", Font.PLAIN, 26));
+            reg_date_label.setForeground(Color.white);
 
             //---- label11 ----
             label11.setText("Spend");
@@ -145,27 +143,23 @@ public class ProfileViewPanel extends JPanel {
                                             .addGroup(panelLayout.createSequentialGroup()
                                                 .addComponent(label2)
                                                 .addGap(18, 18, 18)
-                                                .addComponent(label13))
+                                                .addComponent(usernameLabel))
                                             .addGroup(panelLayout.createSequentialGroup()
                                                 .addComponent(label4)
                                                 .addGap(73, 73, 73)
-                                                .addComponent(label14))
-                                            .addGroup(panelLayout.createSequentialGroup()
-                                                .addComponent(label3)
-                                                .addGap(24, 24, 24)
-                                                .addComponent(label15))
+                                                .addComponent(emailLabel))
                                             .addGroup(panelLayout.createSequentialGroup()
                                                 .addComponent(label6)
                                                 .addGap(62, 62, 62)
-                                                .addComponent(label16))
+                                                .addComponent(phoneLabel))
                                             .addGroup(panelLayout.createSequentialGroup()
                                                 .addComponent(label7)
                                                 .addGap(50, 50, 50)
-                                                .addComponent(label9))
+                                                .addComponent(genderLabel))
                                             .addGroup(panelLayout.createSequentialGroup()
                                                 .addComponent(label8)
                                                 .addGap(59, 59, 59)
-                                                .addComponent(label10))
+                                                .addComponent(reg_date_label))
                                             .addGroup(panelLayout.createSequentialGroup()
                                                 .addComponent(label11)
                                                 .addGap(62, 62, 62)
@@ -184,32 +178,28 @@ public class ProfileViewPanel extends JPanel {
                         .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
                         .addGroup(panelLayout.createParallelGroup()
                             .addComponent(label2)
-                            .addComponent(label13))
+                            .addComponent(usernameLabel))
                         .addGap(7, 7, 7)
                         .addGroup(panelLayout.createParallelGroup()
                             .addComponent(label4)
-                            .addComponent(label14))
-                        .addGap(7, 7, 7)
-                        .addGroup(panelLayout.createParallelGroup()
-                            .addComponent(label3)
-                            .addComponent(label15))
-                        .addGap(7, 7, 7)
+                            .addComponent(emailLabel))
+                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(panelLayout.createParallelGroup()
                             .addComponent(label6)
-                            .addComponent(label16))
+                            .addComponent(phoneLabel))
                         .addGap(6, 6, 6)
                         .addGroup(panelLayout.createParallelGroup()
                             .addComponent(label7)
-                            .addComponent(label9))
+                            .addComponent(genderLabel))
                         .addGap(6, 6, 6)
                         .addGroup(panelLayout.createParallelGroup()
                             .addComponent(label8)
-                            .addComponent(label10))
+                            .addComponent(reg_date_label))
                         .addGap(6, 6, 6)
                         .addGroup(panelLayout.createParallelGroup()
                             .addComponent(label11)
                             .addComponent(label12))
-                        .addGap(40, 40, 40)
+                        .addGap(84, 84, 84)
                         .addComponent(modifyButton, GroupLayout.PREFERRED_SIZE, 42, GroupLayout.PREFERRED_SIZE)
                         .addGap(58, 58, 58))
             );
@@ -222,17 +212,15 @@ public class ProfileViewPanel extends JPanel {
     private JLabel label5;
     private JButton modifyButton;
     private JLabel label2;
-    private JLabel label13;
+    private JLabel usernameLabel;
     private JLabel label4;
-    private JLabel label14;
-    private JLabel label3;
-    private JLabel label15;
+    private JLabel emailLabel;
     private JLabel label6;
-    private JLabel label16;
+    private JLabel phoneLabel;
     private JLabel label7;
-    private JLabel label9;
+    private JLabel genderLabel;
     private JLabel label8;
-    private JLabel label10;
+    private JLabel reg_date_label;
     private JLabel label11;
     private JLabel label12;
     // JFormDesigner - End of variables declaration  //GEN-END:variables

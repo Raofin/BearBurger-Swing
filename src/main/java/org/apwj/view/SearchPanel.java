@@ -12,6 +12,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.List;
+import java.util.stream.Collectors;
 import javax.swing.*;
 import javax.swing.GroupLayout;
 import javax.swing.event.ListSelectionEvent;
@@ -29,9 +30,9 @@ public class SearchPanel extends JPanel {
 
     Food selectedFood = null;
     List<Food> foods;
+    DefaultListModel<Food> foodListModel = new DefaultListModel<>();
     public SearchPanel() {
         initComponents();
-        DefaultListModel<Food> foodListModel = new DefaultListModel<>();
         foods = foodDao.getAllFoods();
         for(Food food:foods){
             foodListModel.addElement(food);
@@ -63,17 +64,28 @@ public class SearchPanel extends JPanel {
     
     private void searchFoodTFKeyReleased(KeyEvent e) {
         System.out.println("Key released");
-        foods.removeAll(foods);
-        for (Food food : foods) {
-            if(food.getTitle().contains(searchFoodTF.getText())){
+        String searchText = searchFoodTF.getText().toLowerCase();
+        foodListModel.removeAllElements();
+        for (Food food:
+             foods) {
+            if(food.getTitle().toLowerCase().contains(searchText)){
+                foodListModel.addElement(food);
+            }
+        }
+    }
+    
 
+    private void search(ActionEvent e) {
+        String searchText = searchFoodTF.getText().toLowerCase();
+        foodListModel.removeAllElements();
+        for (Food food:
+                foods) {
+            if(food.getTitle().toLowerCase().contains(searchText)){
+                foodListModel.addElement(food);
             }
         }
     }
 
-    private void searchFoodTFInputMethodTextChanged(InputMethodEvent e) {
-        // TODO add your code here
-    }
 
 
     private void initComponents() {
@@ -114,15 +126,7 @@ public class SearchPanel extends JPanel {
             foodDetailsButton.setFont(new Font("Segoe UI", Font.BOLD, 20));
             foodDetailsButton.addActionListener(e -> foodDetails(e));
 
-            //---- searchFoodTF ----
-            searchFoodTF.addInputMethodListener(new InputMethodListener() {
-                @Override
-                public void caretPositionChanged(InputMethodEvent e) {}
-                @Override
-                public void inputMethodTextChanged(InputMethodEvent e) {
-                    searchFoodTFInputMethodTextChanged(e);
-                }
-            });
+
             searchFoodTF.addKeyListener(new KeyAdapter() {
                 @Override
                 public void keyReleased(KeyEvent e) {
@@ -133,6 +137,10 @@ public class SearchPanel extends JPanel {
             //---- searchButton ----
             searchButton.setText("Search");
             searchButton.setFont(new Font("Segoe UI", Font.BOLD, 20));
+            searchButton.addActionListener(e -> {
+			search(e);
+			search(e);
+		});
 
             GroupLayout panelLayout = new GroupLayout(panel);
             panel.setLayout(panelLayout);

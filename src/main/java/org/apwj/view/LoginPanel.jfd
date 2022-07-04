@@ -4,8 +4,8 @@ new FormModel {
 	contentType: "form/swing"
 	root: new FormRoot {
 		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-			"$horizontalGroup": "par l {seq t {space :p:97:p, comp label4:::p::p, space ::477:x, par l {seq t {par t {par l:t {seq t {comp label3:::p::p, space :p:206:p}, comp loginButton::l:p:302:p}, par l:t {comp usernameTF:::p:301:p, comp label2:::p::p}, seq t {comp forgotPassword:::p::p, space :p:142:p}, seq t {comp label1:::p::p, space :p:47:p}, comp passwordTF::t:p:302:p}, space :p:132:p}, seq t {comp label5:::p::p, space :::p, comp register:::p::p, space :p:176:p}}}}"
-			"$verticalGroup": "par l {seq {space :p:93:p, comp label1:::p::p, space :p:35:p, comp label2:::p::p, space :p:3:p, comp usernameTF:::p:37:p, space :::p, comp label3:::p::p, space :p:1:p, comp passwordTF:::p:39:p, space :::x, comp forgotPassword:::p::p, space :p:44:p, comp loginButton:::p:40:p, space :p:7:p, par b {comp register::b:p::p, comp label5::b:p::p}, space :p:154:p}, seq l {space :p:46:p, comp label4:::p::p, space :::x}}"
+			"$horizontalGroup": "par l {seq t {space :p:97:p, comp label4:::p::p, space ::420:x, par l {seq t {par t {par l:t {comp usernameTF:::p:301:p, comp label2:::p::p}, seq t {comp label1:::p::p, space :p:47:p}, comp passwordTF::t:p:302:p, comp loginButton::t:p:302:p}, space u:::p, comp seePasswordCheckbox:::p::p, space :p:77:p}, seq {par l {seq l {space :p:54:p, comp label5:::p::p, space u:::p, comp register:::p::p}, comp forgotPassword::l:p::p, comp label3::l:p::p}, space :::p}}}}"
+			"$verticalGroup": "par l {seq {space :p:93:p, comp label1:::p::p, space :p:35:p, comp label2:::p::p, space :p:3:p, comp usernameTF:::p:37:p, space :::p, comp label3:::p::p, space :::p, par b {comp passwordTF::b:p:39:p, comp seePasswordCheckbox::b:p::p}, space s:::p, comp forgotPassword:::p::p, space ::27:x, comp loginButton:::p:40:p, space :p:7:p, par b {comp label5::b:p::p, comp register::b:p::p}, space :p:113:p}, seq l {space :p:46:p, comp label4:::p::p, space :::x}}"
 		} ) {
 			name: "panel"
 			"maximumSize": new java.awt.Dimension( 1025, 575 )
@@ -39,12 +39,12 @@ new FormModel {
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "label2"
-				"text": " USERNAME OR EMAIL"
+				"text": "Username"
 				"font": new java.awt.Font( "Segoe UI Semibold", 0, 17 )
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "label3"
-				"text": " PASSWORD"
+				"text": "Password"
 				"font": new java.awt.Font( "Segoe UI Semibold", 0, 17 )
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
@@ -66,6 +66,10 @@ new FormModel {
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "label4"
 				"icon": new com.jformdesigner.model.SwingIcon( 1, "src/main/java/org/apwj/view/resources/logo-2.png" )
+			} )
+			add( new FormComponent( "javax.swing.JCheckBox" ) {
+				name: "seePasswordCheckbox"
+				"text": "See password?"
 			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 0, 0 )
