@@ -16,6 +16,7 @@ import static org.apwj.App.mainFrame;
 public class HomePanel extends JPanel {
     public HomePanel() {
         initComponents();
+
     }
 
     private void browse(ActionEvent e) {
