@@ -4,8 +4,8 @@ new FormModel {
 	contentType: "form/swing"
 	root: new FormRoot {
 		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-			"$horizontalGroup": "par l {seq t {par l {seq l {space :p:92:p, comp logoutLabel:::p::p}, seq l {space :::p, par l {comp manageUsersButton:::p:249:p, comp addUserButton:::p:249:p, comp addFoodsButton:::p:249:p, comp purchaseLogButton:::p:249:p, comp projectDetailsButton:::p:249:p}}, seq l {space :p:36:p, comp label2:::p:177:p}, seq l {space :p:25:p, comp label1:::p:215:p}}, space :p:22:p, comp subAdminPanel:::::x, space :::p}}"
-			"$verticalGroup": "par l {seq t {space :p:26:p, comp label1::::92:x, space s:::p, comp manageUsersButton:::p:52:p, space :6:6:p, comp addUserButton:::p:52:p, space :6:6:p, comp addFoodsButton:::p:52:p, space :6:6:p, comp purchaseLogButton:::p:52:p, space :6:6:p, comp projectDetailsButton:::p:52:p, space :p:50:p, comp label2:::p::p, space :::p, comp logoutLabel:::p::p, space :p:35:p}, seq l {space :::p, comp subAdminPanel:::::x, space :::p}}"
+			"$horizontalGroup": "par l {seq t {par l {seq l {space :p:92:p, comp logoutLabel:::p::p}, seq l {space :p:36:p, comp label2:::p:177:p}, seq l {space :p:25:p, comp label1:::p:215:p}, comp manageUsersButton::l:p:249:p, comp addUserButton:::p:249:p, comp addFoodsButton:::p:249:p, comp purchaseLogButton:::p:249:p, comp projectDetailsButton:::p:249:p}, space :p:28:p, comp subAdminPanel:::::x, space :::p}}"
+			"$verticalGroup": "par l {seq t {space :p:26:p, comp label1::::92:x, space s:::p, comp manageUsersButton:::p:52:p, space :::p, comp addUserButton:::p:52:p, space :::p, comp addFoodsButton:::p:52:p, space :6:6:p, comp purchaseLogButton:::p:52:p, space :6:6:p, comp projectDetailsButton:::p:52:p, space :p:50:p, comp label2:::p::p, space :::p, comp logoutLabel:::p::p, space :p:35:p}, seq l {space :::p, comp subAdminPanel:::::x, space :::p}}"
 		} ) {
 			name: "panel"
 			"maximumSize": new java.awt.Dimension( 1025, 575 )
@@ -26,6 +26,8 @@ new FormModel {
 				name: "manageUsersButton"
 				"text": "Manage Users"
 				"font": &Font0 new java.awt.Font( "Segoe UI", 1, 22 )
+				"border": &LineBorder0 new javax.swing.border.LineBorder( new java.awt.Color( 54, 55, 57, 255 ), 1, false )
+				"background": &Color0 new java.awt.Color( 54, 55, 57, 255 )
 				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "browse", true ) )
 				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "manageUsers", true ) )
 			} )
@@ -33,6 +35,8 @@ new FormModel {
 				name: "addUserButton"
 				"text": "Add Users"
 				"font": #Font0
+				"border": #LineBorder0
+				"background": #Color0
 				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "search", true ) )
 				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "addUser", true ) )
 			} )
@@ -40,6 +44,8 @@ new FormModel {
 				name: "addFoodsButton"
 				"text": "Add Foods"
 				"font": #Font0
+				"border": #LineBorder0
+				"background": #Color0
 				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "foodCart", true ) )
 				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "addFoods", true ) )
 			} )
@@ -47,6 +53,8 @@ new FormModel {
 				name: "purchaseLogButton"
 				"text": "Purchase Log"
 				"font": #Font0
+				"border": #LineBorder0
+				"background": #Color0
 				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "userProfile", true ) )
 				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "purchaseLog", true ) )
 			} )
@@ -54,6 +62,9 @@ new FormModel {
 				name: "projectDetailsButton"
 				"text": "Project Details"
 				"font": #Font0
+				"border": #LineBorder0
+				"background": #Color0
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "projectDetails", true ) )
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "label2"

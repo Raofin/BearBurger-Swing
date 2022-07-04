@@ -37,6 +37,7 @@ new FormModel {
 				"text": "Food Cart"
 				"font": #Font0
 				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "foodCart", true ) )
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "foodCart", true ) )
 			} )
 			add( new FormComponent( "javax.swing.JButton" ) {
 				name: "userProfileButton"
