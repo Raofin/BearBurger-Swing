@@ -27,18 +27,18 @@ public class ManageUsersPanel extends JPanel {
         userDAO userDAO = applicationContext.getBean("userDao", userDAO.class);
 
         List<User> allUsers = userDAO.getAllUsers();
-        Object[][] data = new Object[allUsers.size()][];
+        Object[][] data = new Object[allUsers.size()][6];
 
-        /*for (int i = 0; i < allUsers.size(); i++) {
-            for (User user : allUsers) {
-                data[i][0] = user.getUsername();
-                data[i][1] = user.getEmail();
-                data[i][2] = user.getPass();
-                data[i][3] = user.getGender();
-                data[i][4] = user.getPhone();
-                data[i][5] = user.getReg_date();
-            }
-        }*/
+        for (int i = 0; i < allUsers.size(); i++) {
+
+            data[i][0] = allUsers.get(i).getUsername();
+            data[i][1] = allUsers.get(i).getEmail();
+            data[i][2] = allUsers.get(i).getPass();
+            data[i][3] = allUsers.get(i).getGender();
+            data[i][4] = allUsers.get(i).getPhone();
+            data[i][5] = allUsers.get(i).getReg_date();
+
+        }
 
         usersTable.setModel(new DefaultTableModel(
                 data, new String[]{"Username", "Email", "Password", "Gender", "Phone", "Joined"}

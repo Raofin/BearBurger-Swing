@@ -13,12 +13,38 @@ import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.GroupLayout;
 
+import static org.apwj.view.DialogueBox.dialogueBox;
+
 /**
  * @author unknown
  */
 public class AddUserPanel extends JPanel {
     public AddUserPanel() {
         initComponents();
+        genders = new ButtonGroup();
+        genders.add(maleRadioButton);
+        genders.add(femaleRadioButton);
+        genders.add(otherRadioButton);
+        maleRadioButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                selectedGender = maleRadioButton.getText();
+            }
+        });
+
+        femaleRadioButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                selectedGender = femaleRadioButton.getText();
+            }
+        });
+
+        otherRadioButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                selectedGender = otherRadioButton.getText();
+            }
+        });
     }
 
     private void close(ActionEvent e) {
@@ -27,20 +53,27 @@ public class AddUserPanel extends JPanel {
 
     ApplicationContext applicationContext = new ClassPathXmlApplicationContext("application-context.xml");
     userDAO userDAO = applicationContext.getBean("userDao", userDAO.class);
-
+    private ButtonGroup genders;
+    String selectedGender = null;
     private void add(ActionEvent e) {
         String username = usernameTF.getText().trim();
         String email = emailTF.getText().trim();
-        String password = passwordTF.getText().trim();
-        String confirmPassword = passwordTF.getText().trim();
-        String phone = phoneTF.getText().trim();
-        String gender = "male";
+        String password = String.valueOf(passwordTF.getPassword());
+        String confirmPassword = String.valueOf(confirmPasswordTF.getPassword());
+        String phone = phoneTF.getText();
+        String gender = selectedGender;
 
         if (username.isEmpty() || email.isEmpty() || password.isEmpty() || !password.equals(confirmPassword) || phone.isEmpty()) {
-            System.out.println("Fill out all the fields properly");
+            dialogueBox("Fill out all the fields properly");
         } else {
             userDAO.insertRow(username, email, password, phone, gender);
-            System.out.println("Successfully added");
+            dialogueBox("Successfully added user");
+            usernameTF.setText("");
+            emailTF.setText("");
+            passwordTF.setText("");
+            confirmPasswordTF.setText("");
+            phoneTF.setText("");
+
         }
     }
 
@@ -54,13 +87,13 @@ public class AddUserPanel extends JPanel {
         emailTF = new JTextField();
         label3 = new JLabel();
         passwordTF = new JPasswordField();
-        passwordField2 = new JPasswordField();
+        confirmPasswordTF = new JPasswordField();
         label6 = new JLabel();
         label7 = new JLabel();
-        radioButton1 = new JRadioButton();
-        radioButton2 = new JRadioButton();
+        maleRadioButton = new JRadioButton();
+        femaleRadioButton = new JRadioButton();
         addButton = new JButton();
-        radioButton3 = new JRadioButton();
+        otherRadioButton = new JRadioButton();
         label8 = new JLabel();
         phoneTF = new JTextField();
 
@@ -93,8 +126,8 @@ public class AddUserPanel extends JPanel {
             //---- passwordTF ----
             passwordTF.setFont(new Font("Segoe UI Semibold", Font.PLAIN, 20));
 
-            //---- passwordField2 ----
-            passwordField2.setFont(new Font("Segoe UI Semibold", Font.PLAIN, 20));
+            //---- confirmPasswordTF ----
+            confirmPasswordTF.setFont(new Font("Segoe UI Semibold", Font.PLAIN, 20));
 
             //---- label6 ----
             label6.setText("Confirm Password");
@@ -104,13 +137,13 @@ public class AddUserPanel extends JPanel {
             label7.setText("Gender");
             label7.setFont(new Font("Segoe UI Semibold", Font.PLAIN, 20));
 
-            //---- radioButton1 ----
-            radioButton1.setText("Male");
-            radioButton1.setFont(new Font("Segoe UI Semibold", Font.PLAIN, 20));
+            //---- maleRadioButton ----
+            maleRadioButton.setText("Male");
+            maleRadioButton.setFont(new Font("Segoe UI Semibold", Font.PLAIN, 20));
 
-            //---- radioButton2 ----
-            radioButton2.setText("Female");
-            radioButton2.setFont(new Font("Segoe UI Semibold", Font.PLAIN, 20));
+            //---- femaleRadioButton ----
+            femaleRadioButton.setText("Female");
+            femaleRadioButton.setFont(new Font("Segoe UI Semibold", Font.PLAIN, 20));
 
             //---- addButton ----
             addButton.setText("Add");
@@ -118,9 +151,9 @@ public class AddUserPanel extends JPanel {
             addButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
             addButton.addActionListener(e -> add(e));
 
-            //---- radioButton3 ----
-            radioButton3.setText("Other");
-            radioButton3.setFont(new Font("Segoe UI Semibold", Font.PLAIN, 20));
+            //---- otherRadioButton ----
+            otherRadioButton.setText("Other");
+            otherRadioButton.setFont(new Font("Segoe UI Semibold", Font.PLAIN, 20));
 
             //---- label8 ----
             label8.setText("Phone Number");
@@ -158,16 +191,16 @@ public class AddUserPanel extends JPanel {
                                     .addComponent(label8))
                                 .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(panelLayout.createParallelGroup()
-                                    .addComponent(passwordField2, GroupLayout.PREFERRED_SIZE, 254, GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(confirmPasswordTF, GroupLayout.PREFERRED_SIZE, 254, GroupLayout.PREFERRED_SIZE)
                                     .addComponent(phoneTF, GroupLayout.PREFERRED_SIZE, 254, GroupLayout.PREFERRED_SIZE)))
                             .addGroup(GroupLayout.Alignment.TRAILING, panelLayout.createSequentialGroup()
                                 .addComponent(label7)
                                 .addGap(110, 110, 110)
-                                .addComponent(radioButton1)
+                                .addComponent(maleRadioButton)
                                 .addGap(12, 12, 12)
-                                .addComponent(radioButton2)
+                                .addComponent(femaleRadioButton)
                                 .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(radioButton3))
+                                .addComponent(otherRadioButton))
                             .addComponent(addButton, GroupLayout.PREFERRED_SIZE, 431, GroupLayout.PREFERRED_SIZE))
                         .addContainerGap())
             );
@@ -196,7 +229,7 @@ public class AddUserPanel extends JPanel {
                             .addComponent(passwordTF, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
                         .addGap(6, 6, 6)
                         .addGroup(panelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                            .addComponent(passwordField2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                            .addComponent(confirmPasswordTF, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                             .addComponent(label6))
                         .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(panelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
@@ -207,10 +240,10 @@ public class AddUserPanel extends JPanel {
                             .addGroup(panelLayout.createSequentialGroup()
                                 .addGap(2, 2, 2)
                                 .addComponent(label7))
-                            .addComponent(radioButton1)
+                            .addComponent(maleRadioButton)
                             .addGroup(panelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                                .addComponent(radioButton2)
-                                .addComponent(radioButton3)))
+                                .addComponent(femaleRadioButton)
+                                .addComponent(otherRadioButton)))
                         .addGap(36, 36, 36)
                         .addComponent(addButton, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(95, Short.MAX_VALUE))
@@ -219,9 +252,9 @@ public class AddUserPanel extends JPanel {
 
         //---- genderRadio ----
         ButtonGroup genderRadio = new ButtonGroup();
-        genderRadio.add(radioButton1);
-        genderRadio.add(radioButton2);
-        genderRadio.add(radioButton3);
+        genderRadio.add(maleRadioButton);
+        genderRadio.add(femaleRadioButton);
+        genderRadio.add(otherRadioButton);
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
     }
 
@@ -234,13 +267,13 @@ public class AddUserPanel extends JPanel {
     private JTextField emailTF;
     private JLabel label3;
     private JPasswordField passwordTF;
-    private JPasswordField passwordField2;
+    private JPasswordField confirmPasswordTF;
     private JLabel label6;
     private JLabel label7;
-    private JRadioButton radioButton1;
-    private JRadioButton radioButton2;
+    private JRadioButton maleRadioButton;
+    private JRadioButton femaleRadioButton;
     private JButton addButton;
-    private JRadioButton radioButton3;
+    private JRadioButton otherRadioButton;
     private JLabel label8;
     private JTextField phoneTF;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
