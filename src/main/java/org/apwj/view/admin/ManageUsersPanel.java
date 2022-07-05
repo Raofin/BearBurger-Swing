@@ -20,33 +20,46 @@ import javax.swing.table.DefaultTableModel;
  * @author unknown
  */
 public class ManageUsersPanel extends JPanel {
+    ApplicationContext applicationContext = new ClassPathXmlApplicationContext("application-context.xml");
+    userDAO userDAO = applicationContext.getBean("userDao", userDAO.class);
+    User selectedUser = null;
     public ManageUsersPanel() {
         initComponents();
 
-        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("application-context.xml");
-        userDAO userDAO = applicationContext.getBean("userDao", userDAO.class);
 
         List<User> allUsers = userDAO.getAllUsers();
-        Object[][] data = new Object[allUsers.size()][6];
+        Object[][] data = new Object[allUsers.size()][7];
 
         for (int i = 0; i < allUsers.size(); i++) {
 
-            data[i][0] = allUsers.get(i).getUsername();
-            data[i][1] = allUsers.get(i).getEmail();
-            data[i][2] = allUsers.get(i).getPass();
-            data[i][3] = allUsers.get(i).getGender();
-            data[i][4] = allUsers.get(i).getPhone();
-            data[i][5] = allUsers.get(i).getReg_date();
+            data[i][0] = allUsers.get(i).getUserId();
+            data[i][1] = allUsers.get(i).getUsername();
+            data[i][2] = allUsers.get(i).getEmail();
+            data[i][3] = allUsers.get(i).getPass();
+            data[i][4] = allUsers.get(i).getGender();
+            data[i][5] = allUsers.get(i).getPhone();
+            data[i][6] = allUsers.get(i).getReg_date();
 
         }
 
         usersTable.setModel(new DefaultTableModel(
-                data, new String[]{"Username", "Email", "Password", "Gender", "Phone", "Joined"}
+                data, new String[]{"User ID","Username", "Email", "Password", "Gender", "Phone", "Joined"}
         ));
     }
 
     private void close(ActionEvent e) {
         // TODO add your code here
+    }
+
+    private void usersTableMouseClicked(MouseEvent e) {
+        DefaultTableModel tableModel = (DefaultTableModel) usersTable.getModel();
+        int selectedIndex = usersTable.getSelectedRow();
+        int userId = (int) tableModel.getValueAt(selectedIndex,0);
+        selectedUser = userDAO.searchById(userId);
+    }
+
+    private void modify(ActionEvent e) {
+
     }
 
     private void initComponents() {
@@ -55,8 +68,8 @@ public class ManageUsersPanel extends JPanel {
         label5 = new JLabel();
         scrollPane1 = new JScrollPane();
         usersTable = new JTable();
-        closeButton = new JButton();
-        closeButton2 = new JButton();
+        deleteButton = new JButton();
+        modifyButton = new JButton();
 
         //======== panel ========
         {
@@ -68,20 +81,31 @@ public class ManageUsersPanel extends JPanel {
 
             //======== scrollPane1 ========
             {
+
+                //---- usersTable ----
+                usersTable.addMouseListener(new MouseAdapter() {
+                    @Override
+                    public void mouseClicked(MouseEvent e) {
+                        usersTableMouseClicked(e);
+                    }
+                });
                 scrollPane1.setViewportView(usersTable);
             }
 
-            //---- closeButton ----
-            closeButton.setText("Delete");
-            closeButton.setFont(new Font("Segoe UI Semibold", Font.PLAIN, 17));
-            closeButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-            closeButton.addActionListener(e -> close(e));
+            //---- deleteButton ----
+            deleteButton.setText("Delete");
+            deleteButton.setFont(new Font("Segoe UI Semibold", Font.PLAIN, 17));
+            deleteButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+            deleteButton.addActionListener(e -> close(e));
 
-            //---- closeButton2 ----
-            closeButton2.setText("Modify");
-            closeButton2.setFont(new Font("Segoe UI Semibold", Font.PLAIN, 17));
-            closeButton2.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-            closeButton2.addActionListener(e -> close(e));
+            //---- modifyButton ----
+            modifyButton.setText("Modify");
+            modifyButton.setFont(new Font("Segoe UI Semibold", Font.PLAIN, 17));
+            modifyButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+            modifyButton.addActionListener(e -> {
+			close(e);
+			modify(e);
+		});
 
             GroupLayout panelLayout = new GroupLayout(panel);
             panel.setLayout(panelLayout);
@@ -92,9 +116,9 @@ public class ManageUsersPanel extends JPanel {
                         .addGroup(panelLayout.createParallelGroup()
                             .addGroup(panelLayout.createSequentialGroup()
                                 .addGap(172, 172, 172)
-                                .addComponent(closeButton, GroupLayout.PREFERRED_SIZE, 149, GroupLayout.PREFERRED_SIZE)
+                                .addComponent(deleteButton, GroupLayout.PREFERRED_SIZE, 149, GroupLayout.PREFERRED_SIZE)
                                 .addGap(93, 93, 93)
-                                .addComponent(closeButton2, GroupLayout.PREFERRED_SIZE, 149, GroupLayout.PREFERRED_SIZE))
+                                .addComponent(modifyButton, GroupLayout.PREFERRED_SIZE, 149, GroupLayout.PREFERRED_SIZE))
                             .addGroup(panelLayout.createSequentialGroup()
                                 .addGap(50, 50, 50)
                                 .addComponent(scrollPane1, GroupLayout.PREFERRED_SIZE, 631, GroupLayout.PREFERRED_SIZE)))
@@ -109,8 +133,8 @@ public class ManageUsersPanel extends JPanel {
                         .addComponent(scrollPane1, GroupLayout.PREFERRED_SIZE, 348, GroupLayout.PREFERRED_SIZE)
                         .addGap(29, 29, 29)
                         .addGroup(panelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                            .addComponent(closeButton2, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
-                            .addComponent(closeButton, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE))
+                            .addComponent(modifyButton, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
+                            .addComponent(deleteButton, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE))
                         .addContainerGap(41, Short.MAX_VALUE))
             );
         }
@@ -122,7 +146,7 @@ public class ManageUsersPanel extends JPanel {
     private JLabel label5;
     private JScrollPane scrollPane1;
     private JTable usersTable;
-    private JButton closeButton;
-    private JButton closeButton2;
+    private JButton deleteButton;
+    private JButton modifyButton;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 }

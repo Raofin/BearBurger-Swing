@@ -4,8 +4,8 @@ new FormModel {
 	contentType: "form/swing"
 	root: new FormRoot {
 		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-			"$horizontalGroup": "par l {comp label5::l::742:x, seq {par l {seq {space :p:172:p, comp closeButton:::p:149:p, space :p:93:p, comp closeButton2:::p:149:p}, seq l {space :p:50:p, comp scrollPane1:::p:631:p}}, space ::61:x}}"
-			"$verticalGroup": "par l {seq l {space :p:26:p, comp label5:::p::p, space s:::p, comp scrollPane1:::p:348:p, space :p:29:p, par b {comp closeButton2::b:p:40:p, comp closeButton::b:p:40:p}, space ::41:x}}"
+			"$horizontalGroup": "par l {comp label5::l::742:x, seq {par l {seq {space :p:172:p, comp deleteButton:::p:149:p, space :p:93:p, comp modifyButton:::p:149:p}, seq l {space :p:50:p, comp scrollPane1:::p:631:p}}, space ::61:x}}"
+			"$verticalGroup": "par l {seq l {space :p:26:p, comp label5:::p::p, space s:::p, comp scrollPane1:::p:348:p, space :p:29:p, par b {comp modifyButton::b:p:40:p, comp deleteButton::b:p:40:p}, space ::41:x}}"
 		} ) {
 			name: "panel"
 			auxiliary() {
@@ -21,21 +21,23 @@ new FormModel {
 				name: "scrollPane1"
 				add( new FormComponent( "javax.swing.JTable" ) {
 					name: "usersTable"
+					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "usersTableMouseClicked", true ) )
 				} )
 			} )
 			add( new FormComponent( "javax.swing.JButton" ) {
-				name: "closeButton"
+				name: "deleteButton"
 				"text": "Delete"
 				"font": &Font0 new java.awt.Font( "Segoe UI Semibold", 0, 17 )
 				"cursor": &Cursor0 new java.awt.Cursor( 12 )
 				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "close", true ) )
 			} )
 			add( new FormComponent( "javax.swing.JButton" ) {
-				name: "closeButton2"
+				name: "modifyButton"
 				"text": "Modify"
 				"font": #Font0
 				"cursor": #Cursor0
 				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "close", true ) )
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "modify", true ) )
 			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 0, 0 )
