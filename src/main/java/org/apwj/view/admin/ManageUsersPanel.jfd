@@ -30,6 +30,7 @@ new FormModel {
 				"font": &Font0 new java.awt.Font( "Segoe UI Semibold", 0, 17 )
 				"cursor": &Cursor0 new java.awt.Cursor( 12 )
 				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "close", true ) )
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "delete", true ) )
 			} )
 			add( new FormComponent( "javax.swing.JButton" ) {
 				name: "modifyButton"

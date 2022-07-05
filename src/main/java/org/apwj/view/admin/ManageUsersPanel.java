@@ -25,13 +25,12 @@ public class ManageUsersPanel extends JPanel {
     ApplicationContext applicationContext = new ClassPathXmlApplicationContext("application-context.xml");
     userDAO userDAO = applicationContext.getBean("userDao", userDAO.class);
     User selectedUser = null;
-    public ManageUsersPanel() {
-        initComponents();
+    List<User> allUsers;
+    Object[][] data;
 
-
-        List<User> allUsers = userDAO.getAllUsers();
-        Object[][] data = new Object[allUsers.size()][7];
-
+    void loadDataset(){
+        allUsers = userDAO.getAllUsers();
+        data = new Object[allUsers.size()][7];
         for (int i = 0; i < allUsers.size(); i++) {
 
             data[i][0] = allUsers.get(i).getUserId();
@@ -41,12 +40,14 @@ public class ManageUsersPanel extends JPanel {
             data[i][4] = allUsers.get(i).getGender();
             data[i][5] = allUsers.get(i).getPhone();
             data[i][6] = allUsers.get(i).getReg_date();
-
+            usersTable.setModel(new DefaultTableModel(
+                    data, new String[]{"User ID","Username", "Email", "Password", "Gender", "Phone", "Joined"}
+            ));
         }
-
-        usersTable.setModel(new DefaultTableModel(
-                data, new String[]{"User ID","Username", "Email", "Password", "Gender", "Phone", "Joined"}
-        ));
+    }
+    public ManageUsersPanel() {
+        initComponents();
+        loadDataset();
     }
 
     private void close(ActionEvent e) {
@@ -69,6 +70,11 @@ public class ManageUsersPanel extends JPanel {
         adminModifyUserFrame.setLocationRelativeTo(null);
         adminModifyUserFrame.setVisible(true);
 
+    }
+
+    private void delete(ActionEvent e) {
+        userDAO.deleteUser(selectedUser.getUserId());
+        loadDataset();
     }
 
     private void initComponents() {
@@ -105,7 +111,10 @@ public class ManageUsersPanel extends JPanel {
             deleteButton.setText("Delete");
             deleteButton.setFont(new Font("Segoe UI Semibold", Font.PLAIN, 17));
             deleteButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-            deleteButton.addActionListener(e -> close(e));
+            deleteButton.addActionListener(e -> {
+			close(e);
+			delete(e);
+		});
 
             //---- modifyButton ----
             modifyButton.setText("Modify");
