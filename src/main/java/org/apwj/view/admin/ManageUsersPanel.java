@@ -6,6 +6,7 @@ package org.apwj.view.admin;
 
 import org.apwj.dao.userDAO;
 import org.apwj.domain.User;
+import org.apwj.view.ProfileModifyPanel;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -20,6 +21,7 @@ import javax.swing.table.DefaultTableModel;
  * @author unknown
  */
 public class ManageUsersPanel extends JPanel {
+    public static JFrame adminModifyUserFrame = new JFrame();
     ApplicationContext applicationContext = new ClassPathXmlApplicationContext("application-context.xml");
     userDAO userDAO = applicationContext.getBean("userDao", userDAO.class);
     User selectedUser = null;
@@ -59,6 +61,13 @@ public class ManageUsersPanel extends JPanel {
     }
 
     private void modify(ActionEvent e) {
+        adminModifyUserFrame.setTitle("BearBurger");
+        adminModifyUserFrame.setResizable(false);
+        ProfileModifyPanel profileModifyPanel = new ProfileModifyPanel(selectedUser);
+        adminModifyUserFrame.setContentPane(profileModifyPanel.panel);
+        adminModifyUserFrame.pack();
+        adminModifyUserFrame.setLocationRelativeTo(null);
+        adminModifyUserFrame.setVisible(true);
 
     }
 
