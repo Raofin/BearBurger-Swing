@@ -2,16 +2,19 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
-<bean id="dataSource" class="com.mysql.cj.jdbc.MysqlDataSource">
-    <property name="databaseName" value="bearburger"/>
-    <property name="url" value="jdbc:mysql://localhost:3306/bearburger"/>
-    <property name="user" value="root"/>
-    <property name="password" value=""/>
-</bean>
-    <bean id="userDao" class="org.apwj.dao.userDAO">
+
+    <bean id="dataSource" class="com.mysql.cj.jdbc.MysqlDataSource">
+        <property name="databaseName" value="bearburger_swing"/>
+        <property name="url" value="jdbc:mysql://localhost:3306/bearburger_swing"/>
+        <property name="user" value="root"/>
+        <property name="password" value=""/>
+    </bean>
+
+    <bean id="userDao" class="org.apwj.bearburger.dao.UserDao">
         <constructor-arg ref="dataSource"/>
     </bean>
-    <bean id="foodDao" class="org.apwj.dao.foodDAO">
-        <constructor-arg ref = "dataSource"/>
+
+    <bean id="foodDao" class="org.apwj.bearburger.dao.FoodDao">
+        <constructor-arg ref="dataSource"/>
     </bean>
 </beans>

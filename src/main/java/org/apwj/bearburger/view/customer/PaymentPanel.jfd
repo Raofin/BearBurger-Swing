@@ -1,0 +1,93 @@
+JFDML JFormDesigner: "7.0.7.0.1134" Java: "17.0.3" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+			"$horizontalGroup": "par l {seq t {space :0:0:x, par l {comp label5::t:p:746:p, comp label6::t:p:746:p}}, seq {par l {seq {space :p:117:p, comp label1:::p::p, space :::p, comp totalFoodNumberLabel:::p::p, space :p:86:p, comp label3:::p::p, space :::p, comp totalCostLabel:::p::p}, seq l {space :p:126:p, par l {comp label9::l:p::p, comp label8::l:p::p, comp label7::l:p::p, comp label10::l:p::p}, space :p:27:p, par l:::p {comp nameTF:::::x, comp cardNumberTF:::::x, comp expDateTF:::::x, comp cvvTF::t:p:289:p}}, seq l {space :p:298:p, comp buyButton:::p:143:p}}, space ::132:x}}"
+			"$verticalGroup": "par l {seq l {space :p:32:p, comp label5:::p::p, space s:::p, par b {comp label1::b:p::p, comp totalFoodNumberLabel::b:p::p, comp label3::b:p::p, comp totalCostLabel::b:p::p}, space :p:28:p, comp label6:::p::p, space s:::p, par b {comp label7::b:p::p, comp nameTF::b:p:38:p}, space s:::p, par b {comp label8::b:p::p, comp cardNumberTF::b:p:38:p}, space s:::p, par b {comp label9::b:p::p, comp expDateTF::b:p:38:p}, space s:::p, par b {comp label10::b:p::p, comp cvvTF::b:p:38:p}, space :p:27:p, comp buyButton:::p:41:p, space ::59:x}}"
+		} ) {
+			name: "panel"
+			auxiliary() {
+				"JavaCodeGenerator.variableModifiers": 1
+			}
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label5"
+				"text": "Food Cart"
+				"font": new java.awt.Font( "Segoe UI", 1, 45 )
+				"horizontalAlignment": 0
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label1"
+				"text": "Total Added Foods :"
+				"font": &Font0 new java.awt.Font( "Segoe UI Semibold", 0, 22 )
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "totalFoodNumberLabel"
+				"text": "00"
+				"font": #Font0
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label3"
+				"text": "Total Cost :"
+				"font": #Font0
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "totalCostLabel"
+				"text": "00"
+				"font": #Font0
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label6"
+				"text": "Credit Card Details"
+				"font": new java.awt.Font( "Segoe UI", 1, 30 )
+				"horizontalAlignment": 0
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label7"
+				"text": "Name"
+				"font": #Font0
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label8"
+				"text": "Card Number"
+				"font": #Font0
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label9"
+				"text": "Expiration Date"
+				"font": #Font0
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label10"
+				"text": "Code CVV"
+				"font": #Font0
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "expDateTF"
+				"font": new java.awt.Font( "Segoe UI", 0, 20 )
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "cardNumberTF"
+				"font": new java.awt.Font( "Segoe UI", 0, 20 )
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "nameTF"
+				"font": new java.awt.Font( "Segoe UI", 0, 20 )
+			} )
+			add( new FormComponent( "javax.swing.JPasswordField" ) {
+				name: "cvvTF"
+				"font": new java.awt.Font( "Monospaced", 0, 20 )
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "buyButton"
+				"text": "Buy"
+				"font": new java.awt.Font( "Segoe UI Semibold", 0, 20 )
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "buy", true ) )
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 0 )
+			"size": new java.awt.Dimension( 742, 563 )
+		} )
+	}
+}

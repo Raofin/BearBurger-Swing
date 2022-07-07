@@ -1,0 +1,117 @@
+JFDML JFormDesigner: "7.0.7.0.1134" Java: "17.0.3" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+			"$horizontalGroup": "par l {seq {space :p:79:p, comp label8:::p:393:p, space :p:48:p, par l {par l:l {seq t {par l {seq l {par l {comp label4::l:p::p, comp label2::l:p::p, comp label3::l:p::p}, space :p:85:p}, seq t {comp label6:::p::p, space u:::p}}, par l {seq l {space :0:0:x, par l:::p {comp emailTF::l:::x, comp usernameTF::l:p:254:p, comp passwordTF::l:p:254:p}}, comp confirmPasswordTF:::::x}}, comp registerButton::t:p:431:p, seq t {comp label5:::p::p, space :6:6:p, comp loginLabel:::p::p, space :p:109:p}, seq l {comp label7:::p::p, space :::x, comp maleRadioButton:::p::p, space s:::p, comp femaleRadioButton:::p::p, space :::p, comp otherRadioButton:::p::p}, seq l {comp label9:::p::p, space :::x, comp phoneTF:::p:255:p}}, seq l {space :p:12:p, comp label1:::p::p, space ::32:p}}, space :p:74:p}}"
+			"$verticalGroup": "par l {seq {par l {seq {space :p:30:p, comp label8:::p:507:p}, seq l {space :p:64:p, comp label1:::p::p, space s:::p, par b {comp usernameTF::b:p:37:p, comp label2::b:p::p}, space :p:6:p, par b {comp emailTF::b:p:37:p, comp label4::b:p::p}, space :::p, par b {comp passwordTF::b:p:37:p, comp label3::b:p::p}, space :::p, par b {comp confirmPasswordTF::b:p:37:p, comp label6::b:p::p}, space :p:6:p, par b {comp label9::b:p::p, comp phoneTF::b:p::p}, space u:::p, par b {comp otherRadioButton::b:p::p, comp femaleRadioButton::b:p::p, comp maleRadioButton::b:p::p, comp label7::b:p::p}, space :p:32:p, comp registerButton:::p:40:p, space :::p, par l {comp label5:::p::p, comp loginLabel:::p::p}}}, space ::38:x}}"
+		} ) {
+			name: "panel"
+			"maximumSize": new java.awt.Dimension( 1025, 575 )
+			"preferredSize": new java.awt.Dimension( 1025, 575 )
+			"minimumSize": new java.awt.Dimension( 1025, 575 )
+			auxiliary() {
+				"JavaCodeGenerator.variableModifiers": 1
+			}
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label1"
+				"text": "Create an Account"
+				"font": new java.awt.Font( "Segoe UI", 1, 45 )
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label2"
+				"text": "Username"
+				"font": &Font0 new java.awt.Font( "Segoe UI Semibold", 0, 20 )
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "usernameTF"
+				"font": #Font0
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label3"
+				"text": "Password"
+				"font": #Font0
+			} )
+			add( new FormComponent( "javax.swing.JPasswordField" ) {
+				name: "passwordTF"
+				"font": #Font0
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "registerButton"
+				"text": "Register"
+				"font": new java.awt.Font( "Segoe UI Semibold", 0, 17 )
+				"cursor": &Cursor0 new java.awt.Cursor( 12 )
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "register", true ) )
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label5"
+				"text": "Already have an account?"
+				"font": &Font1 new java.awt.Font( "Segoe UI Semibold", 0, 15 )
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "loginLabel"
+				"text": "Login"
+				"font": #Font1
+				"foreground": new java.awt.Color( 56, 117, 237, 255 )
+				"cursor": #Cursor0
+				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "registerMouseClicked", true ) )
+				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "loginLabelMouseClicked", true ) )
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label4"
+				"text": "Email"
+				"font": #Font0
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label6"
+				"text": "Confirm Password"
+				"font": #Font0
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "emailTF"
+				"font": #Font0
+			} )
+			add( new FormComponent( "javax.swing.JPasswordField" ) {
+				name: "confirmPasswordTF"
+				"font": #Font0
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label8"
+				"icon": new com.jformdesigner.model.SwingIcon( 0, "/img/logo-2.png" )
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label9"
+				"text": "Contact Number"
+				"font": #Font0
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "phoneTF"
+				"font": #Font0
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label7"
+				"text": "Gender"
+				"font": #Font0
+			} )
+			add( new FormComponent( "javax.swing.JRadioButton" ) {
+				name: "maleRadioButton"
+				"text": "Male"
+				"font": #Font0
+			} )
+			add( new FormComponent( "javax.swing.JRadioButton" ) {
+				name: "femaleRadioButton"
+				"text": "Female"
+				"font": #Font0
+			} )
+			add( new FormComponent( "javax.swing.JRadioButton" ) {
+				name: "otherRadioButton"
+				"text": "Other"
+				"font": #Font0
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 0 )
+			"size": new java.awt.Dimension( 1025, 575 )
+		} )
+	}
+}

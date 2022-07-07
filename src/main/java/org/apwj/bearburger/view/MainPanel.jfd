@@ -1,0 +1,35 @@
+JFDML JFormDesigner: "7.0.7.0.1134" Java: "17.0.3" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+			"$horizontalGroup": "par l {comp label2::t::1025:x, seq l {space :p:427:p, comp buttonGetStarted:::p:166:p, space ::432:x}}"
+			"$verticalGroup": "par l {seq t {space ::35:x, comp label2:::p:418:p, space s:::p, comp buttonGetStarted:::p:45:p, space :p:59:p}}"
+		} ) {
+			name: "panel"
+			"maximumSize": new java.awt.Dimension( 1025, 575 )
+			auxiliary() {
+				"JavaCodeGenerator.variableModifiers": 1
+			}
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "buttonGetStarted"
+				"text": "Get Started"
+				"font": new java.awt.Font( "Segoe UI", 1, 22 )
+				"borderPainted": false
+				"background": new java.awt.Color( 102, 153, 255, 255 )
+				"foreground": new java.awt.Color( 255, 255, 255, 255 )
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "getStarted", true ) )
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "getStarted", true ) )
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label2"
+				"icon": new com.jformdesigner.model.SwingIcon( 0, "/img/logo-1.png" )
+				"horizontalAlignment": 0
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 0 )
+			"size": new java.awt.Dimension( 1025, 575 )
+		} )
+	}
+}

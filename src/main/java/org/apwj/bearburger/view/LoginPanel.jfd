@@ -1,0 +1,77 @@
+JFDML JFormDesigner: "7.0.7.1.1184" Java: "17.0.4" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+			"$horizontalGroup": "par l {seq t {space ::123:x, comp label4:::p:399:p, space :89:89:p, par l {par l:l {comp loginButton::t:p:302:p, seq l {space :p:60:p, comp label5:::p::p, space :::p, comp register:::p::p}}, comp label3:::p::p, comp forgotPassword::l:p::p, seq l {space :p:1:p, par l {par l:t {comp usernameTF:::p:301:p, comp label2:::p::p}, seq t {comp label1:::p::p, space :p:47:p}}}, comp passwordTF::t:p:302:p}, space :p:112:p}}"
+			"$verticalGroup": "par l {seq l {space :p:39:p, par l {comp label4::t:p:494:p, seq l {space :p:37:p, comp label1:::p::p, space :p:35:p, comp label2:::p::p, space :p:3:p, comp usernameTF:::p:37:p, space :p:18:p, comp label3:::p::p, space :::p, comp passwordTF:::p:39:p, space :::p, comp forgotPassword:::p::p, space :p:56:p, comp loginButton:::p:40:p, space :p:7:p, par b {comp register::b:p::p, comp label5::b:p::p}, space ::59:p}}, space ::42:x}}"
+		} ) {
+			name: "panel"
+			"maximumSize": new java.awt.Dimension( 1025, 575 )
+			"minimumSize": new java.awt.Dimension( 1025, 575 )
+			"preferredSize": new java.awt.Dimension( 1025, 575 )
+			auxiliary() {
+				"JavaCodeGenerator.variableModifiers": 1
+			}
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "usernameTF"
+				"font": &Font0 new java.awt.Font( "Segoe UI", 0, 20 )
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label1"
+				"text": "Welcome!"
+				"font": new java.awt.Font( "Segoe UI", 1, 45 )
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "loginButton"
+				"text": "Login"
+				"font": new java.awt.Font( "Segoe UI Semibold", 0, 17 )
+				"cursor": &Cursor0 new java.awt.Cursor( 12 )
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "loginButton", true ) )
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "register"
+				"text": "Create an Account"
+				"font": &Font1 new java.awt.Font( "Segoe UI Semibold", 0, 15 )
+				"foreground": new java.awt.Color( 56, 117, 237, 255 )
+				"cursor": #Cursor0
+				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "registerMouseClicked", true ) )
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label2"
+				"text": " Username"
+				"font": new java.awt.Font( "Segoe UI Semibold", 0, 17 )
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label3"
+				"text": " Password"
+				"font": new java.awt.Font( "Segoe UI Semibold", 0, 17 )
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "forgotPassword"
+				"text": " Forgot your password?"
+				"foreground": new java.awt.Color( 56, 117, 237, 255 )
+				"font": new java.awt.Font( "Segoe UI Semibold", 0, 15 )
+				"cursor": #Cursor0
+				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "forgotPasswordMouseClicked", true ) )
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label5"
+				"text": "New here?"
+				"font": #Font1
+			} )
+			add( new FormComponent( "javax.swing.JPasswordField" ) {
+				name: "passwordTF"
+				"font": #Font0
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label4"
+				"icon": new com.jformdesigner.model.SwingIcon( 0, "/img/logo-2.png" )
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 0 )
+			"size": new java.awt.Dimension( 1025, 575 )
+		} )
+	}
+}

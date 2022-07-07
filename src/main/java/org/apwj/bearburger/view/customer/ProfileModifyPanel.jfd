@@ -1,0 +1,107 @@
+JFDML JFormDesigner: "7.0.7.0.1134" Java: "17.0.3" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+			"$horizontalGroup": "par l {seq {space :::p, comp label5:::::x, space :::p}, seq t {space :0:296:x, comp confirmButton:::p:171:p, space :p:291:p}, seq t {space ::143:x, par l {seq l {comp label8:::p::p, space :p:65:p, comp reg_date_label:::p::p}, seq l {par l {comp label2:::p::p, comp label4::l:p::p, comp label3::l:p::p, comp label7::l:p::p, comp label6::l:p::p}, space s:::p, par l:::p {comp phoneTF::l:::x, comp usernameLabel:::p::p, comp emailLabel:::p::p, seq l {comp maleRadioButton:::p::p, space s:::p, comp femaleRadioButton:::p::p, space s:::p, comp otherRadioButton:::p::p}, comp passwordTF::l:p:352:p}}}, space :p:126:p}}"
+			"$verticalGroup": "par l {seq l {space :p:28:p, comp label5:::p::p, space :p:48:p, par b {comp label2::b:p::p, comp usernameLabel::b:p::p}, space :::p, par b {comp label4::b:p::p, comp emailLabel::b:p::p}, space :::p, par b {comp label3::b:p::p, comp passwordTF::b:p:37:p}, space :::p, par b {comp phoneTF::b:p:37:p, comp label6::b:p::p}, space :::p, par b {comp label7::b:p::p, comp maleRadioButton::b:p::p, comp femaleRadioButton::b:p::p, comp otherRadioButton::b:p::p}, space :::p, par b {comp label8::b:p::p, comp reg_date_label::b:p::p}, space ::74:x, comp confirmButton:::p:42:p, space :p:58:p}}"
+		} ) {
+			name: "panel"
+			auxiliary() {
+				"JavaCodeGenerator.variableModifiers": 1
+			}
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label5"
+				"text": "Modify Details"
+				"font": new java.awt.Font( "Segoe UI", 1, 45 )
+				"horizontalAlignment": 0
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "confirmButton"
+				"text": "Confirm"
+				"font": new java.awt.Font( "Segoe UI", 1, 20 )
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "confirm", true ) )
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label2"
+				"text": "Username"
+				"font": &Font0 new java.awt.Font( "Segoe UI Semibold", 0, 26 )
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label4"
+				"text": "Email"
+				"font": #Font0
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label3"
+				"text": "Password"
+				"font": new java.awt.Font( "Segoe UI Semibold", 0, 26 )
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label6"
+				"text": "Phone"
+				"font": #Font0
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "phoneTF"
+				"font": #Font0
+				"foreground": new java.awt.Color( 255, 255, 255, 255 )
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label7"
+				"text": "Gender"
+				"font": #Font0
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label8"
+				"text": "Joined"
+				"font": #Font0
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "reg_date_label"
+				"text": "July 2, 2022"
+				"font": #Font0
+				"foreground": new java.awt.Color( 255, 255, 255, 255 )
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "usernameLabel"
+				"text": "username"
+				"font": #Font0
+				"foreground": new java.awt.Color( 255, 255, 255, 255 )
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "emailLabel"
+				"text": "email"
+				"font": #Font0
+				"foreground": new java.awt.Color( 255, 255, 255, 255 )
+			} )
+			add( new FormComponent( "javax.swing.JRadioButton" ) {
+				name: "maleRadioButton"
+				"text": "Male"
+				"font": &Font1 new java.awt.Font( "Segoe UI Semibold", 0, 26 )
+				"foreground": new java.awt.Color( 255, 255, 255, 255 )
+			} )
+			add( new FormComponent( "javax.swing.JRadioButton" ) {
+				name: "femaleRadioButton"
+				"text": "Female"
+				"font": #Font1
+				"foreground": new java.awt.Color( 255, 255, 255, 255 )
+			} )
+			add( new FormComponent( "javax.swing.JRadioButton" ) {
+				name: "otherRadioButton"
+				"text": "Other"
+				"font": #Font1
+				"foreground": new java.awt.Color( 255, 255, 255, 255 )
+			} )
+			add( new FormComponent( "javax.swing.JPasswordField" ) {
+				name: "passwordTF"
+				"font": #Font1
+				"foreground": new java.awt.Color( 255, 255, 255, 255 )
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 0 )
+			"size": new java.awt.Dimension( 758, 563 )
+		} )
+	}
+}

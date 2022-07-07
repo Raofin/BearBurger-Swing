@@ -1,0 +1,89 @@
+JFDML JFormDesigner: "7.0.7.0.1134" Java: "17.0.3" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+			"$horizontalGroup": "par l {seq t {par l {seq {space :p:24:p, comp logo:::p:214:p}, par l:l::p {comp browseButton::::255:x, comp searchButton::l:::x}, comp userProfileButton:::p:255:p, comp projectDetailsButton:::p:255:p, seq l {space :::p, par l:::p {comp usernameLabel::l:::x, comp logoutLabel::l:p:249:p}}, comp viewCart::t:p:255:p, comp foodCartButton::t:p:255:p}, space :p:42:p, comp subHomePanel:::::x}}"
+			"$verticalGroup": "par l {seq t {space :p:21:p, comp logo:::p:89:p, space u:::p, comp browseButton:::p:52:p, space :::p, comp searchButton:::p:52:p, space :::p, comp viewCart:::p:55:p, space :::p, comp foodCartButton:::p:52:p, space :::p, comp userProfileButton:::p:52:p, space :::p, comp projectDetailsButton:::p:52:p, space u:::p, comp usernameLabel:::p::p, space :::p, comp logoutLabel:::p::p, space ::26:x}, comp subHomePanel::t:::x}"
+		} ) {
+			name: "panel"
+			auxiliary() {
+				"JavaCodeGenerator.variableModifiers": 1
+			}
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+				"$horizontalGroup": "par l {space :0:728:x}"
+				"$verticalGroup": "par l {space :0:0:x}"
+			} ) {
+				name: "subHomePanel"
+				auxiliary() {
+					"JavaCodeGenerator.variableModifiers": 9
+				}
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "browseButton"
+				"text": "Browse Foods"
+				"font": &Font0 new java.awt.Font( "Segoe UI", 1, 22 )
+				"border": &LineBorder0 new javax.swing.border.LineBorder( new java.awt.Color( 33, 37, 43, 255 ), 1, false )
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "browse", true ) )
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "searchButton"
+				"text": "Search"
+				"font": #Font0
+				"border": #LineBorder0
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "search", true ) )
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "projectDetailsButton"
+				"text": "Project Details"
+				"font": #Font0
+				"border": #LineBorder0
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "projectDetails", true ) )
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "usernameLabel"
+				"text": "Username"
+				"font": new java.awt.Font( "Segoe UI Semibold", 1, 27 )
+				"horizontalAlignment": 0
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "logoutLabel"
+				"text": "Logout"
+				"font": new java.awt.Font( "Segoe UI Semibold", 0, 20 )
+				"foreground": new java.awt.Color( 255, 51, 51, 255 )
+				"cursor": new java.awt.Cursor( 12 )
+				"horizontalAlignment": 0
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "logo"
+				"icon": new com.jformdesigner.model.SwingIcon( 0, "/img/logo-3.png" )
+				"disabledIcon": new com.jformdesigner.model.SwingIcon( 1, "src/main/java/org/apwj/view/resources/logo-3.png" )
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "viewCart"
+				"text": "View Cart"
+				"font": new java.awt.Font( "Segoe UI", 1, 22 )
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "viewCart", true ) )
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "userProfileButton"
+				"text": "User Profile"
+				"font": #Font0
+				"border": #LineBorder0
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "userProfile", true ) )
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "foodCartButton"
+				"text": "Payment"
+				"font": #Font0
+				"border": #LineBorder0
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "foodCart", true ) )
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "foodCart", true ) )
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 0 )
+			"size": new java.awt.Dimension( 1025, 575 )
+		} )
+	}
+}

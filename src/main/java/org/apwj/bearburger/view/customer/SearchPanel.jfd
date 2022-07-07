@@ -1,0 +1,63 @@
+JFDML JFormDesigner: "7.0.7.0.1134" Java: "17.0.3" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+			"$horizontalGroup": "par l {seq {par l {seq l {space :::p, comp label1:::::x}, seq {par l {seq {space :p:158:p, comp foodDetailsButton:::p:171:p, space :p:57:p, comp addToCartButton:::p:171:p}, seq l {space :p:54:p, par l {comp scrollPane2:::p:636:p, seq l {space :p:106:p, comp label5:::p::p}, seq l {space :p:88:p, comp searchFoodTF:::p:309:p, space :p:26:p, comp searchButton:::p:156:p}}}}, space :0:62:x}}, space :::p}}"
+			"$verticalGroup": "par l {seq l {space :p:28:p, comp label1:::p::p, space ::32:x, par l {comp searchFoodTF::l:p:41:p, comp searchButton::l:p:41:p}, space s:::p, comp label5:::p::p, space :::p, comp scrollPane2:::p:233:p, space :p:38:p, par b {comp foodDetailsButton::b:p:42:p, comp addToCartButton::b:p:42:p}, space :p:35:p}}"
+		} ) {
+			name: "panel"
+			auxiliary() {
+				"JavaCodeGenerator.variableModifiers": 1
+			}
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label1"
+				"text": "Search Foods"
+				"font": new java.awt.Font( "Segoe UI", 1, 45 )
+				"horizontalAlignment": 0
+			} )
+			add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+				name: "scrollPane2"
+				add( new FormComponent( "javax.swing.JList" ) {
+					name: "foodItemsList"
+					"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 5, false )
+				} )
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label5"
+				"text": "Search Results"
+				"font": new java.awt.Font( "Segoe UI Semibold", 1, 21 )
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "addToCartButton"
+				"text": "Add to Cart"
+				"font": &Font0 new java.awt.Font( "Segoe UI", 1, 20 )
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "addToCart", true ) )
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "addToCart", true ) )
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "foodDetailsButton"
+				"text": "View Details"
+				"font": #Font0
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "foodDetails", true ) )
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "searchFoodTF"
+				"font": new java.awt.Font( "Segoe UI", 0, 20 )
+				addEvent( new FormEvent( "java.awt.event.InputMethodListener", "inputMethodTextChanged", "searchFoodTFInputMethodTextChanged", true ) )
+				addEvent( new FormEvent( "java.awt.event.KeyListener", "keyReleased", "searchFoodTFKeyReleased", true ) )
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "searchButton"
+				"text": "Search"
+				"font": #Font0
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "search", true ) )
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "search", true ) )
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 5 )
+			"size": new java.awt.Dimension( 758, 563 )
+		} )
+	}
+}

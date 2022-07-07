@@ -1,0 +1,83 @@
+JFDML JFormDesigner: "7.0.7.0.1134" Java: "17.0.3" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+			"$horizontalGroup": "par l {comp label5::l::742:x, seq l {par l:::p {seq {space :p:296:p, comp addFoodButton:::p:149:p}, seq l {space :p:48:p, par l {comp label3::l:p::p, comp foodCategoriesComboBox::t:p:623:p, comp label2::l:p::p, comp titleTF::l:p:290:p, comp label6::l:p::p, comp scrollPane1::t:::x}}, seq l {space :p:391:p, par l {comp label4:::p::p, comp priceTF:::::x}}}, space ::71:x}}"
+			"$verticalGroup": "par l {seq l {space :p:26:p, comp label5:::p::p, space u:::p, comp label3:::p::p, space :::p, comp foodCategoriesComboBox:::p:42:p, space s:::p, par b {comp label2::b:p::p, comp label4::b:p::p}, space :::p, par l {comp titleTF:::p:37:p, comp priceTF:::p:37:p}, space s:::p, comp label6:::p::p, space :::p, comp scrollPane1:::p:142:p, space ::33:x, comp addFoodButton:::p:40:p, space :p:44:p}}"
+		} ) {
+			name: "panel"
+			auxiliary() {
+				"JavaCodeGenerator.variableModifiers": 1
+			}
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label5"
+				"text": "Add Foods"
+				"font": new java.awt.Font( "Segoe UI", 1, 45 )
+				"horizontalAlignment": 0
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "addFoodButton"
+				"text": "Add"
+				"font": new java.awt.Font( "Segoe UI Semibold", 0, 17 )
+				"cursor": new java.awt.Cursor( 12 )
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "close", true ) )
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "addFood", true ) )
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label2"
+				"text": " Food Name"
+				"font": &Font0 new java.awt.Font( "Segoe UI Semibold", 0, 17 )
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "titleTF"
+				"font": new java.awt.Font( "Segoe UI", 0, 20 )
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label3"
+				"text": " Category"
+				"font": #Font0
+			} )
+			add( new FormComponent( "javax.swing.JComboBox" ) {
+				name: "foodCategoriesComboBox"
+				"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 5, false )
+				"model": new javax.swing.DefaultComboBoxModel {
+					selectedItem: "Burger"
+					addElement( "Burger" )
+					addElement( "Pizza" )
+					addElement( "Salad" )
+					addElement( "Pasta" )
+					addElement( "Drinks" )
+					addElement( "Coffee" )
+					addElement( "Desert" )
+					addElement( "Sides" )
+				}
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label4"
+				"text": " Price"
+				"font": #Font0
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "priceTF"
+				"font": new java.awt.Font( "Segoe UI", 0, 20 )
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label6"
+				"text": " Description"
+				"font": #Font0
+			} )
+			add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+				name: "scrollPane1"
+				add( new FormComponent( "javax.swing.JTextArea" ) {
+					name: "descriptionTA"
+					"font": new java.awt.Font( "Segoe UI", 0, 20 )
+				} )
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 0 )
+			"size": new java.awt.Dimension( 742, 563 )
+		} )
+	}
+}

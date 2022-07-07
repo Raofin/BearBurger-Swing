@@ -1,0 +1,65 @@
+JFDML JFormDesigner: "7.0.5.4.420" Java: "11.0.14.1" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+			"$horizontalGroup": "par l {comp foodTitle::l:::x, seq t {space :0:50:x, par l {comp label3:::p::p, seq {comp label1:::p::p, space :p:24:p, comp categoryLabel:::p::p}, comp scrollPane1:::p:370:p, seq l {comp label2:::p::p, space s:::p, comp priceLabel:::p::p}}, space :p:50:p}, seq l {space :p:145:p, comp closeButton:::p:171:p, space ::154:x}}"
+			"$verticalGroup": "par l {seq l {space :p:18:p, comp foodTitle:::p::p, space s:::p, par l {comp categoryLabel:::p::p, seq {comp label1:::p::p, space u:::p, par b {comp label2::b:p::p, comp priceLabel::b:p::p}}}, space u:::p, comp label3:::p::p, space u:::x, comp scrollPane1:::p:90:p, space s:::p, comp closeButton:::p:46:p, space :p:57:p}}"
+		} ) {
+			name: "panel"
+			auxiliary() {
+				"JavaCodeGenerator.variableModifiers": 1
+			}
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "foodTitle"
+				"text": "Food Name"
+				"font": new java.awt.Font( "Segoe UI", 1, 45 )
+				"horizontalAlignment": 0
+			} )
+			add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+				name: "scrollPane1"
+				add( new FormComponent( "javax.swing.JTextPane" ) {
+					name: "foodDetails"
+					"text": "Prepared with beef patty, cheese, burger sauce, pickles & onion"
+					"font": new java.awt.Font( "Segoe UI", 0, 20 )
+					"editable": false
+				} )
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "closeButton"
+				"text": "Close"
+				"font": new java.awt.Font( "Segoe UI", 1, 20 )
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "close", true ) )
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "categoryLabel"
+				"text": "Category"
+				"font": &Font0 new java.awt.Font( "Segoe UI Semibold", 0, 24 )
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "priceLabel"
+				"text": "Price"
+				"font": #Font0
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label1"
+				"text": " category :"
+				"font": #Font0
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label2"
+				"text": " Price (tk) :"
+				"font": #Font0
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label3"
+				"text": " Description :"
+				"font": #Font0
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 0 )
+			"size": new java.awt.Dimension( 470, 420 )
+		} )
+	}
+}

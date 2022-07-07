@@ -1,0 +1,51 @@
+JFDML JFormDesigner: "7.0.7.0.1134" Java: "17.0.3" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+			"$horizontalGroup": "par l {seq l {space :::p, comp label6::::233:x, space :::p}, seq t {space ::32:x, par t {seq t {comp label2:::p::p, space u:::p, comp TOTAL_FOODS_LABEL:::p::p}, seq t {comp label3:::p::p, space :::p, comp TOTAL_COST_LABEL:::p::p}}, space :p:31:p}}"
+			"$verticalGroup": "par l {seq l {space :::p, comp label6:::p::p, space s:::p, par b {comp label2::b:p::p, comp TOTAL_FOODS_LABEL::b:p::p}, space :p:12:p, par b {comp label3::b:p::p, comp TOTAL_COST_LABEL::b:p::p}, space ::18:x}}"
+		} ) {
+			name: "panel"
+			auxiliary() {
+				"JavaCodeGenerator.variableModifiers": 1
+			}
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label6"
+				"text": "Food Cart"
+				"font": new java.awt.Font( "Segoe UI", 1, 30 )
+				"horizontalAlignment": 0
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label2"
+				"text": "Added Foods :"
+				"font": &Font0 new java.awt.Font( "Segoe UI Semibold", 0, 22 )
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "TOTAL_FOODS_LABEL"
+				"text": "00"
+				"font": #Font0
+				auxiliary() {
+					"JavaCodeGenerator.variableModifiers": 9
+				}
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label3"
+				"text": "Total Cost :"
+				"font": #Font0
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "TOTAL_COST_LABEL"
+				"text": "00"
+				"font": #Font0
+				auxiliary() {
+					"JavaCodeGenerator.variableModifiers": 9
+				}
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 5 )
+			"size": new java.awt.Dimension( 245, 155 )
+		} )
+	}
+}

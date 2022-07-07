@@ -1,0 +1,72 @@
+JFDML JFormDesigner: "7.0.7.0.1134" Java: "17.0.3" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+			"$horizontalGroup": "par l {seq {par l {seq l {space :p:83:p, par l:::p {comp label2::l:p::p, seq l {par l {seq {space :p:12:p, par l {comp label4::l:p::p, comp label3::l:p::p}, space u:::p, par l {comp usernameLabel:::p::p, comp passwordLabel:::p::p}}, comp closeButton::l:p:149:p}, space :p:34:p, comp recoverButton:::p:149:p}, comp emailTF::l:::x}}, seq l {space :p:71:p, comp label1:::p::p}}, space ::73:x}}"
+			"$verticalGroup": "par l {seq l {space :p:46:p, comp label1:::p::p, space :p:36:p, comp label2:::p::p, space :::p, comp emailTF:::p:44:p, space :p:30:p, par l {seq l {comp label3:::p::p, space :::p, comp label4:::p::p}, seq l {comp usernameLabel:::p::p, space :6:6:p, comp passwordLabel:::p::p}}, space :p:44:p, par b {comp recoverButton::b:p:40:p, comp closeButton::b:p:40:p}, space ::55:x}}"
+		} ) {
+			name: "panel"
+			auxiliary() {
+				"JavaCodeGenerator.variableModifiers": 1
+			}
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "recoverButton"
+				"text": "Recover"
+				"font": &Font0 new java.awt.Font( "Segoe UI Semibold", 0, 17 )
+				"cursor": &Cursor0 new java.awt.Cursor( 12 )
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "recoverButton", true ) )
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "emailTF"
+				"font": new java.awt.Font( "Segoe UI", 0, 20 )
+				addEvent( new FormEvent( "java.awt.event.KeyListener", "keyPressed", "emailTFKeyPressed", true ) )
+				addEvent( new FormEvent( "java.awt.event.KeyListener", "keyTyped", "emailTFKeyTyped", true ) )
+				addEvent( new FormEvent( "java.awt.event.KeyListener", "keyReleased", "emailTFKeyReleased", true ) )
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label2"
+				"text": " EMAIL"
+				"font": new java.awt.Font( "Segoe UI Semibold", 0, 20 )
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label1"
+				"text": "Account Recovery"
+				"font": new java.awt.Font( "Segoe UI", 1, 45 )
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label3"
+				"text": "Username :"
+				"font": &Font1 new java.awt.Font( "Segoe UI Semibold", 1, 22 )
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label4"
+				"text": "Password  :"
+				"font": #Font1
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "usernameLabel"
+				"text": "..."
+				"font": #Font1
+				"foreground": new java.awt.Color( 0, 153, 51, 255 )
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "passwordLabel"
+				"text": "..."
+				"font": #Font1
+				"foreground": new java.awt.Color( 0, 153, 51, 255 )
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "closeButton"
+				"text": "Close"
+				"font": #Font0
+				"cursor": #Cursor0
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "close", true ) )
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 0 )
+			"size": new java.awt.Dimension( 525, 455 )
+		} )
+	}
+}
