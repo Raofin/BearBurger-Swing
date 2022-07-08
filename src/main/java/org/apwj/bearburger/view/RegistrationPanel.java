@@ -137,6 +137,12 @@ public class RegistrationPanel extends JPanel {
             loginLabel.setFont(new Font("Segoe UI Semibold", Font.PLAIN, 15));
             loginLabel.setForeground(new Color(56, 117, 237));
             loginLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+            loginLabel.addMouseListener(new MouseAdapter() {
+                @Override
+                public void mouseClicked(MouseEvent e) {
+                    loginLabelMouseClicked(e);
+                }
+            });
 
             //---- label4 ----
             label4.setText("Email");
